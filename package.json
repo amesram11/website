@@ -1,5 +1,5 @@
 {
-  "name": "with-emotion-10",
+  "name": "website",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,8 @@
     "start": "next start"
   },
   "keywords": [],
-  "author": "Thomas Greco",
-  "license": "ISC",
+  "author": "Saikat Chakrabarti",
+  "license": "",
   "dependencies": {
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",
