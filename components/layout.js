@@ -5,15 +5,10 @@ import { mobileBreakpoint } from './styles'
 import { slide as BurgerMenu } from 'react-burger-menu'
 
 const MenuBar = styled('div')`
-    font-family: 'D-DIN', sans-serif;
-    font-weight: bold;
-    font-size: 15px;
+    margin: 0;
+    padding: 0;
     background-color: #DB382F;
-    z-index: 10;
-    height: 64px;
-    @media (min-width:${mobileBreakpoint}) {
-        height: 95px;
-    }
+    height: 95px;        
 `
 
 const DesktopMenu = styled('ul')`
@@ -21,9 +16,6 @@ const DesktopMenu = styled('ul')`
     padding: 30px;
     margin-left: 0;
     margn-right: 0;
-    @media (min-width: 992px) {
-        padding: 0;
-    }
 `
 const MenuItem = ({ children }) => {
     return (
@@ -31,9 +23,9 @@ const MenuItem = ({ children }) => {
             text-transform: uppercase;
             padding: 0 12px;
             margin: 0 0 20px;
-            @media (min-width: 992px) {
-                margin: 0
-            }
+            font-size: 19px;
+            font-family: 'D-DIN-Exp', sans-serif;
+            font-weight: 400;
             display: inline-block;       
         `}>
             <a css={css`
@@ -51,20 +43,15 @@ const MenuItem = ({ children }) => {
 
 const Logo = styled('div')`
     display: block;
-    width: 150px;
-    height: 66px;
     margin: 0 auto;
     border: none;
     background: url("/images/logo-white.png") no-repeat 50% 50%;
     background-size: 100%;
     color: rgba(255, 255, 255, 0);
     position: relative;
-    bottom: -6px;
-    @media (min-width: ${mobileBreakpoint}) {
-        width: 209px;
-        height: 92px;
-        bottom: -22px;
-    }
+    width: 209px;
+    height: 92px;
+    bottom: -22px;
 `
 
 export default function Layout({ children }) {

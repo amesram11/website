@@ -4,16 +4,10 @@ import styled from '@emotion/styled'
 export const globalStyles = (
   <Global
     styles={css`
-      html,
-      body {
-        padding: 3rem 1rem;
-        margin: 0;
-        background: papayawhip;
-        min-height: 100%;
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 24px;
+      html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+        margin:0;
+        padding:0;
       }
-
       @font-face {
         font-family: SourceSerifPro;
         src: url("/fonts/SourceSerifPro-Regular.otf") format("opentype");
