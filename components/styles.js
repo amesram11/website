@@ -8,6 +8,7 @@ export const globalStyles = (
         margin:0;
         padding:0;
       }
+
       @font-face {
         font-family: SourceSerifPro;
         src: url("/fonts/SourceSerifPro-Regular.otf") format("opentype");
