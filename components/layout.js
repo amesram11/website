@@ -4,6 +4,55 @@ import styled from '@emotion/styled'
 import { mobileBreakpoint } from './styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 
+const burgerStyles = {
+    bmBurgerButton: {
+        top: '20px',
+        right: '20px',
+        position: 'fixed',
+        width: '30px',
+        height: '25px',
+    },
+    bmBurgerBars: {
+        background: '#fff',
+        height: '3px'
+    },
+    bmBurgerBarsHover: {
+        background: '#fff'
+    },
+    bmCrossButton: {
+        height: '30px',
+        width: '30px'
+    },
+    bmCross: {
+        background: '#fff'
+    },
+    bmMenuWrap: {
+        position: 'fixed',
+        height: '100%',
+        top: '0px'
+    },
+    bmMenu: {
+        background: '#373a47',
+        padding: '2.5em 1.5em 0',
+        fontSize: '1.15em'
+    },
+    bmMorphShape: {
+        fill: '#373a47'
+    },
+    bmItemList: {
+        color: '#b8b7ad',
+        padding: '0.8em'
+    },
+    bmItem: {
+        display: 'inline-block'
+    },
+    bmOverlay: {
+        background: 'rgba(0, 0, 0, 0.3)',
+        width: '100%',
+        height: '100%'
+    }
+}
+
 const menuStyles = css`
     background-color: #DB382F;   
     display: flex;
@@ -11,6 +60,25 @@ const menuStyles = css`
     justify-content: center;
     align-items: center;
 `
+
+const menuItems = [{
+    label: 'Memos'
+}, {
+    label: 'Projects',
+    subMenu: [{
+        label: 'Green New Deal',
+    }, {
+        label: 'Pandemic Economics'
+    }]
+}, {
+    label: 'Library'
+}, {
+    label: 'Press'
+}, {
+    label: 'About'
+}, {
+    label: 'Donate'
+}]    
 
 const DesktopMenu = styled('div')`
     ${menuStyles}
@@ -29,7 +97,7 @@ const MobileMenu = styled('div')`
     }
 `
 
-const MenuItem = ({ children }) => {
+const MenuItem = ({url, label}) => {
     return (
         <a css={css`
             text-transform: uppercase;
@@ -42,8 +110,8 @@ const MenuItem = ({ children }) => {
             font-weight: 400;
             display: inline-block;
             flex: 0 1 auto;      
-        `}>
-            {children}
+        `} href={url}>
+            {label}
         </a>
     )
 }
@@ -67,56 +135,13 @@ const Logo = styled('div')`
     }
 `
 
-const burgerStyles = {
-    bmBurgerButton: {
-        top: '20px',
-        right: '20px',
-        position: 'fixed',
-        width: '30px',
-        height: '25px',
-    },
-    bmBurgerBars: {
-      background: '#fff',
-      height: '3px'
-    },
-    bmBurgerBarsHover: {
-      background: '#fff'
-    },
-    bmCrossButton: {
-      height: '30px',
-      width: '30px'
-    },
-    bmCross: {
-      background: '#fff'
-    },
-    bmMenuWrap: {
-      position: 'fixed',
-      height: '100%',
-      top: '0px'
-    },
-    bmMenu: {
-      background: '#373a47',
-      padding: '2.5em 1.5em 0',
-      fontSize: '1.15em'
-    },
-    bmMorphShape: {
-      fill: '#373a47'
-    },
-    bmItemList: {
-      color: '#b8b7ad',
-      padding: '0.8em'
-    },
-    bmItem: {
-      display: 'inline-block'
-    },
-    bmOverlay: {
-      background: 'rgba(0, 0, 0, 0.3)',
-      width: '100%',
-      height: '100%'
-    }
-  }
+function labelToURL(label) {
+    return label.toLowerCase().replace(' ', '-')
+}
 
 export default function Layout({ children }) {
+    let desktopNav = menuItems.map((item) => <MenuItem url={labelToURL(item.label)} label={item.label} />)
+    desktopNav.splice(3, 0, <Logo />)
     return (
         <div id="container">
             <div css={css`
@@ -133,13 +158,7 @@ export default function Layout({ children }) {
                     <Logo></Logo>
                 </MobileMenu>
                 <DesktopMenu>
-                    <MenuItem>Memos</MenuItem>
-                    <MenuItem>Projects</MenuItem>
-                    <MenuItem>Library</MenuItem>
-                    <MenuItem><Logo></Logo></MenuItem>
-                    <MenuItem>Press</MenuItem>
-                    <MenuItem>About</MenuItem>
-                    <MenuItem>Donate</MenuItem>
+                    {desktopNav}
                 </DesktopMenu> 
                 {children}
             </div>
