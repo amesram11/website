@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { mobileBreakpoint } from './styles'
-import { slide as BurgerMenu } from 'react-burger-menu'
+import { push as BurgerMenu } from 'react-burger-menu'
 
 const menuStyles = css`
     background-color: #DB382F;   
@@ -80,18 +80,19 @@ const burgerStyles = {
       height: '3px'
     },
     bmBurgerBarsHover: {
-      background: '#a90000'
+      background: '#fff'
     },
     bmCrossButton: {
-      height: '24px',
-      width: '24px'
+      height: '30px',
+      width: '30px'
     },
     bmCross: {
       background: '#fff'
     },
     bmMenuWrap: {
       position: 'fixed',
-      height: '100%'
+      height: '100%',
+      top: '0px'
     },
     bmMenu: {
       background: '#373a47',
@@ -109,29 +110,39 @@ const burgerStyles = {
       display: 'inline-block'
     },
     bmOverlay: {
-      background: 'rgba(0, 0, 0, 0.3)'
+      background: 'rgba(0, 0, 0, 0.3)',
+      width: '100%',
+      height: '100%'
     }
   }
 
 export default function Layout({ children }) {
     return (
-        <div>
-            <DesktopMenu>
-                <MenuItem>Memos</MenuItem>
-                <MenuItem>Projects</MenuItem>
-                <MenuItem>Library</MenuItem>
-                <MenuItem><Logo></Logo></MenuItem>
-                <MenuItem>Press</MenuItem>
-                <MenuItem>About</MenuItem>
-                <MenuItem>Donate</MenuItem>
-            </DesktopMenu> 
-            <MobileMenu>
-                <Logo></Logo>
-                <BurgerMenu styles={burgerStyles} right>
+        <div id="container">
+            <div css={css`
+                @media (min-width: ${mobileBreakpoint}) {
+                    display: none;
+                }
+            `}>
+                <BurgerMenu styles={burgerStyles}  pageWrapId={"content"} outerContainerId={"container"} right>
                     <a id="home" className="menu-item" href="/">Home</a>
-                </BurgerMenu>  
-            </MobileMenu>        
-            {children}
+                </BurgerMenu>
+            </div>
+            <div id="content">
+                <MobileMenu>
+                    <Logo></Logo>
+                </MobileMenu>
+                <DesktopMenu>
+                    <MenuItem>Memos</MenuItem>
+                    <MenuItem>Projects</MenuItem>
+                    <MenuItem>Library</MenuItem>
+                    <MenuItem><Logo></Logo></MenuItem>
+                    <MenuItem>Press</MenuItem>
+                    <MenuItem>About</MenuItem>
+                    <MenuItem>Donate</MenuItem>
+                </DesktopMenu> 
+                {children}
+            </div>
         </div>
     )
 }
