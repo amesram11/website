@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { mobileBreakpoint } from './styles'
 import { push as BurgerMenu } from 'react-burger-menu'
+import Link from 'next/link'
 
 const burgerStyles = {
     bmBurgerButton: {
@@ -99,20 +100,29 @@ const MobileMenu = styled('div')`
 
 const MenuItem = ({url, label}) => {
     return (
-        <a css={css`
-            text-transform: uppercase;
-            color: #fff;
-            text-decoration: none;
+        <div css={css`
+            flex: 0 1 auto;
             padding: 0 12px;
-            margin: 0;
-            font-size: 19px;
-            font-family: 'D-DIN-Exp', sans-serif;
-            font-weight: 400;
-            display: inline-block;
-            flex: 0 1 auto;      
-        `} href={url}>
-            {label}
-        </a>
+        `}>
+            <Link href={url} passHref>
+                <a css={css`
+                    text-transform: uppercase;
+                    text-decoration: none;                   
+                    color: #fff;                    
+                    padding: 0;
+                    margin: 0;
+                    font-size: 19px;
+                    font-family: 'D-DIN-Exp', sans-serif;
+                    font-weight: 400;                        
+                    border-bottom: 5px solid transparent;
+                    &:hover {
+                        border-bottom: 5px solid #fff;
+                    }
+                `}>
+                    {label}
+                </a>
+            </Link>
+        </div>
     )
 }
 
@@ -140,7 +150,7 @@ function labelToURL(label) {
 }
 
 export default function Layout({ children }) {
-    let desktopNav = menuItems.map((item) => <MenuItem url={labelToURL(item.label)} label={item.label} />)
+    let desktopNav = menuItems.map((item) => <MenuItem url={labelToURL(item.label)} label={item.label} subMenu={item.subMenu}/>)
     desktopNav.splice(3, 0, <Logo />)
     return (
         <div id="container">
