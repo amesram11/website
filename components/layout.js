@@ -98,7 +98,7 @@ const MobileMenu = styled('div')`
     }
 `
 
-const DropdownMenu = ({subMenu, show}) => {
+const DropdownMenu = ({subMenu, show}) => {    
     return (
         <div css={css`
             display: block;
@@ -106,6 +106,7 @@ const DropdownMenu = ({subMenu, show}) => {
             z-index: 1000;
             top: 25px;
             left: 0;
+            text-align: left;
             background-color: #fff;        
             width: 220px;
             margin-top: ${show ? '20px' : '30px'};
@@ -115,7 +116,19 @@ const DropdownMenu = ({subMenu, show}) => {
             background-clip: padding-box;
             border: 1px solid rgba(0,0,0,.15);
             border-radius: 0.25rem;
-        `}/>
+        `}>
+            {subMenu.map((menuItem) => (
+                <div 
+                    key={menuItem.label}
+                    css={css`
+                        width: 100%;
+                        padding: 5px 20px;
+                        color: #000;
+                        font-size: 14px;                        
+                    `}>{menuItem.label}
+                </div>
+            ))}
+        </div>
     )
 }
 
@@ -151,9 +164,7 @@ class MenuItem extends React.Component {
                         color: #fff;                    
                         padding: 0;
                         margin: 0;
-                        font-size: 19px;
-                        font-family: 'D-DIN-Exp', sans-serif;
-                        font-weight: 400;                        
+                        font-size: 19px;                                           
                         border-bottom: 5px solid transparent;
                         &:hover {
                             border-bottom: 5px solid #fff;
@@ -195,7 +206,13 @@ export default function Layout({ children }) {
     let desktopNav = menuItems.map((item) => <MenuItem key={item.label} url={labelToURL(item.label)} label={item.label} subMenu={item.subMenu}/>)
     desktopNav.splice(3, 0, <Logo key="logo" />)
     return (
-        <div id="container">
+        <div 
+            css={css`
+                font-family: 'D-DIN-Exp', sans-serif;
+                font-weight: 400;
+            `}
+            id="container"
+        >
             <div css={css`
                 @media (min-width: ${mobileBreakpoint}) {
                     display: none;
