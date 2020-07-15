@@ -33,12 +33,13 @@ const burgerStyles = {
         top: '0px'
     },
     bmMenu: {
-        background: '#373a47',
+        background: '#000',
         padding: '2.5em 1.5em 0',
-        fontSize: '1.15em'
+        fontSize: '1.15em',
+        textAlign: 'center'
     },
     bmMorphShape: {
-        fill: '#373a47'
+        fill: '#000'
     },
     bmItemList: {
         color: '#b8b7ad',
@@ -81,6 +82,12 @@ const menuItems = [{
     label: 'Donate'
 }]    
 
+function labelToURL(label) {
+    return '/' + label.toLowerCase().replace(' ', '-')
+}
+
+/* React components for the layout */
+
 const DesktopMenu = styled('div')`
     ${menuStyles}
     height: 95px;
@@ -95,6 +102,25 @@ const MobileMenu = styled('div')`
     height: 64px;
     @media (min-width: ${mobileBreakpoint}) {
         display: none;
+    }
+`
+
+const Logo = styled('div')`
+    display: block;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+    border: none;
+    background: url("/images/logo-white.png") no-repeat 50% 50%;
+    background-size: 100%;
+    color: rgba(255, 255, 255, 0);
+    position: relative;
+    width: 209px;
+    height: 92px;
+    bottom: -22px;
+    @media (max-width: ${mobileBreakpoint}) {
+        width: 150px;
+        height: 66px;
+        bottom: -6px;
     }
 `
 
@@ -150,7 +176,59 @@ const DropdownMenu = ({subMenu, show}) => {
     )
 }
 
-class MenuItem extends React.Component {
+const MenuItem = ({label, url, hoverHandler}) => {
+    return (
+        <Link href={url} passHref>
+            <a
+                css={css`                    
+                    text-transform: uppercase;
+                    text-decoration: none;                   
+                    color: #fff;                    
+                    font-size: 19px;                                           
+                    border-bottom: 5px solid transparent;
+                    &:hover {
+                        border-bottom: 5px solid #fff;
+                    }
+            `} onMouseEnter={hoverHandler}>
+                {label}
+            </a>
+        </Link>
+    )
+}
+
+const MobileSubmenuItem = ({label}) => {    
+    return (
+        <Link href={labelToURL(label)} passHref>
+            <a
+                css={css`
+                    text-decoration: none;     
+                    display: block;              
+                    color: #fff;                    
+                    font-size: 16px; 
+                    margin-top: 15px;                                        
+            `}>
+                {label}
+            </a>
+        </Link>
+    )
+}
+
+const MobileMenuItem = ({label, url, subMenu}) => {
+    return (
+        <div css={css`
+            padding: 0 12px;
+            margin: 0 0 35px;
+        `}>
+            <MenuItem
+                label={label}
+                url={url}
+            />
+            {subMenu ? subMenu.map((item) => <MobileSubmenuItem label={item.label} />) : null}
+        </div>
+    )
+}
+
+class DesktopMenuItem extends React.Component {
     state = {
         showDropdown: false
     }
@@ -175,54 +253,34 @@ class MenuItem extends React.Component {
                 text-align: center;
                 margin-top: 75px;
             `} onMouseLeave={this.handleMouseLeave}>
-                <Link href={this.props.url} passHref>
-                    <a css={css`
-                        text-transform: uppercase;
-                        text-decoration: none;                   
-                        color: #fff;                    
-                        padding: 0;
-                        margin: 0;
-                        font-size: 19px;                                           
-                        border-bottom: 5px solid transparent;
-                        &:hover {
-                            border-bottom: 5px solid #fff;
-                        }
-                    `} onMouseEnter={this.handleMouseEnter}>
-                        {this.props.label}
-                    </a>
-                </Link>
+                <MenuItem 
+                    label={this.props.label}
+                    url={this.props.url}
+                    hoverHandler={this.handleMouseEnter}
+                />
                 {this.props.subMenu ? <DropdownMenu subMenu={this.props.subMenu} show={this.state.showDropdown}/> : null}
             </div>
         )
     }
 }
 
-const Logo = styled('div')`
-    display: block;
-    margin-left: 2.5em;
-    margin-right: 2.5em;
-    border: none;
-    background: url("/images/logo-white.png") no-repeat 50% 50%;
-    background-size: 100%;
-    color: rgba(255, 255, 255, 0);
-    position: relative;
-    width: 209px;
-    height: 92px;
-    bottom: -22px;
-    @media (max-width: ${mobileBreakpoint}) {
-        width: 150px;
-        height: 66px;
-        bottom: -6px;
-    }
-`
-
-function labelToURL(label) {
-    return label.toLowerCase().replace(' ', '-')
-}
-
 export default function Layout({ children }) {
-    let desktopNav = menuItems.map((item) => <MenuItem key={item.label} url={labelToURL(item.label)} label={item.label} subMenu={item.subMenu}/>)
+    let desktopNav = menuItems.map((item) => <DesktopMenuItem 
+        key={'desktop' + item.label} 
+        url={labelToURL(item.label)} 
+        label={item.label} 
+        subMenu={item.subMenu}/>
+    )
     desktopNav.splice(3, 0, <Logo key="logo" />)
+        
+    const mobileNav = menuItems.map((item) => <MobileMenuItem
+        key={'mobile-' + item.label}
+        label={item.label}
+        url={labelToURL(item.label)}
+        subMenu={item.subMenu}/>
+    )
+    console.log(mobileNav)
+        
     return (
         <div 
             id="container"
@@ -233,7 +291,7 @@ export default function Layout({ children }) {
                 }
             `}>
                 <BurgerMenu styles={burgerStyles}  pageWrapId={"content"} outerContainerId={"container"} right>
-                    <a id="home" className="menu-item" href="/">Home</a>
+                    {mobileNav}
                 </BurgerMenu>
             </div>
             <div id="content">
