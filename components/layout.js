@@ -98,20 +98,20 @@ const MobileMenu = styled('div')`
     }
 `
 
-const DropdownMenu = ({subMenu}) => {
+const DropdownMenu = ({subMenu, show}) => {
     return (
         <div css={css`
             display: block;
             position: absolute;
             z-index: 1000;
-            top: 0;
+            top: 25px;
             left: 0;
             background-color: #fff;        
             width: 220px;
-            margin-top: 30px;        
+            margin-top: ${show ? '20px' : '30px'};
             transition: opacity .2s ease-out, margin .4s ease-out;
-            padding: 0.5rem 0;
-            margin: 0.125rem 0 0;
+            padding: 0.5rem 0;            
+            opacity: ${show ? 100.0 : 0.0};            
             background-clip: padding-box;
             border: 1px solid rgba(0,0,0,.15);
             border-radius: 0.25rem;
@@ -125,11 +125,13 @@ class MenuItem extends React.Component {
     }
 
     handleMouseEnter = () => {
-        this.setState({showDropdown: true})
+        if (this.props.subMenu)
+            this.setState({showDropdown: true})
     }
 
     handleMouseLeave = () => {
-        this.setState({showDropdown: false})
+        if (this.props.subMenu)
+            this.setState({showDropdown: false})
     }
 
     render() {
@@ -137,7 +139,11 @@ class MenuItem extends React.Component {
             <div css={css`
                 flex: 0 1 auto;
                 padding: 0 12px;
-            `}>
+                position: relative;
+                height: 100%;
+                text-align: center;
+                margin-top: 75px;
+            `} onMouseLeave={this.handleMouseLeave}>
                 <Link href={this.props.url} passHref>
                     <a css={css`
                         text-transform: uppercase;
@@ -152,11 +158,11 @@ class MenuItem extends React.Component {
                         &:hover {
                             border-bottom: 5px solid #fff;
                         }
-                    `} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                    `} onMouseEnter={this.handleMouseEnter}>
                         {this.props.label}
                     </a>
                 </Link>
-                {this.props.subMenu && this.state.showDropdown ? <DropdownMenu subMenu={this.props.subMenu} /> : null}
+                {this.props.subMenu ? <DropdownMenu subMenu={this.props.subMenu} show={this.state.showDropdown}/> : null}
             </div>
         )
     }
