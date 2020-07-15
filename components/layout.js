@@ -98,32 +98,68 @@ const MobileMenu = styled('div')`
     }
 `
 
-const MenuItem = ({url, label}) => {
+const DropdownMenu = ({subMenu}) => {
     return (
         <div css={css`
-            flex: 0 1 auto;
-            padding: 0 12px;
-        `}>
-            <Link href={url} passHref>
-                <a css={css`
-                    text-transform: uppercase;
-                    text-decoration: none;                   
-                    color: #fff;                    
-                    padding: 0;
-                    margin: 0;
-                    font-size: 19px;
-                    font-family: 'D-DIN-Exp', sans-serif;
-                    font-weight: 400;                        
-                    border-bottom: 5px solid transparent;
-                    &:hover {
-                        border-bottom: 5px solid #fff;
-                    }
-                `}>
-                    {label}
-                </a>
-            </Link>
-        </div>
+            display: block;
+            position: absolute;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: #fff;        
+            width: 220px;
+            margin-top: 30px;        
+            transition: opacity .2s ease-out, margin .4s ease-out;
+            padding: 0.5rem 0;
+            margin: 0.125rem 0 0;
+            background-clip: padding-box;
+            border: 1px solid rgba(0,0,0,.15);
+            border-radius: 0.25rem;
+        `}/>
     )
+}
+
+class MenuItem extends React.Component {
+    state = {
+        showDropdown: false
+    }
+
+    handleMouseEnter = () => {
+        this.setState({showDropdown: true})
+    }
+
+    handleMouseLeave = () => {
+        this.setState({showDropdown: false})
+    }
+
+    render() {
+        return (
+            <div css={css`
+                flex: 0 1 auto;
+                padding: 0 12px;
+            `}>
+                <Link href={this.props.url} passHref>
+                    <a css={css`
+                        text-transform: uppercase;
+                        text-decoration: none;                   
+                        color: #fff;                    
+                        padding: 0;
+                        margin: 0;
+                        font-size: 19px;
+                        font-family: 'D-DIN-Exp', sans-serif;
+                        font-weight: 400;                        
+                        border-bottom: 5px solid transparent;
+                        &:hover {
+                            border-bottom: 5px solid #fff;
+                        }
+                    `} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                        {this.props.label}
+                    </a>
+                </Link>
+                {this.props.subMenu && this.state.showDropdown ? <DropdownMenu subMenu={this.props.subMenu} /> : null}
+            </div>
+        )
+    }
 }
 
 const Logo = styled('div')`
@@ -150,8 +186,8 @@ function labelToURL(label) {
 }
 
 export default function Layout({ children }) {
-    let desktopNav = menuItems.map((item) => <MenuItem url={labelToURL(item.label)} label={item.label} subMenu={item.subMenu}/>)
-    desktopNav.splice(3, 0, <Logo />)
+    let desktopNav = menuItems.map((item) => <MenuItem key={item.label} url={labelToURL(item.label)} label={item.label} subMenu={item.subMenu}/>)
+    desktopNav.splice(3, 0, <Logo key="logo" />)
     return (
         <div id="container">
             <div css={css`
