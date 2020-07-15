@@ -111,7 +111,7 @@ const DropdownMenu = ({subMenu, show}) => {
             width: 220px;
             margin-top: ${show ? '45px' : '55px'};
             transition: opacity .2s ease-out, margin .4s ease-out;
-            padding: 0px 0px 10px 0px;  
+            padding: 0px 0px 15px 0px;  
             opacity: ${show ? 1.0 : 0.0};            
             background-clip: padding-box;
             border: 1px solid rgba(0,0,0,.15);
