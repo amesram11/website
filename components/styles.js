@@ -9,6 +9,10 @@ export const globalStyles = (
         padding:0;
       }
 
+      body {        
+        font-family: 'D-DIN-Exp', sans-serif;
+      }
+
       @font-face {
         font-family: SourceSerifPro;
         src: url("/fonts/SourceSerifPro-Regular.otf") format("opentype");

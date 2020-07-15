@@ -104,29 +104,47 @@ const DropdownMenu = ({subMenu, show}) => {
             display: block;
             position: absolute;
             z-index: 1000;
-            top: 25px;
+            top: 0;
             left: 0;
             text-align: left;
             background-color: #fff;        
             width: 220px;
-            margin-top: ${show ? '20px' : '30px'};
+            margin-top: ${show ? '45px' : '55px'};
             transition: opacity .2s ease-out, margin .4s ease-out;
-            padding: 0.5rem 0;            
-            opacity: ${show ? 100.0 : 0.0};            
+            padding: 0px 0px 10px 0px;  
+            opacity: ${show ? 1.0 : 0.0};            
             background-clip: padding-box;
             border: 1px solid rgba(0,0,0,.15);
             border-radius: 0.25rem;
+            &:before {
+                content: '';
+                width: 0;
+                height: 0;
+                position: relative;
+                top: -27px;
+                left: 28px;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid #fff;
+            }
         `}>
             {subMenu.map((menuItem) => (
-                <div 
-                    key={menuItem.label}
-                    css={css`
-                        width: 100%;
-                        padding: 5px 20px;
-                        color: #000;
-                        font-size: 14px;                        
-                    `}>{menuItem.label}
-                </div>
+                    <Link href={labelToURL(menuItem.label)} passHref>
+                        <a 
+                            css={css`
+                                color: #000;
+                                &:hover {
+                                    background: #ccc;
+                                }
+                                display: block;
+                                padding: 12px 20px;
+                                border: none;                        
+                                text-decoration: none;                                
+                                font-size: 14px;                      
+                    `   }>
+                            {menuItem.label}
+                        </a>
+                    </Link>                
             ))}
         </div>
     )
@@ -207,10 +225,6 @@ export default function Layout({ children }) {
     desktopNav.splice(3, 0, <Logo key="logo" />)
     return (
         <div 
-            css={css`
-                font-family: 'D-DIN-Exp', sans-serif;
-                font-weight: 400;
-            `}
             id="container"
         >
             <div css={css`
@@ -226,7 +240,11 @@ export default function Layout({ children }) {
                 <MobileMenu>
                     <Logo></Logo>
                 </MobileMenu>
-                <DesktopMenu>
+                <DesktopMenu
+                    css={css`
+                        font-weight: 400;
+                    `}
+                >
                     {desktopNav}
                 </DesktopMenu> 
                 {children}
