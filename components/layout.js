@@ -135,6 +135,7 @@ const DropdownMenu = ({subMenu, show}) => {
             text-align: left;
             background-color: #fff;        
             width: 220px;
+            visibility: ${show ? 'visible' : 'hidden'};
             margin-top: ${show ? '45px' : '55px'};
             transition: opacity .2s ease-out, margin .4s ease-out;
             padding: 0px 0px 15px 0px;  
@@ -296,7 +297,7 @@ export default function Layout({ children }) {
             </div>
             <div id="content">
                 <MobileMenu>
-                    <Logo></Logo>
+                    <Logo />
                 </MobileMenu>
                 <DesktopMenu
                     css={css`
