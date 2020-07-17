@@ -1,6 +1,11 @@
 import { keyframes, css, Global } from '@emotion/core'
 import styled from '@emotion/styled'
 
+export const mobileBreakpoint = '992px';
+export const navBarHeight = {
+  desktop: '95px',
+  mobile: '64px'
+}
 export const globalStyles = (
   <Global
     styles={css`
@@ -9,9 +14,9 @@ export const globalStyles = (
         padding:0;
       }
 
-      body {        
+      body {
         font-family: 'D-DIN-Exp', sans-serif;
-      }
+      }  
 
       @font-face {
         font-family: SourceSerifPro;
@@ -86,5 +91,3 @@ export const globalStyles = (
     `}
   />
 )
-
-export const mobileBreakpoint = '992px';

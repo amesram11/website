@@ -1,18 +1,23 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
-import Layout from '../components/layout'
-
-const Header = styled('div')`
-  height: 80vh;
-  background-size: cover;
-  background-image: url("/images/feature-banner.jpeg")
-`
+import Layout from '../shared/components/layout'
 
 const Home = () => (  
-  <Layout>
-    <Header></Header>
-  </Layout>
+    <Layout 
+        featureImage={'/images/feature-banner.jpeg'}
+        featureBoxInfo={{
+            title: 'What is the Green New Deal?',
+            description: 'How can we stop climate breakdown and ensure economic growth for all? The Green New Deal uses policy and spending tools to confront the most important problems facing America.',
+            url: '/'
+        }}
+    >        
+        <div css={css`
+            width: 400px;
+            height: 800px;
+            background-color: #ccc
+        `}/>
+    </Layout>
 )
 
 export default Home

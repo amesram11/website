@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
-import { mobileBreakpoint } from './styles'
+import { mobileBreakpoint, navBarHeight } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
+import {A, P, H1} from './tags'
 
 const burgerStyles = {
     bmBurgerButton: {
@@ -90,7 +91,7 @@ function labelToURL(label) {
 
 const DesktopMenu = styled('div')`
     ${menuStyles}
-    height: 95px;
+    height: ${navBarHeight.desktop};
     @media (max-width: ${mobileBreakpoint}) {
         display: none;
     }
@@ -99,7 +100,7 @@ const DesktopMenu = styled('div')`
 const MobileMenu = styled('div')`
     ${menuStyles}
     background-color: #DB382F;   
-    height: 64px;
+    height: ${navBarHeight.mobile};
     @media (min-width: ${mobileBreakpoint}) {
         display: none;
     }
@@ -157,7 +158,7 @@ const DropdownMenu = ({subMenu, show}) => {
         `}>
             {subMenu.map((menuItem) => (
                     <Link href={labelToURL(menuItem.label)} passHref>
-                        <a 
+                        <A 
                             css={css`
                                 color: #000;
                                 &:hover {
@@ -170,7 +171,7 @@ const DropdownMenu = ({subMenu, show}) => {
                                 font-size: 14px;                      
                     `   }>
                             {menuItem.label}
-                        </a>
+                        </A>
                     </Link>                
             ))}
         </div>
@@ -180,7 +181,7 @@ const DropdownMenu = ({subMenu, show}) => {
 const MenuItem = ({label, url, hoverHandler}) => {
     return (
         <Link href={url} passHref>
-            <a
+            <A
                 css={css`                    
                     text-transform: uppercase;
                     text-decoration: none;                   
@@ -192,7 +193,7 @@ const MenuItem = ({label, url, hoverHandler}) => {
                     }
             `} onMouseEnter={hoverHandler}>
                 {label}
-            </a>
+            </A>
         </Link>
     )
 }
@@ -200,7 +201,7 @@ const MenuItem = ({label, url, hoverHandler}) => {
 const MobileSubmenuItem = ({label}) => {    
     return (
         <Link href={labelToURL(label)} passHref>
-            <a
+            <A
                 css={css`
                     text-decoration: none;     
                     display: block;              
@@ -209,7 +210,7 @@ const MobileSubmenuItem = ({label}) => {
                     margin-top: 15px;                                        
             `}>
                 {label}
-            </a>
+            </A>
         </Link>
     )
 }
@@ -228,6 +229,19 @@ const MobileMenuItem = ({label, url, subMenu}) => {
         </div>
     )
 }
+
+const Header = ({backgroundImage, children}) => (
+    <header css={css`
+        height: calc(95vh - ${navBarHeight.desktop});
+        background-size: cover;
+        background-image: url(${backgroundImage});
+        @media (max-width: ${mobileBreakpoint}) {
+            height: calc(95vh - ${navBarHeight.mobile});
+        }
+    `}>
+        {children}
+    </header>
+)
 
 class DesktopMenuItem extends React.Component {
     state = {
@@ -265,7 +279,32 @@ class DesktopMenuItem extends React.Component {
     }
 }
 
-export default function Layout({ children }) {
+const FeatureBox = ({title, description, url}) => (
+    <div css={css`
+        width: 420px;
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 20px;
+        box-sizing: border-box;
+        color: #fff;    
+        background-color: #000;
+        height: 100%;
+        float: right;
+    `}>
+        <hr css={css`
+            height: 5px;
+            background: #fff;
+            margin-bottom: 30px;
+        `}/>
+        <H1>{title}</H1>
+        <P css={css`
+            color: #cfcfcf;
+        `}>{description}</P>
+        <button>Learn More</button>
+    </div>
+)
+
+export default function Layout({ featureImage, featureBoxInfo, featureText, children }) {    
     let desktopNav = menuItems.map((item) => <DesktopMenuItem 
         key={'desktop' + item.label} 
         url={labelToURL(item.label)} 
@@ -278,9 +317,7 @@ export default function Layout({ children }) {
         key={'mobile-' + item.label}
         label={item.label}
         url={labelToURL(item.label)}
-        subMenu={item.subMenu}/>
-    )
-    console.log(mobileNav)
+        subMenu={item.subMenu}/>)
         
     return (
         <div 
@@ -305,7 +342,11 @@ export default function Layout({ children }) {
                     `}
                 >
                     {desktopNav}
-                </DesktopMenu> 
+                </DesktopMenu>  
+                <Header backgroundImage={featureImage}>
+                    {featureText ? <div>{featureText}</div> : null}
+                    {featureBoxInfo ? <FeatureBox {...featureBoxInfo} /> : null}
+                </Header>
                 {children}
             </div>
         </div>
