@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import styled from '@emotion/styled'
 import { jsx, css } from '@emotion/core'
-import {mobileBreakpoint} from '../styles'
+import {breakpoints} from '../styles'
 
 export const A = styled('a')`
     display: inline-block;
@@ -20,7 +20,7 @@ export const Strong = styled('strong')`
 
 export const Section = styled('section')`
     padding: 2rem 0;
-    @media (min-width: ${mobileBreakpoint}) {
+    @media (min-width: ${breakpoints['desktop']}) {
         padding: 3rem 0;
     }
 `
@@ -36,7 +36,7 @@ export const H1 = styled('h1')`
     ${headerStyle}
     font-size: 36px;
     line-height: 42px;
-    @media (min-width: ${mobileBreakpoint}) {
+    @media (min-width: ${breakpoints['desktop']}) {
         font-size: 48px;
         line-height: 52px;
     }
@@ -46,7 +46,7 @@ export const H2 = styled('h2')`
     ${headerStyle}
     font-size: 30px;
     line-height: 38px;    
-    @media (min-width: ${mobileBreakpoint}) {
+    @media (min-width: ${breakpoints['desktop']}) {
         font-size: 32px;
         line-height: 40px;
     }

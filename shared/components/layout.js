@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
-import { mobileBreakpoint, navBarHeight } from '../styles'
+import { breakpoints, navBarHeight } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
 import {A, P, H1} from './tags'
@@ -92,8 +92,8 @@ function labelToURL(label) {
 
 const DesktopMenu = styled('div')`
     ${menuStyles}
-    height: ${navBarHeight.desktop};
-    @media (max-width: ${mobileBreakpoint}) {
+    height: ${navBarHeight.desktop};    
+    @media (max-width: ${breakpoints['desktop']}) {
         display: none;
     }
 `
@@ -102,7 +102,7 @@ const MobileMenu = styled('div')`
     ${menuStyles}
     background-color: #DB382F;   
     height: ${navBarHeight.mobile};
-    @media (min-width: ${mobileBreakpoint}) {
+    @media (min-width: ${breakpoints['desktop']}) {
         display: none;
     }
 `
@@ -115,14 +115,14 @@ const Logo = styled('div')`
     background: url("/images/logo-white.png") no-repeat 50% 50%;
     background-size: 100%;
     color: rgba(255, 255, 255, 0);
+    width: 150px;
+    height: 66px;
+    bottom: -6px;
     position: relative;
-    width: 209px;
-    height: 92px;
-    bottom: -22px;
-    @media (max-width: ${mobileBreakpoint}) {
-        width: 150px;
-        height: 66px;
-        bottom: -6px;
+    @media (min-width: ${breakpoints['desktop']}) {
+        width: 209px;
+        height: 92px;
+        bottom: -22px;
     }
 `
 
@@ -233,12 +233,12 @@ const MobileMenuItem = ({label, url, subMenu}) => {
 
 const Header = ({backgroundImage, children}) => (
     <header css={css`
-        min-height: calc(95vh - ${navBarHeight.desktop});
+        min-height: calc(95vh - ${navBarHeight.mobile});
         width: 100%;
         background-size: cover;
         background-image: url(${backgroundImage});
-        @media (max-width: ${mobileBreakpoint}) {
-            height: calc(95vh - ${navBarHeight.mobile});
+        @media (min-width: ${breakpoints['desktop']}) {
+            height: calc(95vh - ${navBarHeight.desktop});
         }  
         display: flex;              
     `}>
@@ -291,14 +291,21 @@ const FeatureBox = ({title, description, url}) => (
         width: 100%;
     `}>
         <div css={css`
-            width: 420px;
-            padding-left: 60px;
-            padding-right: 60px;
+            width: 100%;
             padding-top: 30px;
             padding-bottom: 30px;
+            padding-left: 120px;
+            padding-right: 120px;
             box-sizing: border-box;
             color: #fff;    
-            background-color: #000;        
+            background-color: #000;    
+            @media(min-width: ${breakpoints['desktop']}) {
+                width: 420px;
+                padding-left: 60px;
+                padding-right: 60px;
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
         `}>
             <hr css={css`
                 height: 5px;
@@ -334,7 +341,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, chil
             id="container"
         >
             <div css={css`
-                @media (min-width: ${mobileBreakpoint}) {
+                @media (min-width: ${breakpoints['desktop']}) {
                     display: none;
                 }
             `}>
