@@ -239,8 +239,8 @@ const Header = ({backgroundImage, children}) => (
         background-image: url(${backgroundImage});
         @media (max-width: ${mobileBreakpoint}) {
             height: calc(95vh - ${navBarHeight.mobile});
-        }
-        overflow: hidden;        
+        }  
+        display: flex;              
     `}>
         {children}
     </header>
@@ -284,26 +284,32 @@ class DesktopMenuItem extends React.Component {
 
 const FeatureBox = ({title, description, url}) => (
     <div css={css`
-        width: 420px;
-        padding-left: 60px;
-        padding-right: 60px;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        box-sizing: border-box;
-        color: #fff;    
-        background-color: #000;        
-        float: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
     `}>
-        <hr css={css`
-            height: 5px;
-            background: #fff;
-            margin-bottom: 30px;
-        `}/>
-        <H1>{title}</H1>
-        <P css={css`
-            color: #cfcfcf;
-        `}>{description}</P>
-        <Button href={url}>Learn More ⟶</Button>
+        <div css={css`
+            width: 420px;
+            padding-left: 60px;
+            padding-right: 60px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            box-sizing: border-box;
+            color: #fff;    
+            background-color: #000;        
+        `}>
+            <hr css={css`
+                height: 5px;
+                background: #fff;
+                margin-bottom: 30px;
+            `}/>
+            <H1>{title}</H1>
+            <P css={css`
+                color: #cfcfcf;
+            `}>{description}</P>
+            <Button href={url}>Learn More ⟶</Button>
+        </div>
     </div>
 )
 
