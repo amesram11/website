@@ -5,6 +5,7 @@ import { mobileBreakpoint, navBarHeight } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
 import {A, P, H1} from './tags'
+import Button from './button'
 
 const burgerStyles = {
     bmBurgerButton: {
@@ -84,7 +85,7 @@ const menuItems = [{
 }]    
 
 function labelToURL(label) {
-    return '/' + label.toLowerCase().replace(' ', '-')
+    return '/' + label.toLowerCase().replace(/\s/g, '-')
 }
 
 /* React components for the layout */
@@ -181,7 +182,7 @@ const DropdownMenu = ({subMenu, show}) => {
 const MenuItem = ({label, url, hoverHandler}) => {
     return (
         <Link href={url} passHref>
-            <A
+            <a
                 css={css`                    
                     text-transform: uppercase;
                     text-decoration: none;                   
@@ -193,7 +194,7 @@ const MenuItem = ({label, url, hoverHandler}) => {
                     }
             `} onMouseEnter={hoverHandler}>
                 {label}
-            </A>
+            </a>
         </Link>
     )
 }
@@ -201,7 +202,7 @@ const MenuItem = ({label, url, hoverHandler}) => {
 const MobileSubmenuItem = ({label}) => {    
     return (
         <Link href={labelToURL(label)} passHref>
-            <A
+            <a
                 css={css`
                     text-decoration: none;     
                     display: block;              
@@ -210,7 +211,7 @@ const MobileSubmenuItem = ({label}) => {
                     margin-top: 15px;                                        
             `}>
                 {label}
-            </A>
+            </a>
         </Link>
     )
 }
@@ -284,7 +285,8 @@ const FeatureBox = ({title, description, url}) => (
         width: 420px;
         padding-left: 60px;
         padding-right: 60px;
-        padding-top: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
         box-sizing: border-box;
         color: #fff;    
         background-color: #000;
@@ -300,7 +302,7 @@ const FeatureBox = ({title, description, url}) => (
         <P css={css`
             color: #cfcfcf;
         `}>{description}</P>
-        <button>Learn More</button>
+        <Button href={url}>Learn More ⟶</Button>
     </div>
 )
 

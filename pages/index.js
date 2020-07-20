@@ -9,7 +9,7 @@ const Home = () => (
         featureBoxInfo={{
             title: 'What is the Green New Deal?',
             description: 'How can we stop climate breakdown and ensure economic growth for all? The Green New Deal uses policy and spending tools to confront the most important problems facing America.',
-            url: '/'
+            url: '/green-new-deal'
         }}
     >        
         <div css={css`

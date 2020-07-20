@@ -79,7 +79,7 @@ export const Label = styled('label')`
     color: #000000;
 `
 
-export const Footer = styled(`footer`)`
+export const Footer = styled('footer')`
     padding: 5rem 0;
     font-family: 'D-DIN';
     font-stretch: expanded;
