@@ -233,12 +233,14 @@ const MobileMenuItem = ({label, url, subMenu}) => {
 
 const Header = ({backgroundImage, children}) => (
     <header css={css`
-        height: calc(95vh - ${navBarHeight.desktop});
+        min-height: calc(95vh - ${navBarHeight.desktop});
+        width: 100%;
         background-size: cover;
         background-image: url(${backgroundImage});
         @media (max-width: ${mobileBreakpoint}) {
             height: calc(95vh - ${navBarHeight.mobile});
         }
+        overflow: hidden;        
     `}>
         {children}
     </header>
@@ -289,8 +291,7 @@ const FeatureBox = ({title, description, url}) => (
         padding-bottom: 30px;
         box-sizing: border-box;
         color: #fff;    
-        background-color: #000;
-        height: 100%;
+        background-color: #000;        
         float: right;
     `}>
         <hr css={css`
