@@ -288,6 +288,7 @@ const FeatureBox = ({title, description, url}) => (
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-end;
+        width: 100%;
     `}>
         <div css={css`
             width: 420px;
