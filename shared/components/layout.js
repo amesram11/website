@@ -292,19 +292,18 @@ const FeatureBox = ({title, description, url}) => (
     `}>
         <div css={css`
             width: 100%;
-            padding-top: 30px;
-            padding-bottom: 30px;
-            padding-left: 120px;
-            padding-right: 120px;
+            padding: 30px; 
             box-sizing: border-box;
             color: #fff;    
-            background-color: #000;    
+            background-color: #000;   
+            @media(min-width: ${breakpoints['tablet']}) {                
+                padding-left: 120px;
+                padding-right: 120px;
+            } 
             @media(min-width: ${breakpoints['desktop']}) {
                 width: 420px;
                 padding-left: 60px;
                 padding-right: 60px;
-                padding-top: 30px;
-                padding-bottom: 30px;
             }
         `}>
             <hr css={css`
