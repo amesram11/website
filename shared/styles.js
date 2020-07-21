@@ -2,9 +2,10 @@ import { keyframes, css, Global } from '@emotion/core'
 import styled from '@emotion/styled'
 
 export const breakpoints = {
-  'phone': '600px',
+  'phone': '576px',
   'tablet': '768px',
-  'desktop': '992px'
+  'desktop': '992px',
+  'large-desktop': '1200px'
 }
 export const navBarHeight = {
   desktop: '95px',

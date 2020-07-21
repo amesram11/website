@@ -19,10 +19,39 @@ export const Strong = styled('strong')`
 `
 
 export const Section = styled('section')`
-    padding: 2rem 0;
+    padding: 4rem 0;
     @media (min-width: ${breakpoints['desktop']}) {
-        padding: 3rem 0;
+        padding: 6rem 0;
+    }    
+`
+
+export const Row = styled('div')`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 540px;
+    @media(min-width: ${breakpoints['phone']}) {
+        max-width: 540px;
     }
+    @media(min-width: ${breakpoints['tablet']}) {
+        max-width: 720px;
+    }
+    @media(min-width: ${breakpoints['desktop']}) {
+        max-width: 960px;
+    }
+    @media(min-width: ${breakpoints['large-desktop']}) {
+        max-width: 1140px;
+    }
+`
+
+export const Column = styled('div')`
+    margin-left: 15px;
+    margin-right: 15px;    
+    flex: 0 0 50%;
+    max-width: 50%;
 `
 
 const headerStyle = css`
