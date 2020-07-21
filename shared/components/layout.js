@@ -231,14 +231,14 @@ const MobileMenuItem = ({label, url, subMenu}) => {
     )
 }
 
-const Header = ({backgroundImage, children}) => (
+const Header = ({featureImage, children}) => (
     <header css={css`
-        min-height: calc(95vh - ${navBarHeight.mobile});
+        min-height: 250px;
         width: 100%;
         background-size: cover;
-        background-image: url(${backgroundImage});
+        background-image: url(${featureImage});
         @media (min-width: ${breakpoints['desktop']}) {
-            height: calc(95vh - ${navBarHeight.desktop});
+            min-height: calc(95vh - ${navBarHeight.desktop});            
         }  
         display: flex;              
     `}>
@@ -358,11 +358,28 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, chil
                     `}
                 >
                     {desktopNav}
-                </DesktopMenu>  
-                <Header backgroundImage={featureImage}>
-                    {featureText ? <div>{featureText}</div> : null}
+                </DesktopMenu>
+                <div css={css`
+                    @media(max-width:${breakpoints['desktop']}) {
+                        display: none;
+                    }
+                `}>
+                    <Header featureImage={featureImage}>
+                        {featureText ? <div>{featureText}</div> : null}                    
+                        {featureBoxInfo ? <FeatureBox {...featureBoxInfo} /> : null}
+                    </Header>
+                </div>
+
+                <div css={css`
+                    @media(min-width:${breakpoints['desktop']}) {
+                        display: none;
+                    }
+                `}>
+                    <Header featureImage={featureImage}>
+                        {featureText ? <div>{featureText}</div> : null}                                            
+                    </Header>
                     {featureBoxInfo ? <FeatureBox {...featureBoxInfo} /> : null}
-                </Header>
+                </div>
                 {children}
             </div>
         </div>
