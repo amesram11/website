@@ -46,8 +46,7 @@ export const Row = styled('div')`
         max-width: 1140px;        
     }
     display: grid;
-    grid-column-gap: 30px;
-    grid-row-gap: 45px;
+    grid-column-gap: 30px;    
 `
 
 const headerStyle = css`

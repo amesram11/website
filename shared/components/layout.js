@@ -5,7 +5,7 @@ import { breakpoints, navBarHeight } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
 import {A, P, H1, H2, Section, Row} from './tags'
-import Button from './button'
+import {LinkButton, SubmitButton} from './buttons'
 
 const burgerStyles = {
     bmBurgerButton: {
@@ -314,7 +314,7 @@ const FeatureBox = ({title, description, url}) => (
             <P css={css`
                 color: #cfcfcf;
             `}>{description}</P>
-            <Button href={url} color={'#fff'} hoverColor={'#000'}>Learn More ⟶</Button>
+            <LinkButton href={url} color={'#fff'} hoverColor={'#000'}>Learn More ⟶</LinkButton>
         </div>
     </div>
 )
@@ -345,11 +345,75 @@ const SignupBox = () => (
                 grid-area: b;
                 margin-top: 3rem;              
             `}>
-            Get updates from the New Consensus 
+            <P
+                css={css`
+                    color: #fff;
+                    font-size: 16px;
+                    line-height: 26px;
+                    font-weight: 400;
+                `}
+            >Get updates from the New Consensus</P>
+            <SubscribeForm color='#fff' backgroundColor='#db382f' />        
             </div>
         </Row>
     </Section>
 )
+
+class SubscribeForm extends React.Component {
+    constructor(props) {
+        super(props);        
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    state = {
+        value: ''
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+    
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label css={css`
+                    font-family: 'D-DIN-Exp', sans-serif;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 15px;
+                    letter-spacing: 2px;  
+                    margin: 0 0.5rem 0 0;
+                    color: ${this.props.color}                
+                `}>
+                    Email: <br />
+                    <input 
+                        css={css`
+                            border: none;
+                            border-bottom: 1px solid #fff;
+                            background: transparent;
+                            outline: none;
+                            font-size: 15px;
+                            line-height: 44px;
+                            color: ${this.props.color}                         
+                        `}
+                        type="email" 
+                        value={this.state.value} 
+                        onChange={this.handleChange} 
+                        required 
+                    />
+                </label>
+                <SubmitButton value="Subscribe" color={this.props.color} hoverColor={this.props.backgroundColor} />
+            </form>
+        );
+    }
+}
 
 const Footer = () => (    
     <Section>

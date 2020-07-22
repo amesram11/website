@@ -2,8 +2,8 @@
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
+import {LinkButton} from '../shared/components/buttons'
 import {Section, Row, H1, P} from '../shared/components/tags'
-import Button from '../shared/components/button'
 import {breakpoints} from '../shared/styles'
 
 const Home = () => (  
@@ -42,7 +42,7 @@ const Home = () => (
                     <P>
                         Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more.
                     </P>
-                    <Button href='/about' color={'#DB382F'} hoverColor={'#fff'}>About Us ⟶</Button>    
+                    <LinkButton href='/about' color={'#DB382F'} hoverColor={'#fff'}>About Us ⟶</LinkButton>
                 </div>
                 <div css={css`
                     grid-area: b;                    
@@ -51,10 +51,12 @@ const Home = () => (
                     <img css={css`
                         width: 70%;
                         max-width: 320px;
+                        margin: 0 0 45px;
                         @media(min-width: ${breakpoints['desktop']}) {
                             width: 422px;
                             height: 422px;
                             max-width: none;
+                            margin: 0;
                         }
                     `} src='/images/worldview.png' />      
                 </div>        
