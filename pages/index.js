@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
-import {Section, H1, P} from '../shared/components/tags'
+import {Section, Row, H1, P} from '../shared/components/tags'
 import Button from '../shared/components/button'
 import {breakpoints} from '../shared/styles'
 
@@ -15,48 +15,58 @@ const Home = () => (
             url: '/green-new-deal'
         }}
     > 
-        <Section css={css`
-            margin-top: 30px;            
+        <Row css={css`
+            @media(min-width: ${breakpoints['desktop']}) {
+                margin-top: 3rem;            
+            }
         `}>
-            <div css={css`            
-                display: grid;                
-                width: 100%;
-                grid-template-columns: repeat(12, 1fr);
-                grid-template-areas: 
-                    'b'
-                    'a';                         
-                grid-column-gap: 30px;
-                @media (min-width: ${breakpoints['desktop']}) {
-                    grid-template-columns: repeat(12, 1fr);
+            <Section>
+                <div css={css`            
+                    display: grid;                    
                     grid-template-areas: 
-                    '. a a a a a b b b b b b';
+                        'b'
+                        'a';                         
+                    grid-column-gap: 30px;
+                    grid-row-gap: 45px;
                     padding-left: 15px;
-                    padding-right: 15px;               
-                }                   
-            `}>
-                <div css={css`
-                    grid-area: a;
-                    text-align: right;       
+                    padding-right: 15px;   
+                    @media (min-width: ${breakpoints['desktop']}) {
+                        grid-template-columns: repeat(12, 1fr);
+                        grid-template-areas: 
+                        '. a a a a a b b b b b b';                               
+                    }                   
                 `}>
-                    <H1>
-                        A new consensus is emerging.
-                    </H1>
-                    <P>
-                        Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more.
-                    </P>
-                    <Button href='/about' color={'#DB382F'} hoverColor={'#fff'}>About Us ⟶</Button>    
+                    <div css={css`
+                        grid-area: a;
+                        @media(min-width: ${breakpoints['desktop']}) {
+                            text-align: right;                              
+                        }
+                    `}>
+                        <H1>
+                            A new consensus is emerging.
+                        </H1>
+                        <P>
+                            Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more.
+                        </P>
+                        <Button href='/about' color={'#DB382F'} hoverColor={'#fff'}>About Us ⟶</Button>    
+                    </div>
+                    <div css={css`
+                        grid-area: b;                    
+                        text-align: center;
+                    `}>
+                        <img css={css`
+                            width: 70%;
+                            max-width: 320px;
+                            @media(min-width: ${breakpoints['desktop']}) {
+                                width: 422px;
+                                height: 422px;
+                                max-width: none;
+                            }
+                        `} src='/images/worldview.png' />      
+                    </div>        
                 </div>
-                <div css={css`
-                    grid-area: b;                    
-                    text-align: center;
-                `}>
-                    <img css={css`
-                        width: 422px;
-                        height: 422px;
-                    `} src='/images/worldview.png' />      
-                </div>        
-            </div>
-        </Section>
+            </Section>
+        </Row>
     </Layout>
 )
 
