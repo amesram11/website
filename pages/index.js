@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
-import {Section, Column, Row, H1, P} from '../shared/components/tags'
+import {Section, H1, P} from '../shared/components/tags'
 import Button from '../shared/components/button'
 import {breakpoints} from '../shared/styles'
 
@@ -15,45 +15,27 @@ const Home = () => (
             url: '/green-new-deal'
         }}
     > 
-        <div css={css`
-            margin-right: auto;
-            margin-left: auto;
-            width: 100%;
-            max-width: 540px;
-            margin-top: 30px;
-            @media(min-width: ${breakpoints['phone']}) {
-                max-width: 540px;
-            }
-            @media(min-width: ${breakpoints['tablet']}) {
-                max-width: 720px;
-            }
-            @media(min-width: ${breakpoints['desktop']}) {
-                max-width: 960px;
-            }
-            @media(min-width: ${breakpoints['large-desktop']}) {
-                max-width: 1140px;
-            }
+        <Section css={css`
+            margin-top: 30px;            
         `}>
             <div css={css`            
-                display: grid;
+                display: grid;                
                 width: 100%;
                 grid-template-columns: repeat(12, 1fr);
-                grid-template-rows: 1fr 1fr;  
+                grid-template-areas: 
+                    'b'
+                    'a';                         
                 grid-column-gap: 30px;
-                grid-row-gap: 4rem;
                 @media (min-width: ${breakpoints['desktop']}) {
-                    grid-row-gap: 6rem;
-                    padding-top: 6rem;
-                }
-                padding-left: 15px;
-                padding-right: 15px;
-                padding-top: 4rem;                     
+                    grid-template-columns: repeat(12, 1fr);
+                    grid-template-areas: 
+                    '. a a a a a b b b b b b';
+                    padding-left: 15px;
+                    padding-right: 15px;               
+                }                   
             `}>
                 <div css={css`
-                    grid-column-start: 2;
-                    grid-column-end: 7;
-                    grid-row-start: 1;
-                    grid-row-end: 1;    
+                    grid-area: a;
                     text-align: right;       
                 `}>
                     <H1>
@@ -65,10 +47,7 @@ const Home = () => (
                     <Button href='/about' color={'#DB382F'} hoverColor={'#fff'}>About Us ⟶</Button>    
                 </div>
                 <div css={css`
-                    grid-column-start: 7;
-                    grid-column-end: 13;
-                    grid-row-start: 1;
-                    grid-row-end: 1;
+                    grid-area: b;                    
                     text-align: center;
                 `}>
                     <img css={css`
@@ -77,7 +56,7 @@ const Home = () => (
                     `} src='/images/worldview.png' />      
                 </div>        
             </div>
-        </div>
+        </Section>
     </Layout>
 )
 

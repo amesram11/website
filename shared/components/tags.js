@@ -19,10 +19,25 @@ export const Strong = styled('strong')`
 `
 
 export const Section = styled('section')`
+    margin-right: auto;
+    margin-left: auto;        
+    width: 100%;
+    max-width: 540px;
     padding: 4rem 0;
-    @media (min-width: ${breakpoints['desktop']}) {
+    @media(min-width: ${breakpoints['phone']}) {
+        max-width: 540px;
+    }
+    @media(min-width: ${breakpoints['tablet']}) {
+        max-width: 720px;
+    }
+    @media(min-width: ${breakpoints['desktop']}) {
+        max-width: 960px;
         padding: 6rem 0;
-    }    
+    }
+    @media(min-width: ${breakpoints['large-desktop']}) {
+        max-width: 1140px;
+        padding: 6rem 0;
+    }   
 `
 
 export const Row = styled('div')`
@@ -55,12 +70,12 @@ export const Column = styled('div')`
 const headerStyle = css`
     font-family: 'SourceSerifPro';
     font-weight: 900;
-    margin: 0 0 1rem;
     letter-spacing: 0;
 `
 
 export const H1 = styled('h1')`
     ${headerStyle}
+    margin: 0 0 2rem;
     font-size: 36px;
     line-height: 42px;
     @media (min-width: ${breakpoints['desktop']}) {
@@ -71,6 +86,7 @@ export const H1 = styled('h1')`
 
 export const H2 = styled('h2')`
     ${headerStyle}
+    margin: 0 0 1rem;
     font-size: 30px;
     line-height: 38px;    
     @media (min-width: ${breakpoints['desktop']}) {
@@ -81,9 +97,9 @@ export const H2 = styled('h2')`
 
 export const H3 = styled('h3')`
     ${headerStyle}
-    font-size: 24px;
-    line-height: 30px;
     margin: 0 0 1rem;
+    font-size: 24px;
+    line-height: 30px;    
     font-weight: bold;
 `
 
