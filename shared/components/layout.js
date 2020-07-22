@@ -315,7 +315,7 @@ const FeatureBox = ({title, description, url}) => (
             <P css={css`
                 color: #cfcfcf;
             `}>{description}</P>
-            <Button href={url}>Learn More ⟶</Button>
+            <Button href={url} color={'#fff'} hoverColor={'#000'}>Learn More ⟶</Button>
         </div>
     </div>
 )

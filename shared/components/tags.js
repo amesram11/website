@@ -26,9 +26,7 @@ export const Section = styled('section')`
 `
 
 export const Row = styled('div')`
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    
     margin-right: auto;
     margin-left: auto;
     width: 100%;
