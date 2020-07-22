@@ -79,9 +79,9 @@ const menuItems = [{
 }, {
     label: 'Press'
 }, {
-    label: 'About'
+    label: 'About',
 }, {
-    label: 'Donate'
+    label: 'Contact Us',
 }]    
 
 function labelToURL(label) {
@@ -392,7 +392,7 @@ class SubscribeForm extends React.Component {
                     margin: 0 0.5rem 0 0;
                     color: ${this.props.color}                
                 `}>
-                    Email: <br />
+                    Email <br />
                     <input 
                         css={css`
                             border: none;
@@ -418,8 +418,21 @@ class SubscribeForm extends React.Component {
 const Footer = () => (    
     <Section>
         <Row css={css`
-
-        `}>Hi</Row>
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-areas: 
+            'a a a a b b b b c c c c';
+        `}>
+            <div css={css`
+                grid-area: a;
+                font-size: 14px;
+                font-family: D-DIN;               
+            `}>
+                © New Consensus 2019<br />
+                <A href='/privacy-policy'>
+                    Privacy Policy
+                </A>
+            </div>
+        </Row>
     </Section>    
 )
 
