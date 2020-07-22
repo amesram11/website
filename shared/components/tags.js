@@ -18,21 +18,21 @@ export const Strong = styled('strong')`
     font-weight: bold;
 `
 
-export const Row = styled('div')`
+export const Section = styled('section')`
     width: 100%;
     padding: 4rem 0;
     @media(min-width: ${breakpoints['desktop']}) {
         padding: 6rem 0;
-    }
+    }    
 `
 
-export const Section = styled('section')`
+export const Row = styled('div')`
     margin-right: auto;
     margin-left: auto;        
     width: 100%;
-    max-width: 540px;
     padding-left: 15px;
     padding-right: 15px;    
+    max-width: 540px; 
     @media(min-width: ${breakpoints['phone']}) {
         max-width: 540px;
     }
@@ -44,7 +44,10 @@ export const Section = styled('section')`
     }
     @media(min-width: ${breakpoints['large-desktop']}) {
         max-width: 1140px;        
-    }   
+    }
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 45px;
 `
 
 const headerStyle = css`
@@ -64,7 +67,18 @@ export const H1 = styled('h1')`
     }
 `
 
-export const H2 = styled('h2')`
+export const H2 = styled('h1')`
+    ${headerStyle}
+    margin: 0 0 1rem;
+    font-size: 36px;
+    line-height: 42px;
+    @media (min-width: ${breakpoints['desktop']}) {
+        font-size: 48px;
+        line-height: 52px;
+    }
+`
+
+export const H3 = styled('h2')`
     ${headerStyle}
     margin: 0 0 1rem;
     font-size: 30px;
@@ -75,7 +89,7 @@ export const H2 = styled('h2')`
     }
 `
 
-export const H3 = styled('h3')`
+export const H4 = styled('h3')`
     ${headerStyle}
     margin: 0 0 1rem;
     font-size: 24px;

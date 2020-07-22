@@ -15,58 +15,51 @@ const Home = () => (
             url: '/green-new-deal'
         }}
     > 
-        <Row css={css`
+        <Section css={css`
             @media(min-width: ${breakpoints['desktop']}) {
                 margin-top: 3rem;            
             }
         `}>
-            <Section>
-                <div css={css`            
-                    display: grid;                    
+            <Row css={css`            
+                grid-template-areas: 
+                    'b'
+                    'a';                         
+                @media (min-width: ${breakpoints['desktop']}) {
+                    grid-template-columns: repeat(12, 1fr);
                     grid-template-areas: 
-                        'b'
-                        'a';                         
-                    grid-column-gap: 30px;
-                    grid-row-gap: 45px;
-                    padding-left: 15px;
-                    padding-right: 15px;   
-                    @media (min-width: ${breakpoints['desktop']}) {
-                        grid-template-columns: repeat(12, 1fr);
-                        grid-template-areas: 
-                        '. a a a a a b b b b b b';                               
-                    }                   
+                    '. a a a a a b b b b b b';                               
+                }                   
+            `}>
+                <div css={css`
+                    grid-area: a;
+                    @media(min-width: ${breakpoints['desktop']}) {
+                        text-align: right;                              
+                    }
                 `}>
-                    <div css={css`
-                        grid-area: a;
-                        @media(min-width: ${breakpoints['desktop']}) {
-                            text-align: right;                              
-                        }
-                    `}>
-                        <H1>
-                            A new consensus is emerging.
-                        </H1>
-                        <P>
-                            Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more.
-                        </P>
-                        <Button href='/about' color={'#DB382F'} hoverColor={'#fff'}>About Us ⟶</Button>    
-                    </div>
-                    <div css={css`
-                        grid-area: b;                    
-                        text-align: center;
-                    `}>
-                        <img css={css`
-                            width: 70%;
-                            max-width: 320px;
-                            @media(min-width: ${breakpoints['desktop']}) {
-                                width: 422px;
-                                height: 422px;
-                                max-width: none;
-                            }
-                        `} src='/images/worldview.png' />      
-                    </div>        
+                    <H1>
+                        A new consensus is emerging.
+                    </H1>
+                    <P>
+                        Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more.
+                    </P>
+                    <Button href='/about' color={'#DB382F'} hoverColor={'#fff'}>About Us ⟶</Button>    
                 </div>
-            </Section>
-        </Row>
+                <div css={css`
+                    grid-area: b;                    
+                    text-align: center;
+                `}>
+                    <img css={css`
+                        width: 70%;
+                        max-width: 320px;
+                        @media(min-width: ${breakpoints['desktop']}) {
+                            width: 422px;
+                            height: 422px;
+                            max-width: none;
+                        }
+                    `} src='/images/worldview.png' />      
+                </div>        
+            </Row>            
+        </Section>        
     </Layout>
 )
 

@@ -20,8 +20,25 @@ export const globalStyles = (
       }
 
       body {
-        font-family: 'D-DIN-Exp', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
       }  
+
+      html {
+        font-family: sans-serif;
+        line-height: 1.15;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
       @font-face {
         font-family: SourceSerifPro;

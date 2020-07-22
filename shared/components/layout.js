@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { breakpoints, navBarHeight } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
-import {A, P, H1} from './tags'
+import {A, P, H1, H2, Section, Row} from './tags'
 import Button from './button'
 
 const burgerStyles = {
@@ -292,8 +292,7 @@ const FeatureBox = ({title, description, url}) => (
     `}>
         <div css={css`
             width: 100%;
-            padding: 30px; 
-            box-sizing: border-box;
+            padding: 30px;             
             color: #fff;    
             background-color: #000;   
             @media(min-width: ${breakpoints['tablet']}) {                
@@ -311,7 +310,7 @@ const FeatureBox = ({title, description, url}) => (
                 background: #fff;
                 margin-bottom: 30px;
             `}/>
-            <H1>{title}</H1>
+            <H2>{title}</H2>
             <P css={css`
                 color: #cfcfcf;
             `}>{description}</P>
@@ -319,6 +318,47 @@ const FeatureBox = ({title, description, url}) => (
         </div>
     </div>
 )
+
+const SignupBox = () => (
+    <Section css={css`
+        background-color: #db382f;
+        color: #fff;
+    `}>
+        <Row css={css`
+            grid-template-areas:
+                'a'
+                'b';
+            @media (min-width: ${breakpoints['desktop']}) {
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-areas: 
+                '. . a a a . b b b b b b'; 
+        `}>
+            <div css={css`
+                grid-area: a;                
+                @media(min-width: ${breakpoints['desktop']}) {
+                    text-align: right;                              
+                }
+            `}>
+                <H2>We can't afford to keep the status quo.</H2>
+            </div>
+            <div css={css`
+                grid-area: b;
+                margin-top: 3rem;              
+            `}>
+            Get updates from the New Consensus 
+            </div>
+        </Row>
+    </Section>
+)
+
+const Footer = () => (    
+    <Section>
+        <Row css={css`
+
+        `}>Hi</Row>
+    </Section>    
+)
+
 
 export default function Layout({ featureImage, featureBoxInfo, featureText, children }) {    
     let desktopNav = menuItems.map((item) => <DesktopMenuItem 
@@ -381,6 +421,8 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, chil
                     {featureBoxInfo ? <FeatureBox {...featureBoxInfo} /> : null}
                 </div>
                 {children}
+                <SignupBox />
+                <Footer />
             </div>
         </div>
     )
