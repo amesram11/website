@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { breakpoints, navBarHeight, colors } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
-import {A, P, H1, H2, TallSection, Row} from './tags'
+import {A, P, H1, H2, TallSection, Row, Label} from './tags'
 import {LinkButton, SubmitButton, SocialMediaButton} from './buttons'
 
 const burgerStyles = {
@@ -238,10 +238,10 @@ const Header = ({featureImage, children, initSize}) => (
         width: 100%;
         background-size: cover;
         background-color: rgba(0, 0, 0, 0.5);
-        background-image: url(${featureImage});        
+        background-image: url(${featureImage});
+        margin-bottom: 2rem;
         @media (min-width: ${breakpoints['desktop']}) {
-            min-height: calc(${initSize}vh - ${navBarHeight.desktop});            
-            margin-bottom: 2rem;
+            min-height: calc(${initSize}vh - ${navBarHeight.desktop});                        
         }
         display: flex;        
     `}>
@@ -380,14 +380,9 @@ class SubscribeForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label css={css`
-                    font-family: 'D-DIN-Exp', sans-serif;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    font-size: 15px;
-                    letter-spacing: 2px;  
-                    margin: 0 0.5rem 0 0;
-                    color: ${this.props.color}                
+                <Label css={css`                    
+                    color: ${this.props.color};                   
+                    margin: 0 0.5rem 0 0;                    
                 `}>
                     Email <br />
                     <input 
@@ -405,7 +400,7 @@ class SubscribeForm extends React.Component {
                         onChange={this.handleChange} 
                         required 
                     />
-                </label>
+                </Label>
                 <SubmitButton value="Subscribe" color={this.props.color} hoverColor={this.props.backgroundColor} />
             </form>
         );

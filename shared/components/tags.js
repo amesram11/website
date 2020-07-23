@@ -33,7 +33,6 @@ export const TallSection = styled('section')`
         padding: 6rem 0;
     }
 `
-
 export const Row = styled('div')`
     margin-right: auto;
     margin-left: auto;        
@@ -45,7 +44,7 @@ export const Row = styled('div')`
     @media(min-width: ${breakpoints['phone']}) {        
         max-width: 540px;
     }
-    @media(min-width: ${breakpoints['tablet']}) {
+    @media(min-width: ${breakpoints['tablet']}) {        
         max-width: 720px;
     }
     @media(min-width: ${breakpoints['desktop']}) {

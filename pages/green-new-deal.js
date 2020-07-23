@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import Layout from '../shared/components/layout'
-import { Section, Row, P } from '../shared/components/tags'
+import { Section, Row, P, H4, Label } from '../shared/components/tags'
 import { breakpoints, colors } from '../shared/styles'
 
 const GreenNewDeal = () => (
@@ -16,66 +16,84 @@ const GreenNewDeal = () => (
             }          
         `}>
             <Row css={css`
-                @media (max-width: ${breakpoints['desktop']}) {
+                background-color: ${colors['black']};
+                min-height: 154px;
+                grid-area: a;
+                @media (max-width: ${breakpoints['tablet']}) {
                     grid-template-areas: 
-                        'a'
+                        'x'
+                        'y'
                 }
-                @media (min-width: ${breakpoints['desktop']}) {
+                @media (min-width: ${breakpoints['tablet']}) {
+                    grid-template-columns: repeat(2, 1fr);
                     grid-template-areas: 
-                        '. . a a a a a a a a . .';                               
-                }                
+                        'x y'
+                }                    
             `}>
-                <Row css={css`
-                    background-color: ${colors['black']};
-                    min-height: 154px;
-                    grid-area: a;
-                    @media (max-width: ${breakpoints['desktop']}) {
-                        grid-template-areas: 
-                            'x'
-                            'y'
-                    }
-                    @media (min-width: ${breakpoints['desktop']}) {
-                        grid-template-areas: 
-                            'x x x x x x y y y y y y';                               
-                    }
+                <div css={css`
+                    grid-area: x;
+                    padding: 1.5rem;
                 `}>
-                    <div css={css`
-                        grid-area: x;
-                        padding: 1.5rem;
+                    <a css={css`
+                        display: inline-block;
+                        color: #fff;
+                        margin-right: 30px;
+                        border: none;
                     `}>
-                        <a css={css`
+                        <img css={css`  
+                            height: 120px;
                             display: inline-block;
-                            color: #fff;
-                            margin-right: 30px;
-                            border: none;
+                            margin-right: 20px;
+                            vertical-align: middle;
+                        `} src='/images/gnd-14-pager-thumb.png' />
+                        <div css={css`
+                            display: inline-block;                                
                         `}>
-                            <img css={css`  
-                                height: 120px;
-                                display: inline-block;
-                                margin-right: 20px;
-                            `} src='/images/gnd-14-pager-thumb.png' />
-                        </a>
-                    </div>
-                    <div css={css`                        
-                        grid-area: y;
-                        padding: 1.5rem;
+                            <H4 css={css`
+                                color: ${colors['red']};
+                                margin: 0;
+                            `}>Green New Deal</H4>
+                            <Label css={css`
+                                color: ${colors['white']}
+                            `}>
+                                Overview (14 Pages)
+                            </Label>
+                        </div>
+                    </a>
+                </div>
+                <div css={css`                        
+                    grid-area: y;
+                    padding: 1.5rem;
+                `}>
+                    <a css={css`
+                        display: inline-block;
+                        color: #fff;
+                        margin-right: 30px;
+                        border: none;
                     `}>
-                        <a css={css`
+                        <img css={css`  
+                            height: 120px;
                             display: inline-block;
-                            color: #fff;
-                            margin-right: 30px;
-                            border: none;
+                            margin-right: 20px;
+                            vertical-align: middle;
+                        `}
+                        src='/images/gnd-2-pager-thumb.png' />
+                        <div css={css`
+                            display: inline-block;                                
                         `}>
-                            <img css={css`  
-                                height: 120px;
-                                display: inline-block;
-                                margin-right: 20px;
-                            `}
-                            src='/images/gnd-2-pager-thumb.png' />
-                        </a>
-                    </div>
-                </Row>
-            </Row>
+                            <H4 css={css`
+                                color: ${colors['red']};
+                                margin: 0;
+                            `}>Green New Deal</H4>
+                            <Label css={css`
+                                color: ${colors['white']}
+                            `}>
+                                Brief (2 Pages)
+                            </Label>
+                        </div>
+                    </a>
+                </div>
+            </Row>            
         </Section>
         <Section>
             <Row css={css`
