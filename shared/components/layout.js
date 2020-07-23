@@ -232,16 +232,16 @@ const MobileMenuItem = ({label, url, subMenu}) => {
     )
 }
 
-const Header = ({featureImage, children}) => (
-    <header css={css`
+const Header = ({featureImage, children, initSize}) => (
+    <header css={css`        
         min-height: 250px;
         width: 100%;
         background-size: cover;
         background-image: url(${featureImage});
         @media (min-width: ${breakpoints['desktop']}) {
-            min-height: calc(95vh - ${navBarHeight.desktop});            
-        }  
-        display: flex;              
+            min-height: calc(${initSize}vh - ${navBarHeight.desktop});            
+        }
+        display: flex;      
     `}>
         {children}
     </header>
@@ -285,38 +285,30 @@ class DesktopMenuItem extends React.Component {
 
 const FeatureBox = ({title, description, url}) => (
     <div css={css`
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-end;
         width: 100%;
+        padding: 30px;             
+        color: ${colors['white']};    
+        background-color: ${colors['black']};   
+        @media(min-width: ${breakpoints['tablet']}) {                
+            padding-left: 120px;
+            padding-right: 120px;
+        } 
+        @media(min-width: ${breakpoints['desktop']}) {
+            width: 420px;
+            padding-left: 60px;
+            padding-right: 60px;
+        }
     `}>
-        <div css={css`
-            width: 100%;
-            padding: 30px;             
-            color: ${colors['white']};    
-            background-color: ${colors['black']};   
-            @media(min-width: ${breakpoints['tablet']}) {                
-                padding-left: 120px;
-                padding-right: 120px;
-            } 
-            @media(min-width: ${breakpoints['desktop']}) {
-                width: 420px;
-                padding-left: 60px;
-                padding-right: 60px;
-            }
-        `}>
-            <hr css={css`
-                height: 5px;
-                background: ${colors['white']};
-                margin-bottom: 30px;
-            `}/>
-            <H2>{title}</H2>
-            <P css={css`
-                color: ${colors['lighterGray']};
-            `}>{description}</P>
-            <LinkButton href={url} color={colors['white']} hoverColor={colors['black']}>Learn More ⟶</LinkButton>
-        </div>
+        <hr css={css`
+            height: 5px;
+            background: ${colors['white']};
+            margin-bottom: 30px;
+        `}/>
+        <H2>{title}</H2>
+        <P css={css`
+            color: ${colors['lighterGray']};
+        `}>{description}</P>
+        <LinkButton href={url} color={colors['white']} hoverColor={colors['black']}>Learn More ⟶</LinkButton>
     </div>
 )
 
@@ -462,7 +454,7 @@ const Footer = () => (
 )
 
 
-export default function Layout({ featureImage, featureBoxInfo, featureText, children }) {    
+export default function Layout({ featureImage, featureBoxInfo, featureText, tall, children }) {    
     let desktopNav = menuItems.map((item) => <DesktopMenuItem 
         key={'desktop' + item.label} 
         url={labelToURL(item.label)} 
@@ -500,27 +492,42 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, chil
                     `}
                 >
                     {desktopNav}
-                </DesktopMenu>
-                <div css={css`
-                    @media(max-width:${breakpoints['desktop']}) {
-                        display: none;
-                    }
-                `}>
-                    <Header featureImage={featureImage}>
-                        {featureText ? <div>{featureText}</div> : null}                    
-                        {featureBoxInfo ? <FeatureBox {...featureBoxInfo} /> : null}
-                    </Header>
-                </div>
+                </DesktopMenu>                
+                <Header featureImage={featureImage} initSize={tall ? 95 : 50}>
+                    {featureText && (
+                        <H1
+                            css={css`
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            `}>
+                            {featureText}
+                        </H1>
+                    )}
+                    {featureBoxInfo && (
+                        <div css={css`
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-end;
+                            align-items: flex-end;
+                            width: 100%;                        
+                            @media(max-width:${breakpoints['desktop']}) {
+                                display: none;
+                            }
+                        `}>
+                            <FeatureBox {...featureBoxInfo} />
+                        </div>
+                    )}
+                </Header>
 
                 <div css={css`
                     @media(min-width:${breakpoints['desktop']}) {
                         display: none;
                     }
-                `}>
-                    <Header featureImage={featureImage}>
-                        {featureText ? <div>{featureText}</div> : null}                                            
-                    </Header>
-                    {featureBoxInfo ? <FeatureBox {...featureBoxInfo} /> : null}
+                `}>                   
+                    {featureBoxInfo && <FeatureBox {...featureBoxInfo} />}
                 </div>
                 {children}
                 <SignupBox />

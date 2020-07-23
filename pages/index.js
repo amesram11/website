@@ -8,7 +8,8 @@ import {breakpoints, colors} from '../shared/styles'
 
 const Home = () => (  
     <Layout 
-        featureImage={'/images/feature-banner.jpeg'}        
+        tall
+        featureImage={'/images/earth-banner.jpeg'}
         featureBoxInfo={{
             title: 'What is the Green New Deal?',
             description: 'How can we stop climate breakdown and ensure economic growth for all? The Green New Deal uses policy and spending tools to confront the most important problems facing America.',
