@@ -39,16 +39,18 @@ export const Row = styled('div')`
     margin-left: auto;        
     width: 100%;
     padding-left: 15px;
-    padding-right: 15px;    
-    max-width: 540px; 
-    @media(min-width: ${breakpoints['phone']}) {
+    padding-right: 15px;
+    max-width: 540px;
+    grid-template-columns: 1fr;
+    @media(min-width: ${breakpoints['phone']}) {        
         max-width: 540px;
     }
     @media(min-width: ${breakpoints['tablet']}) {
         max-width: 720px;
     }
     @media(min-width: ${breakpoints['desktop']}) {
-        max-width: 960px;        
+        grid-template-columns: repeat(12, 1fr);
+        max-width: 960px;                
     }
     @media(min-width: ${breakpoints['large-desktop']}) {
         max-width: 1140px;        

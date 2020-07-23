@@ -320,13 +320,15 @@ const SignupBox = () => (
         color: ${colors['white']};
     `}>
         <Row css={css`
-            grid-template-areas:
-                'a'
-                'b';
+            @media (max-width: ${breakpoints['desktop']}) {          
+                grid-template-areas:
+                    'a'
+                    'b';
+            }
             @media (min-width: ${breakpoints['desktop']}) {
-                grid-template-columns: repeat(12, 1fr);
                 grid-template-areas: 
                 '. . a a a . b b b b b b'; 
+            }
         `}>
             <div css={css`
                 grid-area: a;                
@@ -422,14 +424,25 @@ const Footer = () => (
             }
         `
     }>
-        <Row css={css`
-            grid-template-columns: repeat(12, 1fr);
-            margin-bottom: 1.5rem;
-            grid-template-areas: 
-            'a a a a b b b b c c c c';
+        <Row css={css`                        
+            @media (max-width: ${breakpoints['desktop']}) {          
+                grid-template-areas:
+                    'b'
+                    'a'
+                    'c';
+            }
+            @media (min-width: ${breakpoints['desktop']}) {
+                grid-template-areas: 
+                    'a a a a b b b b c c c c';
+            }
+            text-align: center;
         `}>
             <div css={css`
-                grid-area: a;                             
+                grid-area: a;  
+                margin-bottom: 1.5rem;  
+                @media(min-width: ${breakpoints['desktop']}) {
+                    text-align: left;
+                }   
             `}>
                 © New Consensus 2019<br />
                 <A href='/privacy-policy'>
@@ -438,14 +451,17 @@ const Footer = () => (
             </div>
             <div css={css`
                 grid-area: b;
-                text-align: center;                          
+                margin-bottom: 1.5rem; 
             `}>
                 <SocialMediaButton type='facebook' />
                 <SocialMediaButton type='twitter' />
             </div>
             <div css={css`
                 grid-area: c; 
-                text-align: right;                            
+                margin-bottom: 1.5rem; 
+                @media(min-width: ${breakpoints['desktop']}) {
+                    text-align: right;                            
+                }
             `}>
                 <LinkButton href='/' color={colors['red']} hoverColor={colors['white']}>
                 Donate ⟶

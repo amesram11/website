@@ -17,14 +17,15 @@ const Home = () => (
         }}
     > 
         <TallSection>
-            <Row css={css`            
-                grid-template-areas: 
-                    'b'
-                    'a';                         
-                @media (min-width: ${breakpoints['desktop']}) {
-                    grid-template-columns: repeat(12, 1fr);
+            <Row css={css`  
+                @media (max-width: ${breakpoints['desktop']}) {
                     grid-template-areas: 
-                    '. a a a a a b b b b b b';                               
+                        'b'
+                        'a';                         
+                }
+                @media (min-width: ${breakpoints['desktop']}) {
+                    grid-template-areas: 
+                        '. a a a a a b b b b b b';                               
                 }                   
             `}>
                 <div css={css`

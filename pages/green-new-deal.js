@@ -2,25 +2,92 @@
 import { jsx, css } from '@emotion/core'
 import Layout from '../shared/components/layout'
 import { Section, Row, P } from '../shared/components/tags'
-import { breakpoints } from '../shared/styles'
+import { breakpoints, colors } from '../shared/styles'
 
 const GreenNewDeal = () => (
     <Layout
         featureImage={'/images/gnd-banner.png'}
         featureText='The Green New Deal'
-    >        
+    >   
+        <Section css={css`
+            @media(min-width: ${breakpoints['tablet']}) {
+                margin-top: -110px;
+                padding: 0;
+            }          
+        `}>
+            <Row css={css`
+                @media (max-width: ${breakpoints['desktop']}) {
+                    grid-template-areas: 
+                        'a'
+                }
+                @media (min-width: ${breakpoints['desktop']}) {
+                    grid-template-areas: 
+                        '. . a a a a a a a a . .';                               
+                }                
+            `}>
+                <Row css={css`
+                    background-color: ${colors['black']};
+                    min-height: 154px;
+                    grid-area: a;
+                    @media (max-width: ${breakpoints['desktop']}) {
+                        grid-template-areas: 
+                            'x'
+                            'y'
+                    }
+                    @media (min-width: ${breakpoints['desktop']}) {
+                        grid-template-areas: 
+                            'x x x x x x y y y y y y';                               
+                    }
+                `}>
+                    <div css={css`
+                        grid-area: x;
+                        padding: 1.5rem;
+                    `}>
+                        <a css={css`
+                            display: inline-block;
+                            color: #fff;
+                            margin-right: 30px;
+                            border: none;
+                        `}>
+                            <img css={css`  
+                                height: 120px;
+                                display: inline-block;
+                                margin-right: 20px;
+                            `} src='/images/gnd-14-pager-thumb.png' />
+                        </a>
+                    </div>
+                    <div css={css`                        
+                        grid-area: y;
+                        padding: 1.5rem;
+                    `}>
+                        <a css={css`
+                            display: inline-block;
+                            color: #fff;
+                            margin-right: 30px;
+                            border: none;
+                        `}>
+                            <img css={css`  
+                                height: 120px;
+                                display: inline-block;
+                                margin-right: 20px;
+                            `}
+                            src='/images/gnd-2-pager-thumb.png' />
+                        </a>
+                    </div>
+                </Row>
+            </Row>
+        </Section>
         <Section>
             <Row css={css`
-                grid-template-areas:
-                    'a'
-                    'b';
-                @media (min-width: ${breakpoints['desktop']}) {
-                    grid-template-columns: repeat(12, 1fr);
+                @media (max-width: ${breakpoints['desktop']}) {
                     grid-template-areas: 
-                    '. . a a a a a a a a . .';                               
-                }     
-            `}
-            >
+                        'a';                               
+                }
+                @media (min-width: ${breakpoints['desktop']}) {
+                    grid-template-areas: 
+                        '. . a a a a a a a a . .';                               
+                }
+            `}>
                 <div css={css`
                     grid-area: a;
                 `}><P>
