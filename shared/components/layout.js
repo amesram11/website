@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
-import { breakpoints, navBarHeight } from '../styles'
+import { breakpoints, navBarHeight, colors } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
 import {A, P, H1, H2, Section, Row} from './tags'
@@ -16,18 +16,18 @@ const burgerStyles = {
         height: '25px',
     },
     bmBurgerBars: {
-        background: '#fff',
+        background: colors['white'],
         height: '3px'
     },
     bmBurgerBarsHover: {
-        background: '#fff'
+        background: colors['white']
     },
     bmCrossButton: {
         height: '30px',
         width: '30px'
     },
     bmCross: {
-        background: '#fff'
+        background: colors['white']
     },
     bmMenuWrap: {
         position: 'fixed',
@@ -35,16 +35,16 @@ const burgerStyles = {
         top: '0px'
     },
     bmMenu: {
-        background: '#000',
+        background: colors['black'],
         padding: '2.5em 1.5em 0',
         fontSize: '1.15em',
         textAlign: 'center'
     },
     bmMorphShape: {
-        fill: '#000'
+        fill: colors['black']
     },
     bmItemList: {
-        color: '#b8b7ad',
+        color: colors['lightGray'],
         padding: '0.8em'
     },
     bmItem: {
@@ -58,7 +58,7 @@ const burgerStyles = {
 }
 
 const menuStyles = css`
-    background-color: #DB382F;   
+    background-color: ${colors['red']};   
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -100,7 +100,7 @@ const DesktopMenu = styled('div')`
 
 const MobileMenu = styled('div')`
     ${menuStyles}
-    background-color: #DB382F;   
+    background-color: ${colors['red']};   
     height: ${navBarHeight.mobile};
     @media (min-width: ${breakpoints['desktop']}) {
         display: none;
@@ -135,7 +135,7 @@ const DropdownMenu = ({subMenu, show}) => {
             top: 0;
             left: 0;
             text-align: left;
-            background-color: #fff;        
+            background-color: ${colors['white']};
             width: 220px;
             visibility: ${show ? 'visible' : 'hidden'};
             margin-top: ${show ? '45px' : '55px'};
@@ -154,16 +154,17 @@ const DropdownMenu = ({subMenu, show}) => {
                 left: 28px;
                 border-left: 10px solid transparent;
                 border-right: 10px solid transparent;
-                border-bottom: 10px solid #fff;
+                border-bottom: 10px solid ${colors['white']};
             }
         `}>
             {subMenu.map((menuItem) => (
                     <Link href={labelToURL(menuItem.label)} passHref>
                         <A 
                             css={css`
-                                color: #000;
+                                color: ${colors['black']};
                                 &:hover {
-                                    background: #ccc;
+                                    color: ${colors['black']};
+                                    background: ${colors['lighterGray']};
                                 }
                                 display: block;
                                 padding: 12px 20px;
@@ -186,11 +187,11 @@ const MenuItem = ({label, url, hoverHandler}) => {
                 css={css`                    
                     text-transform: uppercase;
                     text-decoration: none;                   
-                    color: #fff;                    
+                    color: ${colors['white']};                    
                     font-size: 19px;                                           
                     border-bottom: 5px solid transparent;
                     &:hover {
-                        border-bottom: 5px solid #fff;
+                        border-bottom: 5px solid ${colors['white']};
                     }
             `} onMouseEnter={hoverHandler}>
                 {label}
@@ -206,7 +207,7 @@ const MobileSubmenuItem = ({label}) => {
                 css={css`
                     text-decoration: none;     
                     display: block;              
-                    color: #fff;                    
+                    color: ${colors['white']};                    
                     font-size: 16px; 
                     margin-top: 15px;                                        
             `}>
@@ -293,8 +294,8 @@ const FeatureBox = ({title, description, url}) => (
         <div css={css`
             width: 100%;
             padding: 30px;             
-            color: #fff;    
-            background-color: #000;   
+            color: ${colors['white']};    
+            background-color: ${colors['black']};   
             @media(min-width: ${breakpoints['tablet']}) {                
                 padding-left: 120px;
                 padding-right: 120px;
@@ -307,22 +308,22 @@ const FeatureBox = ({title, description, url}) => (
         `}>
             <hr css={css`
                 height: 5px;
-                background: #fff;
+                background: ${colors['white']};
                 margin-bottom: 30px;
             `}/>
             <H2>{title}</H2>
             <P css={css`
-                color: #cfcfcf;
+                color: ${colors['lighterGray']};
             `}>{description}</P>
-            <LinkButton href={url} color={'#fff'} hoverColor={'#000'}>Learn More ⟶</LinkButton>
+            <LinkButton href={url} color={colors['white']} hoverColor={colors['black']}>Learn More ⟶</LinkButton>
         </div>
     </div>
 )
 
 const SignupBox = () => (
     <Section css={css`
-        background-color: #db382f;
-        color: #fff;
+        background-color: ${colors['red']};
+        color: ${colors['white']};
     `}>
         <Row css={css`
             grid-template-areas:
@@ -347,13 +348,13 @@ const SignupBox = () => (
             `}>
             <P
                 css={css`
-                    color: #fff;
+                    color: ${colors['white']};
                     font-size: 16px;
                     line-height: 26px;
                     font-weight: 400;
                 `}
             >Get updates from the New Consensus</P>
-            <SubscribeForm color='#fff' backgroundColor='#db382f' />        
+            <SubscribeForm color={colors['white']} backgroundColor={colors['red']} />        
             </div>
         </Row>
     </Section>
@@ -396,7 +397,7 @@ class SubscribeForm extends React.Component {
                     <input 
                         css={css`
                             border: none;
-                            border-bottom: 1px solid #fff;
+                            border-bottom: 1px solid ${colors['white']};
                             background: transparent;
                             outline: none;
                             font-size: 15px;
@@ -416,21 +417,45 @@ class SubscribeForm extends React.Component {
 }
 
 const Footer = () => (    
-    <Section>
+    <Section css={
+        css`
+            font-size: 14px;
+            font-family: D-DIN;
+            font-stretch: expanded;
+            padding: 5rem 0;
+            @media (min-width: ${breakpoints['desktop']}) {
+                padding: 5rem 0;
+            }
+        `
+    }>
         <Row css={css`
             grid-template-columns: repeat(12, 1fr);
+            margin-bottom: 1.5rem;
             grid-template-areas: 
             'a a a a b b b b c c c c';
         `}>
             <div css={css`
-                grid-area: a;
-                font-size: 14px;
-                font-family: D-DIN;               
+                grid-area: a;                             
             `}>
                 © New Consensus 2019<br />
                 <A href='/privacy-policy'>
                     Privacy Policy
                 </A>
+            </div>
+            <div css={css`
+                grid-area: b;                             
+            `}>
+                © New Consensus 2019<br />
+                <A href='/privacy-policy'>
+                    Privacy Policy
+                </A>
+            </div>
+            <div css={css`
+                grid-area: c;                             
+            `}>
+                <LinkButton href='/' color=''>
+                Donate ⟶
+                </LinkButton>
             </div>
         </Row>
     </Section>    

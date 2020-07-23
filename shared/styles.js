@@ -7,10 +7,22 @@ export const breakpoints = {
   'desktop': '992px',
   'large-desktop': '1200px'
 }
+
+export const colors = {
+  red: '#db382f',
+  white: '#fff',
+  lighterGray: '#ccc',
+  lightGray: '#b8b7ad',
+  gray: '#494949',
+  darkGray: '#212529',
+  black: '#000'
+}
+
 export const navBarHeight = {
   desktop: '95px',
   mobile: '64px'
 }
+
 export const globalStyles = (
   <Global
     styles={css`
@@ -24,9 +36,9 @@ export const globalStyles = (
         font-size: 1rem;
         font-weight: 400;
         line-height: 1.5;
-        color: #212529;
+        color: ${colors['darkGray']};
         text-align: left;
-        background-color: #fff;
+        background-color: ${colors['white']};
       }  
 
       html {

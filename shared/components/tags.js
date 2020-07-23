@@ -1,15 +1,15 @@
 /** @jsx jsx */
 import styled from '@emotion/styled'
 import { jsx, css } from '@emotion/core'
-import {breakpoints} from '../styles'
+import { breakpoints, colors } from '../styles'
 
 export const A = styled('a')`
     display: inline-block;
-    color: #000000;
+    color: ${colors['black']};
     text-decoration: none;
-    border-bottom: 1px solid #DB382F;
+    border-bottom: 1px solid ${colors['red']};
     &:focus, &:hover {
-        color: #DB382F;
+        color: ${colors['red']};
         text-decoration: none;
     }
 `
@@ -81,7 +81,7 @@ export const H3 = styled('h2')`
     ${headerStyle}
     margin: 0 0 1rem;
     font-size: 30px;
-    line-height: 38px;    
+    line-height: 38px;
     @media (min-width: ${breakpoints['desktop']}) {
         font-size: 32px;
         line-height: 40px;
@@ -92,7 +92,7 @@ export const H4 = styled('h3')`
     ${headerStyle}
     margin: 0 0 1rem;
     font-size: 24px;
-    line-height: 30px;    
+    line-height: 30px;
     font-weight: bold;
 `
 
@@ -102,7 +102,7 @@ export const P = styled('p')`
     line-height: 30px;
     margin: 0 0 1rem;
     font-weight: lighter;
-    color: #494949;
+    color: ${colors['darkGray']};
     margin: 0 0 1rem;
 `
 
@@ -112,7 +112,7 @@ export const Label = styled('label')`
     text-transform: uppercase;
     font-size: 15px;
     letter-spacing: 2px;
-    color: #000000;
+    color: ${colors['black']};
 `
 
 export const Footer = styled('footer')`

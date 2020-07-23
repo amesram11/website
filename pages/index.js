@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
 import {LinkButton} from '../shared/components/buttons'
 import {Section, Row, H1, P} from '../shared/components/tags'
-import {breakpoints} from '../shared/styles'
+import {breakpoints, colors} from '../shared/styles'
 
 const Home = () => (  
     <Layout 
@@ -42,7 +42,7 @@ const Home = () => (
                     <P>
                         Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more.
                     </P>
-                    <LinkButton href='/about' color={'#DB382F'} hoverColor={'#fff'}>About Us ⟶</LinkButton>
+                    <LinkButton href='/about' color={colors['red']} hoverColor={colors['white']}>About Us ⟶</LinkButton>
                 </div>
                 <div css={css`
                     grid-area: b;                    
