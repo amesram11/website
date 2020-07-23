@@ -17,7 +17,7 @@ const GreenNewDeal = () => (
                 @media (min-width: ${breakpoints['desktop']}) {
                     grid-template-columns: repeat(12, 1fr);
                     grid-template-areas: 
-                    '. . . a a a a a a b b b';                               
+                    '. . a a a a a a a a . .';                               
                 }     
             `}
             >
