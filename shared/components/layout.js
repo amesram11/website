@@ -5,7 +5,7 @@ import { breakpoints, navBarHeight, colors } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
 import {A, P, H1, H2, Section, Row} from './tags'
-import {LinkButton, SubmitButton} from './buttons'
+import {LinkButton, SubmitButton, SocialMediaButton} from './buttons'
 
 const burgerStyles = {
     bmBurgerButton: {
@@ -443,17 +443,17 @@ const Footer = () => (
                 </A>
             </div>
             <div css={css`
-                grid-area: b;                             
+                grid-area: b;
+                text-align: center;                          
             `}>
-                © New Consensus 2019<br />
-                <A href='/privacy-policy'>
-                    Privacy Policy
-                </A>
+                <SocialMediaButton type='facebook' />
+                <SocialMediaButton type='twitter' />
             </div>
             <div css={css`
-                grid-area: c;                             
+                grid-area: c; 
+                text-align: right;                            
             `}>
-                <LinkButton href='/' color=''>
+                <LinkButton href='/' color={colors['red']} hoverColor={colors['white']}>
                 Donate ⟶
                 </LinkButton>
             </div>

@@ -2,6 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import { colors } from '../styles'
 
 const Button = styled('a')`
     color: ${props => props.color};
@@ -48,4 +49,24 @@ export const SubmitButton = (props) => (
         {...props}
     />
 )
+
+export const SocialMediaButton = (props) => (
+    <a href={props.type == 'facebook' ? 'https://www.facebook.com/TheNewConsensus/' : 'https://twitter.com/newconsensus/'}
+        css={css`
+            display: inline-block;
+            text-decoration: none;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 25px;
+            margin: 0 15px;
+            color: transparent;
+            text-indent: -9999px;
+            background: ${colors['black']} no-repeat 50% 50%;
+            background-image: url(/images/${props.type}_icon.png);
+            &:hover {
+                background-color: ${colors['red']}        
+            }
+        `}
+    />)
     
