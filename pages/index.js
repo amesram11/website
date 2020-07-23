@@ -3,7 +3,7 @@ import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
 import {LinkButton} from '../shared/components/buttons'
-import {Section, Row, H1, P} from '../shared/components/tags'
+import {TallSection, Row, H1, P} from '../shared/components/tags'
 import {breakpoints, colors} from '../shared/styles'
 
 const Home = () => (  
@@ -16,11 +16,7 @@ const Home = () => (
             url: '/green-new-deal'
         }}
     > 
-        <Section css={css`
-            @media(min-width: ${breakpoints['desktop']}) {
-                margin-top: 3rem;            
-            }
-        `}>
+        <TallSection>
             <Row css={css`            
                 grid-template-areas: 
                     'b'
@@ -62,7 +58,7 @@ const Home = () => (
                     `} src='/images/worldview.png' />      
                 </div>        
             </Row>            
-        </Section>        
+        </TallSection>        
     </Layout>
 )
 

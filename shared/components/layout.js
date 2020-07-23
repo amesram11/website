@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { breakpoints, navBarHeight, colors } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
-import {A, P, H1, H2, Section, Row} from './tags'
+import {A, P, H1, H2, TallSection, Row} from './tags'
 import {LinkButton, SubmitButton, SocialMediaButton} from './buttons'
 
 const burgerStyles = {
@@ -237,11 +237,13 @@ const Header = ({featureImage, children, initSize}) => (
         min-height: 250px;
         width: 100%;
         background-size: cover;
-        background-image: url(${featureImage});
+        background-color: rgba(0, 0, 0, 0.5);
+        background-image: url(${featureImage});        
         @media (min-width: ${breakpoints['desktop']}) {
             min-height: calc(${initSize}vh - ${navBarHeight.desktop});            
+            margin-bottom: 2rem;
         }
-        display: flex;      
+        display: flex;        
     `}>
         {children}
     </header>
@@ -313,7 +315,7 @@ const FeatureBox = ({title, description, url}) => (
 )
 
 const SignupBox = () => (
-    <Section css={css`
+    <TallSection css={css`
         background-color: ${colors['red']};
         color: ${colors['white']};
     `}>
@@ -349,7 +351,7 @@ const SignupBox = () => (
             <SubscribeForm color={colors['white']} backgroundColor={colors['red']} />        
             </div>
         </Row>
-    </Section>
+    </TallSection>
 )
 
 class SubscribeForm extends React.Component {
@@ -409,7 +411,7 @@ class SubscribeForm extends React.Component {
 }
 
 const Footer = () => (    
-    <Section css={
+    <TallSection css={
         css`
             font-size: 14px;
             font-family: D-DIN;
@@ -450,7 +452,7 @@ const Footer = () => (
                 </LinkButton>
             </div>
         </Row>
-    </Section>    
+    </TallSection>    
 )
 
 
@@ -493,7 +495,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                 >
                     {desktopNav}
                 </DesktopMenu>                
-                <Header featureImage={featureImage} initSize={tall ? 95 : 50}>
+                <Header featureImage={featureImage} initSize={tall ? 95 : 60}>
                     {featureText && (
                         <H1
                             css={css`
@@ -501,7 +503,8 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
-                                align-items: center;
+                                align-items: center;                                
+                                color: ${colors['white']}
                             `}>
                             {featureText}
                         </H1>

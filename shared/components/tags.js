@@ -20,10 +20,18 @@ export const Strong = styled('strong')`
 
 export const Section = styled('section')`
     width: 100%;
+    padding: 2rem 0;
+    @media(min-width: ${breakpoints['desktop']}) {
+        padding: 3rem 0;
+    }
+`
+
+export const TallSection = styled('section')`
+    width: 100%;
     padding: 4rem 0;
     @media(min-width: ${breakpoints['desktop']}) {
         padding: 6rem 0;
-    }    
+    }
 `
 
 export const Row = styled('div')`
