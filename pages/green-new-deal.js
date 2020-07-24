@@ -84,7 +84,7 @@ const GreenNewDeal = () => (
                         subtitle='Overview (14 Pages)'
                     />
                 </div>
-                <div css={css`                        
+                <div css={css`
                     grid-area: y;
                     display: inline-block;                    
                 `}>
