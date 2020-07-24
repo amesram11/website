@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { breakpoints, navBarHeight, colors } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
-import {A, P, H1, H2, Section, TallRow, Label} from './tags'
+import {A, P, H1, H2, BigSection, Section, TwelveColumnGrid, Label} from './tags'
 import {LinkButton, SubmitButton, SocialMediaButton} from './buttons'
 
 const burgerStyles = {
@@ -238,8 +238,7 @@ const Header = ({featureImage, children, initSize}) => (
         width: 100%;
         background-size: cover;
         background-color: rgba(0, 0, 0, 0.5);
-        background-image: url(${featureImage});
-        margin-bottom: 2rem;
+        background-image: url(${featureImage});        
         @media (min-width: ${breakpoints['desktop']}) {
             min-height: calc(${initSize}vh - ${navBarHeight.desktop});                        
         }
@@ -315,16 +314,14 @@ const FeatureBox = ({title, description, url}) => (
 )
 
 const SignupBox = () => (
-    <Section css={css`
+    <BigSection css={css`
         background-color: ${colors['red']};
         color: ${colors['white']};
-    `}>
-        <TallRow css={css`
-            @media (max-width: ${breakpoints['desktop']}) {          
-                grid-template-areas:
-                    'a'
-                    'b';
-            }
+`}>        
+        <TwelveColumnGrid css={css`
+            grid-template-areas:
+                'a'
+                'b';            
             @media (min-width: ${breakpoints['desktop']}) {
                 grid-template-areas: 
                 '. . a a a . b b b b b b'; 
@@ -352,8 +349,8 @@ const SignupBox = () => (
             >Get updates from the New Consensus</P>
             <SubscribeForm color={colors['white']} backgroundColor={colors['red']} />        
             </div>
-        </TallRow>
-    </Section>
+        </TwelveColumnGrid>        
+    </BigSection>
 )
 
 class SubscribeForm extends React.Component {
@@ -408,30 +405,27 @@ class SubscribeForm extends React.Component {
 }
 
 const Footer = () => (    
-    <Section css={
-        css`
-            font-size: 14px;
-            font-family: D-DIN;
-            font-stretch: expanded;
-            padding: 5rem 0;
-            @media (min-width: ${breakpoints['desktop']}) {
-                padding: 5rem 0;
-            }
-        `
-    }>
-        <TallRow css={css`                        
-            @media (max-width: ${breakpoints['desktop']}) {          
+    <Section css={css`            
+        font-size: 14px;
+        font-family: D-DIN;
+        font-stretch: expanded;    
+        padding: 5rem 15px 5rem 15px;
+        @media (min-width: ${breakpoints['desktop']}) {
+            padding: 5rem 15px 5rem 15px;
+        }
+`}>        
+        <TwelveColumnGrid
+            css={css`  
+                text-align: center;
                 grid-template-areas:
                     'b'
                     'a'
                     'c';
-            }
-            @media (min-width: ${breakpoints['desktop']}) {
-                grid-template-areas: 
-                    'a a a a b b b b c c c c';
-            }
-            text-align: center;
-        `}>
+                @media (min-width: ${breakpoints['desktop']}) {
+                    grid-template-areas: 
+                        'a a a a b b b b c c c c';
+                }
+        `}> 
             <div css={css`
                 grid-area: a;  
                 margin-bottom: 1.5rem;  
@@ -462,7 +456,7 @@ const Footer = () => (
                 Donate ⟶
                 </LinkButton>
             </div>
-        </TallRow>
+        </TwelveColumnGrid>
     </Section>    
 )
 

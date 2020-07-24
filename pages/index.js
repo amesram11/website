@@ -3,7 +3,7 @@ import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
 import {LinkButton} from '../shared/components/buttons'
-import {TallRow, Section, H1, P} from '../shared/components/tags'
+import {BigSection, Row, TwelveColumnGrid, H1, P} from '../shared/components/tags'
 import {breakpoints, colors} from '../shared/styles'
 
 const Home = () => (  
@@ -15,18 +15,18 @@ const Home = () => (
             description: 'How can we stop climate breakdown and ensure economic growth for all? The Green New Deal uses policy and spending tools to confront the most important problems facing America.',
             url: '/green-new-deal'
         }}
-    > 
-        <Section>
-            <TallRow css={css`  
-                @media (max-width: ${breakpoints['desktop']}) {
+    >
+        <BigSection>
+            <TwelveColumnGrid
+                css={css`  
                     grid-template-areas: 
                         'b'
                         'a';                         
-                }
-                @media (min-width: ${breakpoints['desktop']}) {
-                    grid-template-areas: 
-                        '. a a a a a b b b b b b';                               
-                }                   
+
+                    @media (min-width: ${breakpoints['desktop']}) {
+                        grid-template-areas: 
+                            '. a a a a a b b b b b b';                               
+                    }                   
             `}>
                 <div css={css`
                     grid-area: a;
@@ -57,9 +57,9 @@ const Home = () => (
                             margin: 0;
                         }
                     `} src='/images/worldview.png' />      
-                </div>        
-            </TallRow>            
-        </Section>        
+                </div>
+            </TwelveColumnGrid>        
+        </BigSection>        
     </Layout>
 )
 

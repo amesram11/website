@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import Link from 'next/link'
 import Layout from '../shared/components/layout'
-import { Section, Row, P, H4, Label } from '../shared/components/tags'
+import { Section, TwelveColumnGrid, P, H3, Label, SingleColumnContent } from '../shared/components/tags'
 import { breakpoints, colors } from '../shared/styles'
 
 const DownloadBox = (props) => (
@@ -22,10 +22,10 @@ const DownloadBox = (props) => (
                 src={props.image}
             />
             <div css={css`display: inline-block;`}>
-                <H4 css={css`
+                <H3 css={css`
                     color: ${colors['red']};
                     margin: 0;
-                `}>{props.title}</H4>
+                `}>{props.title}</H3>
                 <Label css={css`
                     margin-bottom: .25rem;
                     font-weight: 400;
@@ -38,9 +38,6 @@ const DownloadBox = (props) => (
     </Link>
 )
 
-// I am here, 
-// clean up the row so i can use rows without it having to be a grid
-// 
 const GreenNewDeal = () => (
     <Layout
         featureImage={'/images/gnd-banner.png'}
@@ -51,8 +48,10 @@ const GreenNewDeal = () => (
                 margin-top: -110px;
                 padding: 0;
             }          
-        `}>
-            <Row css={css`
+        `}>            
+            <TwelveColumnGrid css={css`
+                margin-right: auto;
+                margin-left: auto;
                 background-color: ${colors['black']};                
                 grid-column-gap: 1.5rem;
                 grid-row-gap: 1.5rem;
@@ -98,22 +97,11 @@ const GreenNewDeal = () => (
                         subtitle='Brief (2 Pages)'
                     />
                 </div>
-            </Row>            
+            </TwelveColumnGrid>           
         </Section>
         <Section>
-            <Row css={css`
-                @media (max-width: ${breakpoints['desktop']}) {
-                    grid-template-areas: 
-                        'a';                               
-                }
-                @media (min-width: ${breakpoints['desktop']}) {
-                    grid-template-areas: 
-                        '. . a a a a a a a a . .';                               
-                }
-            `}>
-                <div css={css`
-                    grid-area: a;
-                `}><P>
+            <SingleColumnContent>
+                <P>
                 New Consensus works to develop and promote the Green New Deal, a World War Two-scale mobilization to fix America’s most pressing economic and environmental problems. We advise progressive leaders and organizations on both the background  and implementation of a sweeping economic mobilization to build a clean and just economy.
 
 Guiding Vision
@@ -154,8 +142,8 @@ The Green New Deal is Possible and Practical
 As a country of 325 million people, with the world’s largest and most advanced industrial economy, the United States has every necessary tool at its disposal to achieve the goals of the Green New Deal. For too many decades, fear and complacency have kept our leaders from fulfilling the promise of America to its people. The result is malaise and stagnation, with wealth concentrating ever more densely at the top, poverty overwhelming the bottom, and insecurity menacing the middle. Meanwhile, climate change threatens humanity and most forms of life with extinction. All we’ve awaited throughout this decline is good faith, clear vision, and passionate leadership.
 
 The faith, vision, and passion are here. We shall move forward.
-                </P></div>
-            </Row>
+                </P>
+            </SingleColumnContent>
         </Section>
     </Layout>
 )

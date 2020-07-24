@@ -19,17 +19,29 @@ export const Strong = styled('strong')`
 `
 
 export const Section = styled('section')`
-    width: 100%;    
+    width: 100%;
+    padding: 2rem 15px 2rem 15px;
+    @media(min-width: ${breakpoints['desktop']}) {        
+        padding: 3rem 15px 3rem 15px;
+    }
 `
-export const Row = styled('div')`
+
+export const BigSection = styled(Section)`
+    padding: 4rem 15px 4rem 15px;
+    @media(min-width: ${breakpoints['desktop']}) {
+        padding: 6rem 15px 6rem 15px;
+    }
+`
+
+export const TwelveColumnGrid = styled('div')`
+    width: 100%:
+    grid-template-columns: 1fr;
+    display: grid;
+    grid-column-gap: 30px;    
     margin-right: auto;
     margin-left: auto;        
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding: 2rem 0;
+    width: 100%;    
     max-width: 540px;
-    grid-template-columns: 1fr;
     @media(min-width: ${breakpoints['phone']}) {        
         max-width: 540px;
     }
@@ -38,20 +50,22 @@ export const Row = styled('div')`
     }
     @media(min-width: ${breakpoints['desktop']}) {
         grid-template-columns: repeat(12, 1fr);
-        padding: 3rem 0;
         max-width: 960px;                
     }
     @media(min-width: ${breakpoints['large-desktop']}) {
         max-width: 1140px;        
-    }
-    display: grid;
-    grid-column-gap: 30px;    
+    }  
 `
 
-export const TallRow = styled(Row)`    
-    padding: 4rem 0;
-    @media(min-width: ${breakpoints['desktop']}) {
-        padding: 6rem 0;
+export const SingleColumnContent = styled('div')`
+    margin-right: auto;
+    margin-left: auto;    
+    max-width: 540px;
+    @media(min-width: ${breakpoints['phone']}) {        
+        max-width: 540px;
+    }
+    @media(min-width: ${breakpoints['tablet']}) {        
+        max-width: 720px;
     }
 `
 
@@ -72,7 +86,7 @@ export const H1 = styled('h1')`
     }
 `
 
-export const H2 = styled('h1')`
+export const H2 = styled('h2')`
     ${headerStyle}
     margin: 0 0 1rem;
     font-size: 36px;
@@ -83,20 +97,9 @@ export const H2 = styled('h1')`
     }
 `
 
-export const H3 = styled('h2')`
+export const H3 = styled('h3')`
     ${headerStyle}
-    margin: 0 0 1rem;
-    font-size: 30px;
-    line-height: 38px;
-    @media (min-width: ${breakpoints['desktop']}) {
-        font-size: 32px;
-        line-height: 40px;
-    }
-`
-
-export const H4 = styled('h3')`
-    ${headerStyle}
-    margin: 0 0 1rem;
+    margin: 3rem 0 1rem 0;
     font-size: 24px;
     line-height: 30px;
     font-weight: bold;
@@ -108,7 +111,7 @@ export const P = styled('p')`
     line-height: 30px;
     margin: 0 0 1rem;
     font-weight: lighter;
-    color: ${colors['darkGray']};
+    color: ${colors['gray']};
     margin: 0 0 1rem;
 `
 
@@ -126,4 +129,29 @@ export const Footer = styled('footer')`
     font-family: 'D-DIN';
     font-stretch: expanded;
     font-size: 14px;
+`
+
+export const UL = styled('ul')`
+    font-family: D-DIN-Exp,sans-serif;
+    font-size: 19px;
+    line-height: 30px;
+    margin: 0 0 1rem;
+    font-weight: lighter;
+    color: #494949;
+    list-style: none;
+    padding-inline-start: 40px;
+`
+
+export const LI = styled('li')`
+    margin: 0 0 1rem;
+    display: list-item;
+    &:before {
+        content: "\\2022";
+        color: ${colors['red']};
+        font-size: 24px;
+        font-weight: 700;
+        display: inline-block;
+        width: 40px;
+        margin-left: -40px;
+    }
 `
