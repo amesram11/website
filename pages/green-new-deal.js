@@ -1,8 +1,42 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
+import Link from 'next/link'
 import Layout from '../shared/components/layout'
 import { Section, Row, P, H4, Label } from '../shared/components/tags'
 import { breakpoints, colors } from '../shared/styles'
+
+const DownloadBox = (props) => (
+    <Link href={props.href} passHref>
+        <a css={css`
+            display: inline-block;
+            color: ${colors['white']};
+            border: none;
+        `}>
+            <img 
+                css={css`  
+                    height: 120px;
+                    display: inline-block;
+                    margin-right: 20px;
+                    vertical-align: middle;
+                `} 
+                src={props.image}
+            />
+            <div css={css`display: inline-block;`}>
+                <H4 css={css`
+                    color: ${colors['red']};
+                    margin: 0;
+                `}>{props.title}</H4>
+                <Label css={css`
+                    margin-bottom: .25rem;
+                    font-weight: 400;
+                    color: ${colors['white']}
+                `}>
+                    {props.subtitle}
+                </Label>
+            </div>
+        </a>
+    </Link>
+)
 
 const GreenNewDeal = () => (
     <Layout
@@ -16,82 +50,50 @@ const GreenNewDeal = () => (
             }          
         `}>
             <Row css={css`
-                background-color: ${colors['black']};
-                min-height: 154px;
-                grid-area: a;
-                @media (max-width: ${breakpoints['tablet']}) {
-                    grid-template-areas: 
+                background-color: ${colors['black']};                
+                grid-column-gap: 1.5rem;
+                grid-row-gap: 1.5rem;
+                padding: 1.5rem;
+                grid-template-areas: 
                         'x'
-                        'y'
+                        'y';
+                @media(min-width: ${breakpoints['phone']}) {        
+                    max-width: 540px;                    
                 }
-                @media (min-width: ${breakpoints['tablet']}) {
+                @media(min-width: ${breakpoints['tablet']}) {        
+                    max-width: 720px;
                     grid-template-columns: repeat(2, 1fr);
                     grid-template-areas: 
-                        'x y'
-                }                    
+                        'x y'                    
+                }
+                @media(min-width: ${breakpoints['desktop']}) {                    
+                    max-width: 720px;                
+                }
+                @media(min-width: ${breakpoints['large-desktop']}) {
+                    max-width: 720px;        
+                }                             
             `}>
                 <div css={css`
-                    grid-area: x;
-                    padding: 1.5rem;
+                    grid-area: x; 
+                    display: inline-block;                                       
                 `}>
-                    <a css={css`
-                        display: inline-block;
-                        color: #fff;
-                        margin-right: 30px;
-                        border: none;
-                    `}>
-                        <img css={css`  
-                            height: 120px;
-                            display: inline-block;
-                            margin-right: 20px;
-                            vertical-align: middle;
-                        `} src='/images/gnd-14-pager-thumb.png' />
-                        <div css={css`
-                            display: inline-block;                                
-                        `}>
-                            <H4 css={css`
-                                color: ${colors['red']};
-                                margin: 0;
-                            `}>Green New Deal</H4>
-                            <Label css={css`
-                                color: ${colors['white']}
-                            `}>
-                                Overview (14 Pages)
-                            </Label>
-                        </div>
-                    </a>
+                    <DownloadBox 
+                        href='/files/new_consensus_gnd_14_pager.pdf'
+                        image='/images/gnd-14-pager-thumb.png'
+                        title='Green New Deal'
+                        subtitle='Overview (14 Pages)'
+                    />
                 </div>
                 <div css={css`                        
                     grid-area: y;
-                    padding: 1.5rem;
+                    display: inline-block;                    
                 `}>
-                    <a css={css`
-                        display: inline-block;
-                        color: #fff;
-                        margin-right: 30px;
-                        border: none;
-                    `}>
-                        <img css={css`  
-                            height: 120px;
-                            display: inline-block;
-                            margin-right: 20px;
-                            vertical-align: middle;
-                        `}
-                        src='/images/gnd-2-pager-thumb.png' />
-                        <div css={css`
-                            display: inline-block;                                
-                        `}>
-                            <H4 css={css`
-                                color: ${colors['red']};
-                                margin: 0;
-                            `}>Green New Deal</H4>
-                            <Label css={css`
-                                color: ${colors['white']}
-                            `}>
-                                Brief (2 Pages)
-                            </Label>
-                        </div>
-                    </a>
+                    <DownloadBox 
+                        href='/files/new_consensus_gnd_2_pager.pdf'
+                        image='/images/gnd-2-pager-thumb.png'
+                        title='Green New Deal'
+                        subtitle='Brief (2 Pages)'
+                    />
                 </div>
             </Row>            
         </Section>
