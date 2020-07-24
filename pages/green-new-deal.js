@@ -38,6 +38,9 @@ const DownloadBox = (props) => (
     </Link>
 )
 
+// I am here, 
+// clean up the row so i can use rows without it having to be a grid
+// 
 const GreenNewDeal = () => (
     <Layout
         featureImage={'/images/gnd-banner.png'}

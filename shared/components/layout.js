@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { breakpoints, navBarHeight, colors } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
-import {A, P, H1, H2, TallSection, Row, Label} from './tags'
+import {A, P, H1, H2, Section, TallRow, Label} from './tags'
 import {LinkButton, SubmitButton, SocialMediaButton} from './buttons'
 
 const burgerStyles = {
@@ -293,7 +293,7 @@ const FeatureBox = ({title, description, url}) => (
         background-color: ${colors['black']};   
         @media(min-width: ${breakpoints['tablet']}) {                
             padding-left: 120px;
-            padding-right: 120px;
+            padding-right: 120px;            
         } 
         @media(min-width: ${breakpoints['desktop']}) {
             width: 420px;
@@ -315,11 +315,11 @@ const FeatureBox = ({title, description, url}) => (
 )
 
 const SignupBox = () => (
-    <TallSection css={css`
+    <Section css={css`
         background-color: ${colors['red']};
         color: ${colors['white']};
     `}>
-        <Row css={css`
+        <TallRow css={css`
             @media (max-width: ${breakpoints['desktop']}) {          
                 grid-template-areas:
                     'a'
@@ -352,8 +352,8 @@ const SignupBox = () => (
             >Get updates from the New Consensus</P>
             <SubscribeForm color={colors['white']} backgroundColor={colors['red']} />        
             </div>
-        </Row>
-    </TallSection>
+        </TallRow>
+    </Section>
 )
 
 class SubscribeForm extends React.Component {
@@ -408,7 +408,7 @@ class SubscribeForm extends React.Component {
 }
 
 const Footer = () => (    
-    <TallSection css={
+    <Section css={
         css`
             font-size: 14px;
             font-family: D-DIN;
@@ -419,7 +419,7 @@ const Footer = () => (
             }
         `
     }>
-        <Row css={css`                        
+        <TallRow css={css`                        
             @media (max-width: ${breakpoints['desktop']}) {          
                 grid-template-areas:
                     'b'
@@ -462,8 +462,8 @@ const Footer = () => (
                 Donate ⟶
                 </LinkButton>
             </div>
-        </Row>
-    </TallSection>    
+        </TallRow>
+    </Section>    
 )
 
 
@@ -526,7 +526,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                             flex-direction: column;
                             justify-content: flex-end;
                             align-items: flex-end;
-                            width: 100%;                        
+                            width: 100%;
                             @media(max-width:${breakpoints['desktop']}) {
                                 display: none;
                             }
@@ -537,6 +537,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                 </Header>
 
                 <div css={css`
+                    margin-top: -2rem;                     
                     @media(min-width:${breakpoints['desktop']}) {
                         display: none;
                     }

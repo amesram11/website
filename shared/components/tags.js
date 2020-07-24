@@ -19,19 +19,7 @@ export const Strong = styled('strong')`
 `
 
 export const Section = styled('section')`
-    width: 100%;
-    padding: 2rem 0;
-    @media(min-width: ${breakpoints['desktop']}) {
-        padding: 3rem 0;
-    }
-`
-
-export const TallSection = styled('section')`
-    width: 100%;
-    padding: 4rem 0;
-    @media(min-width: ${breakpoints['desktop']}) {
-        padding: 6rem 0;
-    }
+    width: 100%;    
 `
 export const Row = styled('div')`
     margin-right: auto;
@@ -39,6 +27,7 @@ export const Row = styled('div')`
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
+    padding: 2rem 0;
     max-width: 540px;
     grid-template-columns: 1fr;
     @media(min-width: ${breakpoints['phone']}) {        
@@ -49,6 +38,7 @@ export const Row = styled('div')`
     }
     @media(min-width: ${breakpoints['desktop']}) {
         grid-template-columns: repeat(12, 1fr);
+        padding: 3rem 0;
         max-width: 960px;                
     }
     @media(min-width: ${breakpoints['large-desktop']}) {
@@ -56,6 +46,13 @@ export const Row = styled('div')`
     }
     display: grid;
     grid-column-gap: 30px;    
+`
+
+export const TallRow = styled(Row)`    
+    padding: 4rem 0;
+    @media(min-width: ${breakpoints['desktop']}) {
+        padding: 6rem 0;
+    }
 `
 
 const headerStyle = css`
