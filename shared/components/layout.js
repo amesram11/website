@@ -80,12 +80,10 @@ const menuItems = [{
     label: 'Press'
 }, {
     label: 'About',
-}, {
-    label: 'Contact Us',
 }]    
 
-function labelToURL(label) {
-    return '/' + label.toLowerCase().replace(/\s/g, '-')
+function menuItemtoURL(menuItem) {    
+    return '/' + menuItem.label.toLowerCase().replace(/\s/g, '-')
 }
 
 /* React components for the layout */
@@ -158,7 +156,7 @@ const DropdownMenu = ({subMenu, show}) => {
             }
         `}>
             {subMenu.map((menuItem) => (
-                    <Link href={labelToURL(menuItem.label)} passHref>
+                    <Link href={menuItemtoURL(menuItem)} passHref>
                         <A 
                             css={css`
                                 color: ${colors['black']};
@@ -200,9 +198,9 @@ const MenuItem = ({label, url, hoverHandler}) => {
     )
 }
 
-const MobileSubmenuItem = ({label}) => {    
+const MobileSubmenuItem = ({label, url}) => {    
     return (
-        <Link href={labelToURL(label)} passHref>
+        <Link href={url} passHref>
             <a
                 css={css`
                     text-decoration: none;     
@@ -227,7 +225,7 @@ const MobileMenuItem = ({label, url, subMenu}) => {
                 label={label}
                 url={url}
             />
-            {subMenu ? subMenu.map((item) => <MobileSubmenuItem label={item.label} />) : null}
+            {subMenu ? subMenu.map((item) => <MobileSubmenuItem label={item.label} url={menuItemtoURL(item)} />) : null}
         </div>
     )
 }
@@ -235,12 +233,12 @@ const MobileMenuItem = ({label, url, subMenu}) => {
 const Header = ({featureImage, children, initSize}) => (
     <header css={css`        
         min-height: 250px;
-        width: 100%;
+        width: 100%;               
+        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${featureImage});
+        background-repeat: no-repeat;
         background-size: cover;
-        background-color: rgba(0, 0, 0, 0.5);
-        background-image: url(${featureImage});        
-        @media (min-width: ${breakpoints['desktop']}) {
-            min-height: calc(${initSize}vh - ${navBarHeight.desktop});                        
+        @media (min-width: ${breakpoints['desktop']}) {            
+            min-height: calc(${initSize}vh - ${navBarHeight.desktop});
         }
         display: flex;        
     `}>
@@ -442,8 +440,14 @@ const Footer = () => (
                 grid-area: b;
                 margin-bottom: 1.5rem; 
             `}>
-                <SocialMediaButton type='facebook' />
-                <SocialMediaButton type='twitter' />
+                <SocialMediaButton 
+                    type='facebook' 
+                    href='https://www.facebook.com/TheNewConsensus/'
+                />
+                <SocialMediaButton 
+                    type='twitter' 
+                    href='https://twitter.com/newconsensus/'
+                />
             </div>
             <div css={css`
                 grid-area: c; 
@@ -464,7 +468,7 @@ const Footer = () => (
 export default function Layout({ featureImage, featureBoxInfo, featureText, tall, children }) {    
     let desktopNav = menuItems.map((item) => <DesktopMenuItem 
         key={'desktop' + item.label} 
-        url={labelToURL(item.label)} 
+        url={menuItemtoURL(item)} 
         label={item.label} 
         subMenu={item.subMenu}/>
     )
@@ -473,7 +477,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
     const mobileNav = menuItems.map((item) => <MobileMenuItem
         key={'mobile-' + item.label}
         label={item.label}
-        url={labelToURL(item.label)}
+        url={menuItemtoURL(item)}
         subMenu={item.subMenu}/>)
         
     return (

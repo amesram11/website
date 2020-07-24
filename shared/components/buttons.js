@@ -50,8 +50,8 @@ export const SubmitButton = (props) => (
     />
 )
 
-export const SocialMediaButton = (props) => (
-    <a href={props.type == 'facebook' ? 'https://www.facebook.com/TheNewConsensus/' : 'https://twitter.com/newconsensus/'}
+export const SocialMediaButton = ({ type, href }) => (
+    <a href={href}
         css={css`
             display: inline-block;
             text-decoration: none;
@@ -59,11 +59,11 @@ export const SocialMediaButton = (props) => (
             height: 50px;
             border: none;
             border-radius: 25px;
-            margin: 0 15px;
+            margin: 0;
             color: transparent;
             text-indent: -9999px;
             background: ${colors['black']} no-repeat 50% 50%;
-            background-image: url(/images/${props.type}_icon.png);
+            background-image: url(/images/${type}-icon.png);
             &:hover {
                 background-color: ${colors['red']}        
             }

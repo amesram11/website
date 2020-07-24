@@ -5,10 +5,63 @@ import Layout from '../shared/components/layout'
 import Link from 'next/link'
 import { breakpoints } from '../shared/styles'
 import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
+import { SocialMediaButton } from '../shared/components/buttons'
+
+const SocialMediaRow = styled('div')`
+    display: flex;
+    justify-content: space-between
+`
+
+const TeamMember = ({ name, imageUrl, email, twitterHandle, description }) => (
+    <P>
+        <div css={css`
+            display: grid;
+            grid-template-columns: 150px auto;
+            grid-template-rows: 150px auto;
+            grid-column-gap: 15px;
+            grid-row-gap: 5px;
+            grid-template-areas: 
+                'image description'
+                'social description'
+        `}>
+            <div css={css`
+                grid-area: image;
+            `}>
+                <img 
+                    css={css`
+                        weidth: 150px;
+                        height: 150px;
+                    `}
+                    src={imageUrl} 
+                />
+            </div>
+            <div css={css`
+                grid-area: social;
+            `}>
+                <SocialMediaRow>
+                    <SocialMediaButton 
+                        type='email'
+                        href={`mailto:${email}`}
+                    />
+                    <SocialMediaButton 
+                        type='twitter'
+                        href={`https://twitter.com/${twitterHandle}`}
+                    />
+                </SocialMediaRow>
+            </div>
+            <div css={css`
+                grid-area: description;
+            `}>
+                <Strong>{name}</Strong> {description}
+            </div>
+        </div>
+        <HR />    
+    </P>
+)
 
 const About = () => (
     <Layout
-        featureImage={'/images/gnd-banner.png'}
+        featureImage={'/images/about-banner.jpg'}
         featureText='About'
     >
         <Section>            
@@ -42,17 +95,35 @@ const About = () => (
                     <LI>Produce educational material to popularize and build broad public and political support for this new consensus.</LI>
                 </UL>
                 <H3>Team</H3>
-                <P>
-                    <Strong>Demond Drummer</Strong> is co-founder and executive director of New Consensus. He is an organizer and civic innovator whose grassroots work in Chicago has been recognized by the Obama White House, Code for America and the Aspen Institute. 
-                </P>
-                <HR />
-                <P>
-                    <Strong>Zack Exley</Strong> is a co-founder and senior advisor of New Consensus, where he focuses on strategy, recruiting, and fundraising. Zack has been a pioneer in the worlds of political campaigning, organizing, and fundraising for more than 20 years.
-                </P>
-                <HR />
-                <P>
-                    <Strong>Saikat Chakrabarti</Strong> is the President of New Consensus. Previously, he was a founding engineer at Stripe, co-founded Brand New Congress and Justice Democrats, and was the campaign manager and then Chief of Staff to Rep. Alexandria Ocasio-Cortez where he led the effort to draft the Green New Deal.
-                </P>
+                <TeamMember
+                    name='Demond Drummer'
+                    imageUrl={'/images/demond.jpg'}
+                    email={'demond@newconsensus.com'} 
+                    twitterHandle='citizendrummer'
+                    description={`
+                        is co-founder and executive director of New Consensus. He is an organizer and civic innovator whose grassroots work in Chicago has been recognized by the Obama White House, Code for America and the Aspen Institute. 
+                    `}
+                />                
+                <TeamMember
+                    name='Zack Exley'
+                    imageUrl={'/images/zack.jpg'}
+                    email={'zack@newconsensus.com'} 
+                    twitterHandle='zackexley'
+                    description={`
+                        is a co-founder and senior advisor of New Consensus, where he focuses on strategy, recruiting, and fundraising. Zack has been a pioneer in the worlds of political campaigning, organizing, and fundraising for more than 20 years. 
+                    `}
+                />                              
+                <TeamMember
+                    name='Saikat Chakrabarti'
+                    imageUrl={'/images/saikat.jpg'}
+                    email={'saikat@newconsensus.com'} 
+                    twitterHandle='saikatc'
+                    description={`
+                        is the President of New Consensus. Previously, he was a founding engineer at Stripe, co-founded Brand New Congress and Justice Democrats, and was the campaign manager and then Chief of Staff to Rep. Alexandria Ocasio-Cortez where he led the effort to draft the Green New Deal. 
+                    `}
+                />
+                <H3>Contact Us</H3>
+                E-mail us at <A href='mailto:contact@newconensus.com'>contact@newconsensus.com</A>!
             </SingleColumnContent>
         </Section>
     </Layout>
