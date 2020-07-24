@@ -14,6 +14,13 @@ export const A = styled('a')`
     }
 `
 
+export const HR = styled('hr')`
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+`
+
 export const Strong = styled('strong')`
     font-weight: bold;
 `

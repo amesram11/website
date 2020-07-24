@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
 import Link from 'next/link'
 import { breakpoints } from '../shared/styles'
-import { Section, H3, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
+import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
 
 const About = () => (
     <Layout
@@ -41,6 +41,18 @@ const About = () => (
                     <LI>Organize a broad coalition of climate experts, economists, business leaders, union and labor leaders, policy leaders, and other experts around an emerging new consensus in support of economic development and transformation; and</LI>
                     <LI>Produce educational material to popularize and build broad public and political support for this new consensus.</LI>
                 </UL>
+                <H3>Team</H3>
+                <P>
+                    <Strong>Demond Drummer</Strong> is co-founder and executive director of New Consensus. He is an organizer and civic innovator whose grassroots work in Chicago has been recognized by the Obama White House, Code for America and the Aspen Institute. 
+                </P>
+                <HR />
+                <P>
+                    <Strong>Zack Exley</Strong> is a co-founder and senior advisor of New Consensus, where he focuses on strategy, recruiting, and fundraising. Zack has been a pioneer in the worlds of political campaigning, organizing, and fundraising for more than 20 years.
+                </P>
+                <HR />
+                <P>
+                    <Strong>Saikat Chakrabarti</Strong> is the President of New Consensus. Previously, he was a founding engineer at Stripe, co-founded Brand New Congress and Justice Democrats, and was the campaign manager and then Chief of Staff to Rep. Alexandria Ocasio-Cortez where he led the effort to draft the Green New Deal.
+                </P>
             </SingleColumnContent>
         </Section>
     </Layout>
