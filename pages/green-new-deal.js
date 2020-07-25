@@ -100,7 +100,7 @@ const GreenNewDeal = () => (
             </TwelveColumnGrid>           
         </Section>
         <Section>
-            <SingleColumnContent>
+            <SingleColumnContent>                
                 <P>
                 New Consensus works to develop and promote the Green New Deal, a World War Two-scale mobilization to fix America’s most pressing economic and environmental problems. We advise progressive leaders and organizations on both the background  and implementation of a sweeping economic mobilization to build a clean and just economy.
 
@@ -143,6 +143,7 @@ As a country of 325 million people, with the world’s largest and most advanced
 
 The faith, vision, and passion are here. We shall move forward.
                 </P>
+                <P><em>Published: February 9, 2019</em></P>
             </SingleColumnContent>
         </Section>
     </Layout>

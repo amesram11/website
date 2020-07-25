@@ -7,11 +7,6 @@ import { breakpoints } from '../shared/styles'
 import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
 import { SocialMediaButton } from '../shared/components/buttons'
 
-const SocialMediaRow = styled('div')`
-    display: flex;
-    justify-content: space-between
-`
-
 const PressBlock = ({ url, publication, date, description }) => (
     <P>
         <A href={url}>

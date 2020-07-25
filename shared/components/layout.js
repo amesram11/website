@@ -440,14 +440,24 @@ const Footer = () => (
                 grid-area: b;
                 margin-bottom: 1.5rem; 
             `}>
-                <SocialMediaButton 
-                    type='facebook' 
-                    href='https://www.facebook.com/TheNewConsensus/'
-                />
-                <SocialMediaButton 
-                    type='twitter' 
-                    href='https://twitter.com/newconsensus/'
-                />
+                <div css={css`
+                    display: inline-block;
+                    margin-right: 15px;
+                `}>
+                    <SocialMediaButton 
+                        type='facebook' 
+                        href='https://www.facebook.com/TheNewConsensus/'
+                    />
+                </div>
+                <div css={css`
+                    display: inline-block;
+                    margin-left: 15px;                    
+                `}>
+                    <SocialMediaButton 
+                        type='twitter' 
+                        href='https://twitter.com/newconsensus/'
+                    />
+                </div>
             </div>
             <div css={css`
                 grid-area: c; 
