@@ -7,20 +7,20 @@ import { breakpoints } from '../shared/styles'
 import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
 import { SocialMediaButton } from '../shared/components/buttons'
 
-const LibraryBlock = ({ title, imageUrl, purchaseUrl, children}) => (
+const LibraryBlock = ({ title, imageUrl, purchaseUrl, right, children}) => (
     <div css={css`
         border-top: 1px solid #cfcfcf;
         margin: 30px 0 0;
     `}>        
         <div css={css`
             display: grid;
-            grid-template-columns: 200px auto;
+            grid-template-columns: ${right ? 'auto 200px' : '200px auto'};
             grid-template-rows: auto auto;
             grid-column-gap: 15px;
             grid-row-gap: 5px;
             grid-template-areas: 
                 'header header'
-                'image description'
+                ${right ? '\'description image\'' : '\'image description\''};
         `}>
             <div css={css`
                 grid-area: header
@@ -68,6 +68,7 @@ const Library = () => (
                     We have assembled here works by economists, historians, bankers, and more, all of whom take a fresh look at economic growth, sustainability, and equity, as well as successful efforts to confront problems on a national, regional, and even global scale. No one of these books captures the new consensus in its entirety; many perspectives—and, even more crucially, many kinds of evidence—are necessary in order to envision and build a future we can all live with.
                 </P>
                 <LibraryBlock
+                    right
                     title='Bad Samaritans'
                     imageUrl='/images/bad-samaritans.jpg'
                     purchaseUrl='https://www.indiebound.org/book/9781596913998'>

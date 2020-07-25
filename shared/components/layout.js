@@ -105,24 +105,29 @@ const MobileMenu = styled('div')`
     }
 `
 
-const Logo = styled('div')`
-    display: block;
-    margin-left: 2.5em;
-    margin-right: 2.5em;
-    border: none;
-    background: url("/images/logo-white.png") no-repeat 50% 50%;
-    background-size: 100%;
-    color: rgba(255, 255, 255, 0);
-    width: 150px;
-    height: 66px;
-    bottom: -6px;
-    position: relative;
-    @media (min-width: ${breakpoints['desktop']}) {
-        width: 209px;
-        height: 92px;
-        bottom: -22px;
-    }
-`
+const Logo = () => (
+    <Link href='/' passHref>
+        <a css={
+            css`
+                display: block;
+                margin-left: 2.5em;
+                margin-right: 2.5em;
+                border: none;
+                background: url("/images/logo-white.png") no-repeat 50% 50%;
+                background-size: 100%;
+                color: rgba(255, 255, 255, 0);
+                width: 150px;
+                height: 66px;
+                bottom: -6px;
+                position: relative;
+                @media (min-width: ${breakpoints['desktop']}) {
+                    width: 209px;
+                    height: 92px;
+                    bottom: -22px;
+                }
+        `} />
+    </Link>
+)
 
 const DropdownMenu = ({subMenu, show}) => {    
     return (
