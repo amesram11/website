@@ -543,15 +543,16 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                         </div>
                     )}
                 </Header>
-
-                <div css={css`
-                    margin-top: -2rem;                     
-                    @media(min-width:${breakpoints['desktop']}) {
-                        display: none;
-                    }
-                `}>                   
-                    {featureBoxInfo && <FeatureBox {...featureBoxInfo} />}
-                </div>
+                {featureBoxInfo && (
+                    <div css={css`
+                        margin-top: -2rem;                     
+                        @media(min-width:${breakpoints['desktop']}) {
+                            display: none;
+                        }
+                    `}>                   
+                        <FeatureBox {...featureBoxInfo} />
+                    </div>
+                )}
                 {children}
                 <SignupBox />
                 <Footer />
