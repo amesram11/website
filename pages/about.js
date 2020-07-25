@@ -123,7 +123,9 @@ const About = () => (
                     `}
                 />
                 <H3>Contact Us</H3>
-                E-mail us at <A href='mailto:contact@newconensus.com'>contact@newconsensus.com</A>!
+                <P>
+                    E-mail us at <A href='mailto:contact@newconensus.com'>contact@newconsensus.com</A>!
+                </P>
             </SingleColumnContent>
         </Section>
     </Layout>
