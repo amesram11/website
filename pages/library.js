@@ -5,66 +5,34 @@ import Layout from '../shared/components/layout'
 import Link from 'next/link'
 import { breakpoints, colors } from '../shared/styles'
 import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
-import { SocialMediaButton } from '../shared/components/buttons'
+import ContentBlockWithImage from '../shared/components/content-block'
 
-const LibraryBlock = ({ title, imageUrl, purchaseUrl, right, children}) => (
-    <div css={css`
-        border-top: 1px solid ${colors['lightGray']};
-        margin: 30px 0 0;
-    `}>        
-        <div css={css`
-            display: grid;
-            grid-template-columns: ${right ? 'auto 200px' : '200px auto'};            
-            grid-column-gap: 15px;            
-            grid-template-areas: 
-                'header header'
-                ${right ? '\'description image\'' : '\'image description\''};
-            @media(max-width: ${breakpoints['tablet']}) {
-                grid-template-columns: 1fr;                
-                grid-template-areas:
-                    'header'
-                    'image'
-                    'description';
-            }
-        `}>
-            <div css={css`
-                grid-area: header;
-                @media(max-width: ${breakpoints['tablet']}) {
-                    text-align: center;                    
-                }
-            `}>
-                <H3>{title}</H3>
-            </div>
-            <div css={css`
-                grid-area: image;
-                @media(max-width: ${breakpoints['tablet']}) {
-                    text-align: center;
-                    margin-bottom: 30px;
-                }
-            `}>
-                <img 
-                    css={css`
-                        width: 200px;
-                        height: 300px;
-                    `} 
-                    src={imageUrl}
-                />
-                <div>
-                    <A href={purchaseUrl}>
-                        Purchase at IndieBound
-                    </A>
-                </div>
-            </div>
-            <div css={css`
-                grid-area: description
-            `}>
-                <P>
-                    {children}
-                </P>
-            </div>            
+const LibraryBlock = ({ title, imageUrl, purchaseUrl, right, children}) => {
+    let imageBlock = (
+        <div>
+            <img 
+                css={css`
+                    width: 200px;
+                    height: 300px;
+                `} 
+                src={imageUrl}
+            />
+            <A href={purchaseUrl}>
+                Purchase at IndieBound
+            </A>
         </div>
-    </div>    
-)
+    )
+
+    return (
+        <ContentBlockWithImage
+            right={right}
+            titleBlock={title}
+            imageBlock={imageBlock}
+        >
+            {children}
+        </ContentBlockWithImage>
+    )
+}
 
 const Library = () => (
     <Layout
