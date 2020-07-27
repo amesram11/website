@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { breakpoints } from '../shared/styles'
 import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
 import { SocialMediaButton } from '../shared/components/buttons'
-import ContentBlockWithImage from '../shared/components/content-block'
+import ContentBlock from '../shared/components/content-block'
 
 const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {     
     let titleBlock = (
@@ -43,12 +43,12 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
         </Link>
     )
     return (        
-        <ContentBlockWithImage
+        <ContentBlock
             titleBlock={titleBlock}
             imageBlock={imageBlock}            
         >
             {children}
-        </ContentBlockWithImage>            
+        </ContentBlock>            
     )
 }
     

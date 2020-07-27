@@ -66,7 +66,7 @@ const menuStyles = css`
 `
 
 const menuItems = [{
-    label: 'Memos'
+    label: 'Blog'
 }, {
     label: 'Projects',
     subMenu: [{
