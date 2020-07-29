@@ -194,6 +194,7 @@ const MenuItem = ({label, url, hoverHandler}) => {
                     font-size: 19px;                                           
                     border-bottom: 5px solid transparent;
                     &:hover {
+                        color: ${colors['white']}; 
                         border-bottom: 5px solid ${colors['white']};
                     }
             `} onMouseEnter={hoverHandler}>
