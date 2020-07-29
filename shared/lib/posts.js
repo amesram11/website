@@ -12,8 +12,6 @@ export async function getSortedPostsData() {
     // Get file names under /posts
     const ids = await getAllPostIds();  
     const allPostsData = await Promise.all(ids.map(async (idObj) => {
-        console.log('here??')
-        console.log(idObj.params.id)
         const postData = await getPostData(idObj.params.id)        
         return postData
     }))
