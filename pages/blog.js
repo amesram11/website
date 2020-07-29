@@ -4,10 +4,11 @@ import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
 import Link from 'next/link'
 import { colors } from '../shared/styles'
+import { getSortedPostsData } from '../shared/lib/posts'
 import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
 import { SocialMediaButton } from '../shared/components/buttons'
 
-const Post = ({ title, author, date, href, children}) => (     
+const Post = ({ title, author, date, href, summary}) => (     
    <div css={css`
         border-top: 1px solid ${colors['lightGray']};        
         margin: 30px 0 0;
@@ -26,11 +27,9 @@ const Post = ({ title, author, date, href, children}) => (
             margin-bottom: 15px;
             color: ${colors['lightGray']}
         `}>
-            By {author} on {date.toLocaleString('default', { month: 'long'})} {date.getDate()}, {date.getYear()}
+            By {author} on {date}
         </div>
-        <P>
-            {children}
-        </P>
+        <div dangerouslySetInnerHTML={{ __html: summary }} />   
    </div>
 )
     
@@ -38,24 +37,34 @@ const summarize = (text) => {
     return text.substring(0, 500) + '...'
 }
 
-const Blog = () => (
+const Blog = (props) => (
     <Layout
         featureImage={'/images/blog-banner.jpg'}
         featureText='Blog'
     >
         <Section>            
             <SingleColumnContent>
-                <Post
-                    title='Test'
-                    author='Zack Exley'
-                    date={new Date(2020, 2, 29)}
-                    href='/'
-                >
-                    {summarize('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')}
-                </Post>                
+                {props.allPostsData.map(({ id, title, author, date, contentHtml }) => (
+                    <Post
+                        title={title}
+                        author={author}
+                        date={date}
+                        href={`/posts/${id}`}
+                        summary={summarize(contentHtml)}
+                    />                    
+                ))}            
             </SingleColumnContent>
         </Section>
     </Layout>
 )
 
 export default Blog
+
+export async function getStaticProps() {
+    const allPostsData = await getSortedPostsData()
+    return {
+      props: {
+        allPostsData
+      }
+    }
+  }
