@@ -1,22 +1,19 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
 import Link from 'next/link'
-import { breakpoints } from '../shared/styles'
-import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
-import { SocialMediaButton } from '../shared/components/buttons'
+import { Section, Content } from '../shared/components/content-layout'
 import ContentBlock from '../shared/components/content-block'
 
 const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {     
     let titleBlock = (
         <Link href={projectUrl} passHref>
-            <A css={css`
+            <a css={css`
                 text-decoration: none;
                 border: none;
             `}>
                 {title}
-            </A>
+            </a>
         </Link>
     )   
 
@@ -37,9 +34,9 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
 
     let caption=(
         <Link href={projectUrl} passHref>
-            <A>
+            <a>
                 Read more
-            </A>
+            </a>
         </Link>
     )
     return (        
@@ -59,10 +56,10 @@ const Projects = () => (
         featureText='Projects'
     >
         <Section>            
-            <SingleColumnContent>
-                <P>
+            <Content>
+                <p>
                     <em>At New Consensus, we aim to develop reports and plans for tackling the world's biggest problems. See some of our work below.</em>
-                </P>
+                </p>
                 <ProjectBlock
                     title='Green New Deal'
                     imageUrl='/images/gnd-14-pager-thumb.png'
@@ -77,7 +74,7 @@ const Projects = () => (
                 >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </ProjectBlock>
-            </SingleColumnContent>
+            </Content>
         </Section>
     </Layout>
 )

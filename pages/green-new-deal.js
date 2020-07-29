@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core'
 import Link from 'next/link'
 import Layout from '../shared/components/layout'
-import { Section, TwelveColumnGrid, P, H3, Label, SingleColumnContent } from '../shared/components/tags'
+import { Section, Grid, Content } from '../shared/components/content-layout'
 import { breakpoints, colors } from '../shared/styles'
 
 const DownloadBox = (props) => (
@@ -22,17 +22,17 @@ const DownloadBox = (props) => (
                 src={props.image}
             />
             <div css={css`display: inline-block;`}>
-                <H3 css={css`
+                <h3 css={css`
                     color: ${colors['red']};
                     margin: 0;
-                `}>{props.title}</H3>
-                <Label css={css`
+                `}>{props.title}</h3>
+                <label css={css`
                     margin-bottom: .25rem;
                     font-weight: 400;
                     color: ${colors['white']}
                 `}>
                     {props.subtitle}
-                </Label>
+                </label>
             </div>
         </a>
     </Link>
@@ -49,7 +49,7 @@ const GreenNewDeal = () => (
                 padding: 0;
             }          
         `}>            
-            <TwelveColumnGrid css={css`
+            <Grid css={css`
                 margin-right: auto;
                 margin-left: auto;
                 background-color: ${colors['black']};                
@@ -97,11 +97,11 @@ const GreenNewDeal = () => (
                         subtitle='Brief (2 Pages)'
                     />
                 </div>
-            </TwelveColumnGrid>           
+            </Grid>           
         </Section>
         <Section>
-            <SingleColumnContent>                
-                <P>
+            <Content>                
+                <p>
                 New Consensus works to develop and promote the Green New Deal, a World War Two-scale mobilization to fix America’s most pressing economic and environmental problems. We advise progressive leaders and organizations on both the background  and implementation of a sweeping economic mobilization to build a clean and just economy.
 
 Guiding Vision
@@ -142,9 +142,9 @@ The Green New Deal is Possible and Practical
 As a country of 325 million people, with the world’s largest and most advanced industrial economy, the United States has every necessary tool at its disposal to achieve the goals of the Green New Deal. For too many decades, fear and complacency have kept our leaders from fulfilling the promise of America to its people. The result is malaise and stagnation, with wealth concentrating ever more densely at the top, poverty overwhelming the bottom, and insecurity menacing the middle. Meanwhile, climate change threatens humanity and most forms of life with extinction. All we’ve awaited throughout this decline is good faith, clear vision, and passionate leadership.
 
 The faith, vision, and passion are here. We shall move forward.
-                </P>
-                <P><em>Published: February 9, 2019</em></P>
-            </SingleColumnContent>
+                </p>
+                <p><em>Published: February 9, 2019</em></p>
+            </Content>
         </Section>
     </Layout>
 )

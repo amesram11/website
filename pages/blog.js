@@ -1,12 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
 import Link from 'next/link'
 import { colors } from '../shared/styles'
 import { getSortedPostsData } from '../shared/lib/posts'
-import { Section, Strong, H3, HR, P, A, UL, LI, SingleColumnContent} from '../shared/components/tags'
-import { SocialMediaButton } from '../shared/components/buttons'
+import { Section, Content } from '../shared/components/content-layout'
 
 const Post = ({ title, author, date, href, summary}) => (     
    <div css={css`
@@ -15,12 +13,12 @@ const Post = ({ title, author, date, href, summary}) => (
    `}>
        <div>
             <Link href={href} passHref>
-                <A css={css`
+                <a css={css`
                     text-decoration: none;
                     border: none;
                 `}>
-                    <H3>{title}</H3>
-                </A>
+                    <h3>{title}</h3>
+                </a>
             </Link>
         </div>
         <div css={css`            
@@ -39,7 +37,7 @@ const Blog = (props) => (
         featureText='Blog'
     >
         <Section>            
-            <SingleColumnContent>
+            <Content>
                 {props.allPostsData.map(({ id, title, author, date, summary }) => (
                     <Post
                         title={title}
@@ -49,7 +47,7 @@ const Blog = (props) => (
                         summary={summary}
                     />                    
                 ))}            
-            </SingleColumnContent>
+            </Content>
         </Section>
     </Layout>
 )

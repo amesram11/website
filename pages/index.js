@@ -3,7 +3,7 @@ import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Layout from '../shared/components/layout'
 import {LinkButton} from '../shared/components/buttons'
-import {BigSection, Row, TwelveColumnGrid, H1, P} from '../shared/components/tags'
+import { BigSection, Grid } from '../shared/components/content-layout'
 import {breakpoints, colors} from '../shared/styles'
 
 const Home = () => (  
@@ -17,7 +17,7 @@ const Home = () => (
         }}
     >
         <BigSection>
-            <TwelveColumnGrid
+            <Grid
                 css={css`  
                     grid-template-areas: 
                         'b'
@@ -34,12 +34,12 @@ const Home = () => (
                         text-align: right;                              
                     }
                 `}>
-                    <H1>
+                    <h1>
                         A new consensus is emerging.
-                    </H1>
-                    <P>
+                    </h1>
+                    <p>
                         Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more.
-                    </P>
+                    </p>
                     <LinkButton href='/about' color={colors['red']} hoverColor={colors['white']}>About Us ⟶</LinkButton>
                 </div>
                 <div css={css`
@@ -58,7 +58,7 @@ const Home = () => (
                         }
                     `} src='/images/worldview.png' />      
                 </div>
-            </TwelveColumnGrid>        
+            </Grid>        
         </BigSection>        
     </Layout>
 )

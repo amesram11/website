@@ -1,20 +1,20 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import Layout from '../../shared/components/layout'
-import { SingleColumnContent, H1 }  from '../../shared/components/tags'
+import { Content }  from '../../shared/components/content-layout'
 import { getPostData, getAllPostIds } from '../../shared/lib/posts'
 
 export default function Post({ postData }) {
   return (
     <Layout>
-      <SingleColumnContent>
-          <H1>
+      <Content>
+          <h1>
               {postData.title}
-          </H1>
+          </h1>
           <div>
               {postData.date}
           </div>
-      </SingleColumnContent>
+      </Content>
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
   )

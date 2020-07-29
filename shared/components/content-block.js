@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { breakpoints, colors } from '../styles'
-import { H3, P } from './tags'
 
 export default function ContentBlock({ titleBlock, imageBlock, right, children}) {
     return (
@@ -30,7 +29,7 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
                         text-align: center;                    
                     }
                 `}>
-                    <H3>{titleBlock}</H3>
+                    <h3>{titleBlock}</h3>
                 </div>
                 <div css={css`
                     grid-area: image;
@@ -44,9 +43,9 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
                 <div css={css`
                     grid-area: description
                 `}>
-                    <P>
+                    <p>
                         {children}
-                    </P>
+                    </p>
                 </div>            
             </div>
         </div>    

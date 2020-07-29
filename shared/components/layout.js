@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 import { breakpoints, navBarHeight, colors } from '../styles'
 import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
-import {A, P, H1, H2, BigSection, Section, TwelveColumnGrid, Label} from './tags'
-import {LinkButton, SubmitButton, SocialMediaButton} from './buttons'
+import { BigSection, Section, Grid } from './content-layout'
+import { LinkButton, SubmitButton, SocialMediaButton } from './buttons'
 
 const burgerStyles = {
     bmBurgerButton: {
@@ -162,7 +162,7 @@ const DropdownMenu = ({subMenu, show}) => {
         `}>
             {subMenu.map((menuItem) => (
                     <Link href={menuItemtoURL(menuItem)} passHref>
-                        <A 
+                        <a 
                             css={css`
                                 color: ${colors['black']};
                                 &:hover {
@@ -176,7 +176,7 @@ const DropdownMenu = ({subMenu, show}) => {
                                 font-size: 14px;                      
                     `   }>
                             {menuItem.label}
-                        </A>
+                        </a>
                     </Link>                
             ))}
         </div>
@@ -308,10 +308,10 @@ const FeatureBox = ({title, description, url}) => (
             background: ${colors['white']};
             margin-bottom: 30px;
         `}/>
-        <H2>{title}</H2>
-        <P css={css`
+        <h2>{title}</h2>
+        <p css={css`
             color: ${colors['lighterGray']};
-        `}>{description}</P>
+        `}>{description}</p>
         <LinkButton href={url} color={colors['white']} hoverColor={colors['black']}>Learn More ⟶</LinkButton>
     </div>
 )
@@ -321,7 +321,7 @@ const SignupBox = () => (
         background-color: ${colors['red']};
         color: ${colors['white']};
 `}>        
-        <TwelveColumnGrid css={css`
+        <Grid css={css`
             grid-template-areas:
                 'a'
                 'b';            
@@ -336,23 +336,23 @@ const SignupBox = () => (
                     text-align: right;                              
                 }
             `}>
-                <H2>We can't afford to keep the status quo.</H2>
+                <h2>We can't afford to keep the status quo.</h2>
             </div>
             <div css={css`
                 grid-area: b;
                 margin-top: 3rem;              
             `}>
-            <P
+            <p
                 css={css`
                     color: ${colors['white']};
                     font-size: 16px;
                     line-height: 26px;
                     font-weight: 400;
                 `}
-            >Get updates from the New Consensus</P>
+            >Get updates from the New Consensus</p>
             <SubscribeForm color={colors['white']} backgroundColor={colors['red']} />        
             </div>
-        </TwelveColumnGrid>        
+        </Grid>        
     </BigSection>
 )
 
@@ -380,7 +380,7 @@ class SubscribeForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <Label css={css`                    
+                <label css={css`                    
                     color: ${this.props.color};                   
                     margin: 0 0.5rem 0 0;                    
                 `}>
@@ -400,7 +400,7 @@ class SubscribeForm extends React.Component {
                         onChange={this.handleChange} 
                         required 
                     />
-                </Label>
+                </label>
                 <SubmitButton value="Subscribe" color={this.props.color} hoverColor={this.props.backgroundColor} />
             </form>
         );
@@ -417,7 +417,7 @@ const Footer = () => (
             padding: 5rem 15px 5rem 15px;
         }
 `}>        
-        <TwelveColumnGrid
+        <Grid
             css={css`  
                 text-align: center;
                 grid-template-areas:
@@ -437,9 +437,9 @@ const Footer = () => (
                 }   
             `}>
                 © New Consensus 2019<br />
-                <A href='/privacy-policy'>
+                <a href='/privacy-policy'>
                     Privacy Policy
-                </A>
+                </a>
             </div>
             <div css={css`
                 grid-area: b;
@@ -475,7 +475,7 @@ const Footer = () => (
                 Donate ⟶
                 </LinkButton>
             </div>
-        </TwelveColumnGrid>
+        </Grid>
     </Section>    
 )
 
@@ -521,7 +521,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                 </DesktopMenu>                
                 <Header featureImage={featureImage} initSize={tall ? 95 : 60}>
                     {featureText && (
-                        <H1
+                        <h1
                             css={css`
                                 width: 100%;
                                 display: flex;
@@ -531,7 +531,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                                 color: ${colors['white']}
                             `}>
                             {featureText}
-                        </H1>
+                        </h1>
                     )}
                     {featureBoxInfo && (
                         <div css={css`
