@@ -29,13 +29,9 @@ const Post = ({ title, author, date, href, summary}) => (
         `}>
             By {author} on {date}
         </div>
-        <div dangerouslySetInnerHTML={{ __html: summary }} />   
+        <div>{summary}</div>
    </div>
 )
-    
-const summarize = (text) => {
-    return text.substring(0, 500) + '...'
-}
 
 const Blog = (props) => (
     <Layout
@@ -44,13 +40,13 @@ const Blog = (props) => (
     >
         <Section>            
             <SingleColumnContent>
-                {props.allPostsData.map(({ id, title, author, date, contentHtml }) => (
+                {props.allPostsData.map(({ id, title, author, date, summary }) => (
                     <Post
                         title={title}
                         author={author}
                         date={date}
                         href={`/posts/${id}`}
-                        summary={summarize(contentHtml)}
+                        summary={summary}
                     />                    
                 ))}            
             </SingleColumnContent>
