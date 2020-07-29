@@ -29,7 +29,7 @@ export async function getSortedPostsData() {
 }
 
 export async function getAllPostIds() {
-  const fileNames = await fsPromises.readdir(postsDirectory)
+  const fileNames = await fsPromises.readdir(postsDirectory)  
   return fileNames.map(fileName => {
     return {
       params: {

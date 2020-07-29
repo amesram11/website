@@ -1,27 +1,29 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import Layout from '../../shared/components/layout'
-import { Content }  from '../../shared/components/content-layout'
+import { Content, Section }  from '../../shared/components/content-layout'
 import { getPostData, getAllPostIds } from '../../shared/lib/posts'
 
 export default function Post({ postData }) {
   return (
     <Layout>
-      <Content>
-          <h1>
-              {postData.title}
-          </h1>
-          <div>
-              {postData.date}
-          </div>
-      </Content>
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <Section>
+            <Content>
+                <h1>
+                    {postData.title}
+                </h1>
+                <div>
+                    By {postData.author} on {postData.date}
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            </Content> 
+        </Section>     
     </Layout>
   )
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds()
+  const paths = await getAllPostIds()
   return {
     paths,
     fallback: false
