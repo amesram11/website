@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 import { colors } from '../styles'
@@ -12,13 +12,13 @@ const Button = styled('a')`
     font-weight: 400;
     text-transform: uppercase;
     font-size: 15px;
-    letter-spacing: 2px;        
+    letter-spacing: 2px;
     background: linear-gradient(to right, ${props => props.color} 50%, transparent 50%);
     background-size: 200% 100%;
     background-position:right bottom;
-    text-decoration: none;    
+    text-decoration: none;
     padding: 12px 20px;
-    position: relative;    
+    position: relative;
     transition: all .3s;
     cursor: pointer;
     &:hover {
@@ -37,7 +37,7 @@ export const LinkButton = (props) => (
 const InputButton = Button.withComponent('input')
 
 export const SubmitButton = (props) => (
-    <InputButton 
+    <InputButton
         type='submit'
         css={css`
             background: transparent;
@@ -65,8 +65,8 @@ export const SocialMediaButton = ({ type, href }) => (
             background: ${colors['black']} no-repeat 50% 50%;
             background-image: url(/images/${type}-icon.png);
             &:hover {
-                background-color: ${colors['red']}        
+                background-color: ${colors['red']}
             }
         `}
     />)
-    
+

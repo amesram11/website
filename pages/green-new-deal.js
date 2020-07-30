@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
+import { Content, Grid, Section } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
-import { Section, Grid, Content } from '../shared/components/content-layout'
 import { breakpoints, colors } from '../shared/styles'
 
 const DownloadBox = (props) => (
@@ -12,13 +12,13 @@ const DownloadBox = (props) => (
             color: ${colors['white']};
             border: none;
         `}>
-            <img 
-                css={css`  
+            <img
+                css={css`
                     height: 120px;
                     display: inline-block;
                     margin-right: 20px;
                     vertical-align: middle;
-                `} 
+                `}
                 src={props.image}
             />
             <div css={css`display: inline-block;`}>
@@ -42,44 +42,44 @@ const GreenNewDeal = () => (
     <Layout
         featureImage={'/images/gnd-banner.png'}
         featureText='The Green New Deal'
-    >   
+    >
         <Section css={css`
             @media(min-width: ${breakpoints['tablet']}) {
                 margin-top: -110px;
                 padding: 0;
-            }          
-        `}>            
+            }
+        `}>
             <Grid css={css`
                 margin-right: auto;
                 margin-left: auto;
-                background-color: ${colors['black']};                
+                background-color: ${colors['black']};
                 grid-column-gap: 1.5rem;
                 grid-row-gap: 1.5rem;
                 padding: 1.5rem;
-                grid-template-areas: 
+                grid-template-areas:
                         'x'
                         'y';
-                @media(min-width: ${breakpoints['phone']}) {        
-                    max-width: 540px;                    
+                @media(min-width: ${breakpoints['phone']}) {
+                    max-width: 540px;
                 }
-                @media(min-width: ${breakpoints['tablet']}) {        
+                @media(min-width: ${breakpoints['tablet']}) {
                     max-width: 720px;
                     grid-template-columns: repeat(2, 1fr);
-                    grid-template-areas: 
-                        'x y'                    
+                    grid-template-areas:
+                        'x y'
                 }
-                @media(min-width: ${breakpoints['desktop']}) {                    
-                    max-width: 720px;                
+                @media(min-width: ${breakpoints['desktop']}) {
+                    max-width: 720px;
                 }
                 @media(min-width: ${breakpoints['large-desktop']}) {
-                    max-width: 720px;        
-                }                             
+                    max-width: 720px;
+                }
             `}>
                 <div css={css`
-                    grid-area: x; 
-                    display: inline-block;                                       
+                    grid-area: x;
+                    display: inline-block;
                 `}>
-                    <DownloadBox 
+                    <DownloadBox
                         href='/files/new_consensus_gnd_14_pager.pdf'
                         image='/images/gnd-14-pager-thumb.png'
                         title='Green New Deal'
@@ -88,19 +88,19 @@ const GreenNewDeal = () => (
                 </div>
                 <div css={css`
                     grid-area: y;
-                    display: inline-block;                    
+                    display: inline-block;
                 `}>
-                    <DownloadBox 
+                    <DownloadBox
                         href='/files/new_consensus_gnd_2_pager.pdf'
                         image='/images/gnd-2-pager-thumb.png'
                         title='Green New Deal'
                         subtitle='Brief (2 Pages)'
                     />
                 </div>
-            </Grid>           
+            </Grid>
         </Section>
         <Section>
-            <Content>                
+            <Content>
                 <p>
                 New Consensus works to develop and promote the Green New Deal, a World War Two-scale mobilization to fix America’s most pressing economic and environmental problems. We advise progressive leaders and organizations on both the background  and implementation of a sweeping economic mobilization to build a clean and just economy.
 

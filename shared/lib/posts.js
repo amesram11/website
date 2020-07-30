@@ -4,18 +4,18 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 import removeMarkdown from 'remove-markdown'
-
+ 
 const fsPromises = fs.promises;
 const postsDirectory = path.join(process.cwd(), 'posts')
 
 export async function getSortedPostsData() {
     // Get file names under /posts
-    const ids = await getAllPostIds();  
+    const ids = await getAllPostIds();
     const allPostsData = await Promise.all(ids.map(async (idObj) => {
-        const postData = await getPostData(idObj.params.id)        
+        const postData = await getPostData(idObj.params.id)
         return postData
     }))
-    
+
     // Sort posts by date
     return allPostsData.sort((a, b) => {
         if (a.date < b.date) {
@@ -27,7 +27,7 @@ export async function getSortedPostsData() {
 }
 
 export async function getAllPostIds() {
-  const fileNames = await fsPromises.readdir(postsDirectory)  
+  const fileNames = await fsPromises.readdir(postsDirectory)
   return fileNames.map(fileName => {
     return {
       params: {

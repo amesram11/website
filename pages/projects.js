@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
-import Layout from '../shared/components/layout'
+import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
-import { Section, Content } from '../shared/components/content-layout'
 import ContentBlock from '../shared/components/content-block'
+import { Content, Section } from '../shared/components/content-layout'
+import Layout from '../shared/components/layout'
 
-const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {     
+const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
     let titleBlock = (
         <Link href={projectUrl} passHref>
             <a css={css`
@@ -15,21 +15,21 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
                 {title}
             </a>
         </Link>
-    )   
+    )
 
     let imageBlock = (
         <Link href={projectUrl} passHref>
             <a>
-            <img 
+            <img
                 css={css`
                     width: 200px;
                     height: 300px;
-                `} 
+                `}
                 src={imageUrl}
             />
             </a>
         </Link>
-        
+
     )
 
     let caption=(
@@ -39,23 +39,23 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
             </a>
         </Link>
     )
-    return (        
+    return (
         <ContentBlock
             titleBlock={titleBlock}
-            imageBlock={imageBlock}            
+            imageBlock={imageBlock}
         >
             {children}
-        </ContentBlock>            
+        </ContentBlock>
     )
 }
-    
+
 
 const Projects = () => (
     <Layout
         featureImage={'/images/projects-banner.jpg'}
         featureText='Projects'
     >
-        <Section>            
+        <Section>
             <Content>
                 <p>
                     <em>At New Consensus, we aim to develop reports and plans for tackling the world's biggest problems. See some of our work below.</em>

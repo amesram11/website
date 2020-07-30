@@ -1,13 +1,12 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
-import Layout from '../shared/components/layout'
-import {LinkButton} from '../shared/components/buttons'
+import { css, jsx } from '@emotion/core'
+import { LinkButton } from '../shared/components/buttons'
 import { BigSection, Grid } from '../shared/components/content-layout'
-import {breakpoints, colors} from '../shared/styles'
+import Layout from '../shared/components/layout'
+import { breakpoints, colors } from '../shared/styles'
 
-const Home = () => (  
-    <Layout 
+const Home = () => (
+    <Layout
         tall
         featureImage={'/images/earth-banner.jpeg'}
         featureBoxInfo={{
@@ -18,20 +17,20 @@ const Home = () => (
     >
         <BigSection>
             <Grid
-                css={css`  
-                    grid-template-areas: 
+                css={css`
+                    grid-template-areas:
                         'b'
-                        'a';                         
+                        'a';
 
                     @media (min-width: ${breakpoints['desktop']}) {
-                        grid-template-areas: 
-                            '. a a a a a b b b b b b';                               
-                    }                   
+                        grid-template-areas:
+                            '. a a a a a b b b b b b';
+                    }
             `}>
                 <div css={css`
                     grid-area: a;
                     @media(min-width: ${breakpoints['desktop']}) {
-                        text-align: right;                              
+                        text-align: right;
                     }
                 `}>
                     <h1>
@@ -43,7 +42,7 @@ const Home = () => (
                     <LinkButton href='/about' color={colors['red']} hoverColor={colors['white']}>About Us ⟶</LinkButton>
                 </div>
                 <div css={css`
-                    grid-area: b;                    
+                    grid-area: b;
                     text-align: center;
                 `}>
                     <img css={css`
@@ -56,10 +55,10 @@ const Home = () => (
                             max-width: none;
                             margin: 0;
                         }
-                    `} src='/images/worldview.png' />      
+                    `} src='/images/worldview.png' />
                 </div>
-            </Grid>        
-        </BigSection>        
+            </Grid>
+        </BigSection>
     </Layout>
 )
 

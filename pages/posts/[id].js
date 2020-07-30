@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import { Content, Section } from '../../shared/components/content-layout'
 import Layout from '../../shared/components/layout'
-import { Content, Section }  from '../../shared/components/content-layout'
-import { getPostData, getAllPostIds } from '../../shared/lib/posts'
+import { getAllPostIds, getPostData } from '../../shared/lib/posts'
 
 export default function Post({ postData }) {
   return (
@@ -16,8 +16,8 @@ export default function Post({ postData }) {
                     By {postData.author} on {postData.date}
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-            </Content> 
-        </Section>     
+            </Content>
+        </Section>
     </Layout>
   )
 }

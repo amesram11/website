@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import { breakpoints, colors } from '../styles'
 
 export default function ContentBlock({ titleBlock, imageBlock, right, children}) {
@@ -7,16 +7,16 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
         <div css={css`
             border-top: 1px solid ${colors['lightGray']};
             margin: 30px 0 0;
-        `}>        
+        `}>
             <div css={css`
                 display: grid;
-                grid-template-columns: ${right ? 'auto 200px' : '200px auto'};            
-                grid-column-gap: 15px;            
-                grid-template-areas: 
+                grid-template-columns: ${right ? 'auto 200px' : '200px auto'};
+                grid-column-gap: 15px;
+                grid-template-areas:
                     'header header'
                     ${right ? '\'description image\'' : '\'image description\''};
                 @media(max-width: ${breakpoints['tablet']}) {
-                    grid-template-columns: 1fr;                
+                    grid-template-columns: 1fr;
                     grid-template-areas:
                         'header'
                         'image'
@@ -26,7 +26,7 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
                 <div css={css`
                     grid-area: header;
                     @media(max-width: ${breakpoints['tablet']}) {
-                        text-align: center;                    
+                        text-align: center;
                     }
                 `}>
                     <h3>{titleBlock}</h3>
@@ -38,7 +38,7 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
                         margin-bottom: 30px;
                     }
                 `}>
-                        {imageBlock}                    
+                        {imageBlock}
                 </div>
                 <div css={css`
                     grid-area: description
@@ -46,8 +46,8 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
                     <p>
                         {children}
                     </p>
-                </div>            
+                </div>
             </div>
-        </div>    
+        </div>
     )
 }

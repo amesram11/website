@@ -1,11 +1,7 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
-import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
+import { Content, Section } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
-import Link from 'next/link'
-import { breakpoints } from '../shared/styles'
-import { Section, Content } from '../shared/components/content-layout'
-import { SocialMediaButton } from '../shared/components/buttons'
 
 const PressBlock = ({ url, publication, date, description }) => (
     <p>
@@ -20,7 +16,7 @@ const Press = () => (
         featureImage={'/images/press-banner.jpg'}
         featureText='Press'
     >
-        <Section>            
+        <Section>
             <Content>
                 <p>
                     <em>Notable news and commentary featuring New Consensus. For media inquiries, please contact <a href='press@newconsensus.com'>press@newconsensus.com</a>.</em>
@@ -30,7 +26,7 @@ const Press = () => (
                     publication='Fast Company'
                     date='June 24, 2019'
                     description='The Green New Deal could change the way America builds—here’s how'
-                />                
+                />
             </Content>
         </Section>
     </Layout>

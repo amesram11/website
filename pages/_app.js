@@ -1,9 +1,6 @@
-import NextApp from 'next/app'
 import { CacheProvider } from '@emotion/core'
-
-// Use only { cache } from 'emotion'. Don't use { css }.
 import { cache } from 'emotion'
-
+import NextApp from 'next/app'
 import { globalStyles } from '../shared/styles'
 
 export default class App extends NextApp {

@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
-import { breakpoints, navBarHeight, colors } from '../styles'
-import { push as BurgerMenu } from 'react-burger-menu'
 import Link from 'next/link'
-import { BigSection, Section, Grid } from './content-layout'
-import { LinkButton, SubmitButton, SocialMediaButton } from './buttons'
+import { push as BurgerMenu } from 'react-burger-menu'
+import { breakpoints, colors, navBarHeight } from '../styles'
+import { LinkButton, SocialMediaButton, SubmitButton } from './buttons'
+import { BigSection, Grid, Section } from './content-layout'
 
 const burgerStyles = {
     bmBurgerButton: {
@@ -58,7 +58,7 @@ const burgerStyles = {
 }
 
 const menuStyles = css`
-    background-color: ${colors['red']};   
+    background-color: ${colors['red']};
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -80,9 +80,9 @@ const menuItems = [{
     label: 'Press'
 }, {
     label: 'About',
-}]    
+}]
 
-function menuItemtoURL(menuItem) {    
+function menuItemtoURL(menuItem) {
     return '/' + menuItem.label.toLowerCase().replace(/\s/g, '-')
 }
 
@@ -90,7 +90,7 @@ function menuItemtoURL(menuItem) {
 
 const DesktopMenu = styled('div')`
     ${menuStyles}
-    height: ${navBarHeight.desktop};    
+    height: ${navBarHeight.desktop};
     @media (max-width: ${breakpoints['desktop']}) {
         display: none;
     }
@@ -98,7 +98,7 @@ const DesktopMenu = styled('div')`
 
 const MobileMenu = styled('div')`
     ${menuStyles}
-    background-color: ${colors['red']};   
+    background-color: ${colors['red']};
     height: ${navBarHeight.mobile};
     @media (min-width: ${breakpoints['desktop']}) {
         display: none;
@@ -129,7 +129,7 @@ const Logo = () => (
     </Link>
 )
 
-const DropdownMenu = ({subMenu, show}) => {    
+const DropdownMenu = ({subMenu, show}) => {
     return (
         <div css={css`
             display: block;
@@ -143,8 +143,8 @@ const DropdownMenu = ({subMenu, show}) => {
             visibility: ${show ? 'visible' : 'hidden'};
             margin-top: ${show ? '45px' : '55px'};
             transition: opacity .2s ease-out, margin .4s ease-out;
-            padding: 0px 0px 15px 0px;  
-            opacity: ${show ? 1.0 : 0.0};            
+            padding: 0px 0px 15px 0px;
+            opacity: ${show ? 1.0 : 0.0};
             background-clip: padding-box;
             border: 1px solid rgba(0,0,0,.15);
             border-radius: 0.25rem;
@@ -162,7 +162,7 @@ const DropdownMenu = ({subMenu, show}) => {
         `}>
             {subMenu.map((menuItem) => (
                     <Link href={menuItemtoURL(menuItem)} passHref>
-                        <a 
+                        <a
                             css={css`
                                 color: ${colors['black']};
                                 &:hover {
@@ -171,13 +171,13 @@ const DropdownMenu = ({subMenu, show}) => {
                                 }
                                 display: block;
                                 padding: 12px 20px;
-                                border: none;                        
-                                text-decoration: none;                                
-                                font-size: 14px;                      
+                                border: none;
+                                text-decoration: none;
+                                font-size: 14px;
                     `   }>
                             {menuItem.label}
                         </a>
-                    </Link>                
+                    </Link>
             ))}
         </div>
     )
@@ -187,14 +187,14 @@ const MenuItem = ({label, url, hoverHandler}) => {
     return (
         <Link href={url} passHref>
             <a
-                css={css`                    
+                css={css`
                     text-transform: uppercase;
-                    text-decoration: none;                   
-                    color: ${colors['white']};                    
-                    font-size: 19px;                                           
+                    text-decoration: none;
+                    color: ${colors['white']};
+                    font-size: 19px;
                     border-bottom: 5px solid transparent;
                     &:hover {
-                        color: ${colors['white']}; 
+                        color: ${colors['white']};
                         border-bottom: 5px solid ${colors['white']};
                     }
             `} onMouseEnter={hoverHandler}>
@@ -204,16 +204,16 @@ const MenuItem = ({label, url, hoverHandler}) => {
     )
 }
 
-const MobileSubmenuItem = ({label, url}) => {    
+const MobileSubmenuItem = ({label, url}) => {
     return (
         <Link href={url} passHref>
             <a
                 css={css`
-                    text-decoration: none;     
-                    display: block;              
-                    color: ${colors['white']};                    
-                    font-size: 16px; 
-                    margin-top: 15px;                                        
+                    text-decoration: none;
+                    display: block;
+                    color: ${colors['white']};
+                    font-size: 16px;
+                    margin-top: 15px;
             `}>
                 {label}
             </a>
@@ -237,16 +237,16 @@ const MobileMenuItem = ({label, url, subMenu}) => {
 }
 
 const Header = ({featureImage, children, initSize}) => (
-    <header css={css`        
+    <header css={css`
         min-height: 250px;
-        width: 100%;               
+        width: 100%;
         background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${featureImage});
         background-repeat: no-repeat;
         background-size: cover;
-        @media (min-width: ${breakpoints['desktop']}) {            
+        @media (min-width: ${breakpoints['desktop']}) {
             min-height: calc(${initSize}vh - ${navBarHeight.desktop});
         }
-        display: flex;        
+        display: flex;
     `}>
         {children}
     </header>
@@ -277,7 +277,7 @@ class DesktopMenuItem extends React.Component {
                 text-align: center;
                 margin-top: 75px;
             `} onMouseLeave={this.handleMouseLeave}>
-                <MenuItem 
+                <MenuItem
                     label={this.props.label}
                     url={this.props.url}
                     hoverHandler={this.handleMouseEnter}
@@ -291,13 +291,13 @@ class DesktopMenuItem extends React.Component {
 const FeatureBox = ({title, description, url}) => (
     <div css={css`
         width: 100%;
-        padding: 30px;             
-        color: ${colors['white']};    
-        background-color: ${colors['black']};   
-        @media(min-width: ${breakpoints['tablet']}) {                
+        padding: 30px;
+        color: ${colors['white']};
+        background-color: ${colors['black']};
+        @media(min-width: ${breakpoints['tablet']}) {
             padding-left: 120px;
-            padding-right: 120px;            
-        } 
+            padding-right: 120px;
+        }
         @media(min-width: ${breakpoints['desktop']}) {
             width: 420px;
             padding-left: 60px;
@@ -321,27 +321,27 @@ const SignupBox = () => (
     <BigSection css={css`
         background-color: ${colors['red']};
         color: ${colors['white']};
-`}>        
+`}>
         <Grid css={css`
             grid-template-areas:
                 'a'
-                'b';            
+                'b';
             @media (min-width: ${breakpoints['desktop']}) {
-                grid-template-areas: 
-                '. . a a a . b b b b b b'; 
+                grid-template-areas:
+                '. . a a a . b b b b b b';
             }
         `}>
             <div css={css`
-                grid-area: a;                
+                grid-area: a;
                 @media(min-width: ${breakpoints['desktop']}) {
-                    text-align: right;                              
+                    text-align: right;
                 }
             `}>
                 <h2>We can't afford to keep the status quo.</h2>
             </div>
             <div css={css`
                 grid-area: b;
-                margin-top: 3rem;              
+                margin-top: 3rem;
             `}>
             <p
                 css={css`
@@ -351,16 +351,16 @@ const SignupBox = () => (
                     font-weight: 400;
                 `}
             >Get updates from the New Consensus</p>
-            <SubscribeForm color={colors['white']} backgroundColor={colors['red']} />        
+            <SubscribeForm color={colors['white']} backgroundColor={colors['red']} />
             </div>
-        </Grid>        
+        </Grid>
     </BigSection>
 )
 
 class SubscribeForm extends React.Component {
     constructor(props) {
-        super(props);        
-    
+        super(props);
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -372,7 +372,7 @@ class SubscribeForm extends React.Component {
     handleChange(event) {
         this.setState({value: event.target.value});
     }
-    
+
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
@@ -381,12 +381,12 @@ class SubscribeForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label css={css`                    
-                    color: ${this.props.color};                   
-                    margin: 0 0.5rem 0 0;                    
+                <label css={css`
+                    color: ${this.props.color};
+                    margin: 0 0.5rem 0 0;
                 `}>
                     Email <br />
-                    <input 
+                    <input
                         css={css`
                             border: none;
                             border-bottom: 1px solid ${colors['white']};
@@ -394,12 +394,12 @@ class SubscribeForm extends React.Component {
                             outline: none;
                             font-size: 15px;
                             line-height: 44px;
-                            color: ${this.props.color}                         
+                            color: ${this.props.color}
                         `}
-                        type="email" 
-                        value={this.state.value} 
-                        onChange={this.handleChange} 
-                        required 
+                        type="email"
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                        required
                     />
                 </label>
                 <SubmitButton value="Subscribe" color={this.props.color} hoverColor={this.props.backgroundColor} />
@@ -408,34 +408,34 @@ class SubscribeForm extends React.Component {
     }
 }
 
-const Footer = () => (    
-    <Section css={css`            
+const Footer = () => (
+    <Section css={css`
         font-size: 14px;
         font-family: D-DIN;
-        font-stretch: expanded;    
+        font-stretch: expanded;
         padding: 5rem 15px 5rem 15px;
         @media (min-width: ${breakpoints['desktop']}) {
             padding: 5rem 15px 5rem 15px;
         }
-`}>        
+`}>
         <Grid
-            css={css`  
+            css={css`
                 text-align: center;
                 grid-template-areas:
                     'b'
                     'a'
                     'c';
                 @media (min-width: ${breakpoints['desktop']}) {
-                    grid-template-areas: 
+                    grid-template-areas:
                         'a a a a b b b b c c c c';
                 }
-        `}> 
+        `}>
             <div css={css`
-                grid-area: a;  
-                margin-bottom: 1.5rem;  
+                grid-area: a;
+                margin-bottom: 1.5rem;
                 @media(min-width: ${breakpoints['desktop']}) {
                     text-align: left;
-                }   
+                }
             `}>
                 © New Consensus 2019<br />
                 <a href='/privacy-policy'>
@@ -444,32 +444,32 @@ const Footer = () => (
             </div>
             <div css={css`
                 grid-area: b;
-                margin-bottom: 1.5rem; 
+                margin-bottom: 1.5rem;
             `}>
                 <div css={css`
                     display: inline-block;
                     margin-right: 15px;
                 `}>
-                    <SocialMediaButton 
-                        type='facebook' 
+                    <SocialMediaButton
+                        type='facebook'
                         href='https://www.facebook.com/TheNewConsensus/'
                     />
                 </div>
                 <div css={css`
                     display: inline-block;
-                    margin-left: 15px;                    
+                    margin-left: 15px;
                 `}>
-                    <SocialMediaButton 
-                        type='twitter' 
+                    <SocialMediaButton
+                        type='twitter'
                         href='https://twitter.com/newconsensus/'
                     />
                 </div>
             </div>
             <div css={css`
-                grid-area: c; 
-                margin-bottom: 1.5rem; 
+                grid-area: c;
+                margin-bottom: 1.5rem;
                 @media(min-width: ${breakpoints['desktop']}) {
-                    text-align: right;                            
+                    text-align: right;
                 }
             `}>
                 <LinkButton href='/' color={colors['red']} hoverColor={colors['white']}>
@@ -477,27 +477,27 @@ const Footer = () => (
                 </LinkButton>
             </div>
         </Grid>
-    </Section>    
+    </Section>
 )
 
 
-export default function Layout({ featureImage, featureBoxInfo, featureText, tall, children }) {    
-    let desktopNav = menuItems.map((item) => <DesktopMenuItem 
-        key={'desktop' + item.label} 
-        url={menuItemtoURL(item)} 
-        label={item.label} 
+export default function Layout({ featureImage, featureBoxInfo, featureText, tall, children }) {
+    let desktopNav = menuItems.map((item) => <DesktopMenuItem
+        key={'desktop' + item.label}
+        url={menuItemtoURL(item)}
+        label={item.label}
         subMenu={item.subMenu}/>
     )
     desktopNav.splice(3, 0, <Logo key="logo" />)
-        
+
     const mobileNav = menuItems.map((item) => <MobileMenuItem
         key={'mobile-' + item.label}
         label={item.label}
         url={menuItemtoURL(item)}
         subMenu={item.subMenu}/>)
-        
+
     return (
-        <div 
+        <div
             id="container"
         >
             <div css={css`
@@ -519,7 +519,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                     `}
                 >
                     {desktopNav}
-                </DesktopMenu>                
+                </DesktopMenu>
                 <Header featureImage={featureImage} initSize={tall ? 95 : 60}>
                     {featureText && (
                         <h1
@@ -528,7 +528,7 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                                 display: flex;
                                 flex-direction: column;
                                 justify-content: center;
-                                align-items: center;                                
+                                align-items: center;
                                 color: ${colors['white']}
                             `}>
                             {featureText}
@@ -551,11 +551,11 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                 </Header>
                 {featureBoxInfo && (
                     <div css={css`
-                        margin-top: -2rem;                     
+                        margin-top: -2rem;
                         @media(min-width:${breakpoints['desktop']}) {
                             display: none;
                         }
-                    `}>                   
+                    `}>
                         <FeatureBox {...featureBoxInfo} />
                     </div>
                 )}

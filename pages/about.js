@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
-import Layout from '../shared/components/layout'
 import Link from 'next/link'
-import { Section, Content } from '../shared/components/content-layout'
 import { SocialMediaButton } from '../shared/components/buttons'
+import { Content, Section } from '../shared/components/content-layout'
+import Layout from '../shared/components/layout'
 
 const SocialMediaRow = styled('div')`
     display: flex;
@@ -19,30 +19,30 @@ const TeamMember = ({ name, imageUrl, email, twitterHandle, description }) => (
             grid-template-rows: 150px auto;
             grid-column-gap: 15px;
             grid-row-gap: 5px;
-            grid-template-areas: 
+            grid-template-areas:
                 'image description'
                 'social description'
         `}>
             <div css={css`
                 grid-area: image;
             `}>
-                <img 
+                <img
                     css={css`
                         weidth: 150px;
                         height: 150px;
                     `}
-                    src={imageUrl} 
+                    src={imageUrl}
                 />
             </div>
             <div css={css`
                 grid-area: social;
             `}>
                 <SocialMediaRow>
-                    <SocialMediaButton 
+                    <SocialMediaButton
                         type='email'
                         href={`mailto:${email}`}
                     />
-                    <SocialMediaButton 
+                    <SocialMediaButton
                         type='twitter'
                         href={`https://twitter.com/${twitterHandle}`}
                     />
@@ -54,7 +54,7 @@ const TeamMember = ({ name, imageUrl, email, twitterHandle, description }) => (
                 <strong>{name}</strong> {description}
             </div>
         </div>
-        <hr />    
+        <hr />
     </p>
 )
 
@@ -63,7 +63,7 @@ const About = () => (
         featureImage={'/images/about-banner.jpg'}
         featureText='About'
     >
-        <Section>            
+        <Section>
             <Content>
                 <h3>Why a new consensus?</h3>
                 <p>
@@ -83,7 +83,7 @@ const About = () => (
                 </p>
                 <p>
                     Check out the our <Link href='/library' passHref><a>reading list</a></Link> to learn about some of the voices of the new consensus.
-                </p>           
+                </p>
                 <h3>Our Story</h3>
                 <p>
                     The elections of 2016 showed that the American people see the possibility for real change. In order to make that change a reality, New Consensus was formed as a team of experienced organizers and policy wonks. We turn progressive ideas into policy, working at three key stages to:
@@ -97,28 +97,28 @@ const About = () => (
                 <TeamMember
                     name='Demond Drummer'
                     imageUrl={'/images/demond.jpg'}
-                    email={'demond@newconsensus.com'} 
+                    email={'demond@newconsensus.com'}
                     twitterHandle='citizendrummer'
                     description={`
-                        is co-founder and executive director of New Consensus. He is an organizer and civic innovator whose grassroots work in Chicago has been recognized by the Obama White House, Code for America and the Aspen Institute. 
+                        is co-founder and executive director of New Consensus. He is an organizer and civic innovator whose grassroots work in Chicago has been recognized by the Obama White House, Code for America and the Aspen Institute.
                     `}
-                />                
+                />
                 <TeamMember
                     name='Zack Exley'
                     imageUrl={'/images/zack.jpg'}
-                    email={'zack@newconsensus.com'} 
+                    email={'zack@newconsensus.com'}
                     twitterHandle='zackexley'
                     description={`
-                        is a co-founder and senior advisor of New Consensus, where he focuses on strategy, recruiting, and fundraising. Zack has been a pioneer in the worlds of political campaigning, organizing, and fundraising for more than 20 years. 
+                        is a co-founder and senior advisor of New Consensus, where he focuses on strategy, recruiting, and fundraising. Zack has been a pioneer in the worlds of political campaigning, organizing, and fundraising for more than 20 years.
                     `}
-                />                              
+                />
                 <TeamMember
                     name='Saikat Chakrabarti'
                     imageUrl={'/images/saikat.jpg'}
-                    email={'saikat@newconsensus.com'} 
+                    email={'saikat@newconsensus.com'}
                     twitterHandle='saikatc'
                     description={`
-                        is the President of New Consensus. Previously, he was a founding engineer at Stripe, co-founded Brand New Congress and Justice Democrats, and was the campaign manager and then Chief of Staff to Rep. Alexandria Ocasio-Cortez where he led the effort to draft the Green New Deal. 
+                        is the President of New Consensus. Previously, he was a founding engineer at Stripe, co-founded Brand New Congress and Justice Democrats, and was the campaign manager and then Chief of Staff to Rep. Alexandria Ocasio-Cortez where he led the effort to draft the Green New Deal.
                     `}
                 />
                 <h3>Contact Us</h3>

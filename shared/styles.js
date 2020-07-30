@@ -1,5 +1,4 @@
-import { keyframes, css, Global } from '@emotion/core'
-import styled from '@emotion/styled'
+import { css, Global } from '@emotion/core'
 
 export const breakpoints = {
     'phone': '576px',

@@ -1,14 +1,14 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
-import Layout from '../shared/components/layout'
+import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
-import { colors } from '../shared/styles'
+import { Content, Section } from '../shared/components/content-layout'
+import Layout from '../shared/components/layout'
 import { getSortedPostsData } from '../shared/lib/posts'
-import { Section, Content } from '../shared/components/content-layout'
+import { colors } from '../shared/styles'
 
-const Post = ({ title, author, date, href, summary}) => (     
+const Post = ({ title, author, date, href, summary}) => (
    <div css={css`
-        border-top: 1px solid ${colors['lightGray']};        
+        border-top: 1px solid ${colors['lightGray']};
         margin: 30px 0 0;
    `}>
        <div>
@@ -21,7 +21,7 @@ const Post = ({ title, author, date, href, summary}) => (
                 </a>
             </Link>
         </div>
-        <div css={css`            
+        <div css={css`
             margin-bottom: 15px;
             color: ${colors['lightGray']}
         `}>
@@ -36,7 +36,7 @@ const Blog = (props) => (
         featureImage={'/images/blog-banner.jpg'}
         featureText='Blog'
     >
-        <Section>            
+        <Section>
             <Content>
                 {props.allPostsData.map(({ id, title, author, date, summary }) => (
                     <Post
@@ -45,8 +45,8 @@ const Blog = (props) => (
                         date={date}
                         href={`/posts/${id}`}
                         summary={summary}
-                    />                    
-                ))}            
+                    />
+                ))}
             </Content>
         </Section>
     </Layout>
