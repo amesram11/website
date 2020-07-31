@@ -2,6 +2,7 @@
 import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
 import { Content, Section } from '../shared/components/content-layout'
+import Date from '../shared/components/date'
 import Layout from '../shared/components/layout'
 import { getSortedPostsData } from '../shared/lib/posts'
 import { colors } from '../shared/styles'
@@ -25,9 +26,9 @@ const Post = ({ title, author, date, href, summary}) => (
             margin-bottom: 15px;
             color: ${colors['lightGray']}
         `}>
-            By {author} on {date}
+            By {author} on <Date dateString={date} />
         </div>
-        <div>{summary}</div>
+        <p>{summary}</p>
    </div>
 )
 

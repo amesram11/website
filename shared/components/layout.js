@@ -520,35 +520,37 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                 >
                     {desktopNav}
                 </DesktopMenu>
-                <Header featureImage={featureImage} initSize={tall ? 95 : 60}>
-                    {featureText && (
-                        <h1
-                            css={css`
-                                width: 100%;
+                {featureImage && (
+                    <Header featureImage={featureImage} initSize={tall ? 95 : 60}>
+                        {featureText && (
+                            <h1
+                                css={css`
+                                    width: 100%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: center;
+                                    color: ${colors['white']}
+                                `}>
+                                {featureText}
+                            </h1>
+                        )}
+                        {featureBoxInfo && (
+                            <div css={css`
                                 display: flex;
                                 flex-direction: column;
-                                justify-content: center;
-                                align-items: center;
-                                color: ${colors['white']}
+                                justify-content: flex-end;
+                                align-items: flex-end;
+                                width: 100%;
+                                @media(max-width:${breakpoints['desktop']}) {
+                                    display: none;
+                                }
                             `}>
-                            {featureText}
-                        </h1>
-                    )}
-                    {featureBoxInfo && (
-                        <div css={css`
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: flex-end;
-                            align-items: flex-end;
-                            width: 100%;
-                            @media(max-width:${breakpoints['desktop']}) {
-                                display: none;
-                            }
-                        `}>
-                            <FeatureBox {...featureBoxInfo} />
-                        </div>
-                    )}
-                </Header>
+                                <FeatureBox {...featureBoxInfo} />
+                            </div>
+                        )}
+                    </Header>
+                )}
                 {featureBoxInfo && (
                     <div css={css`
                         margin-top: -2rem;
