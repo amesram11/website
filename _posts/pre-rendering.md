@@ -1,5 +1,7 @@
 ---
-author: 'Zack Exley'
+author: 'Saikat Chakrabarti'
+authorEmail: 'saikat1@gmail.com'
+authorTwitter: 'saikatc'
 title: 'Two Forms of Pre-rendering'
 date: '2020-01-01'
 ---
