@@ -4,8 +4,10 @@ import Gravatar from 'react-gravatar'
 import { Content, Section } from '../../shared/components/content-layout'
 import Date from '../../shared/components/Date'
 import Layout from '../../shared/components/layout'
-import { getAllPostIds, getPostData } from '../../shared/lib/posts'
+import { getAllIds, getData } from '../../shared/data'
 import { colors } from '../../shared/styles'
+
+const postsModel = 'posts'
 
 const AuthorBlock = ({ author, authorTwitter, authorEmail, date }) => (
     <div css={css`
@@ -56,7 +58,6 @@ const AuthorBlock = ({ author, authorTwitter, authorEmail, date }) => (
 )
 
 export default function Post({ postData }) {
-    console.log(postData)
     return (
         <Layout
             featureImage={'/images/blog-banner.jpg'}
@@ -81,7 +82,7 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await getAllPostIds()
+  const paths = await getAllIds(postsModel)
   return {
     paths,
     fallback: false
@@ -89,7 +90,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id)
+  const postData = await getData(postsModel, params.id)
   return {
     props: {
       postData

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Content, Section } from '../shared/components/content-layout'
 import Date from '../shared/components/date'
 import Layout from '../shared/components/layout'
-import { getSortedPostsData } from '../shared/lib/posts'
+import { getSortedData } from '../shared/data'
 import { colors } from '../shared/styles'
 
 const Post = ({ title, author, date, href, summary}) => (
@@ -41,7 +41,6 @@ const Blog = (props) => {
         <Section>
             <Content>
                 {props.allPostsData.map(({ id, title, author, date, summary }) => {
-                    console.log(id, title, author, date)
                     return (
                     <Post
                         title={title}
@@ -59,7 +58,7 @@ const Blog = (props) => {
 export default Blog
 
 export async function getStaticProps() {
-    const allPostsData = await getSortedPostsData()
+    const allPostsData = await getSortedData('posts', 'date', true)
     return {
       props: {
         allPostsData
