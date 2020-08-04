@@ -4,6 +4,8 @@ import Link from 'next/link'
 import ContentBlock from '../shared/components/content-block'
 import { Content, Section } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
+import { getSortedData } from '../shared/data'
+import { colors } from '../shared/styles'
 
 const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
     let titleBlock = (
@@ -19,11 +21,13 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
 
     let imageBlock = (
         <Link href={projectUrl} passHref>
-            <a>
+            <a css={css`
+                border: 1px solid ${colors['lightGray']}
+            `}>
             <img
                 css={css`
-                    width: 200px;
-                    height: 300px;
+                    width: 255px;
+                    height: 330px;
                 `}
                 src={imageUrl}
             />
@@ -50,7 +54,7 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
 }
 
 
-const Projects = () => (
+const Projects = (props) => (
     <Layout
         featureImage={'/images/projects-banner.jpg'}
         featureText='Projects'
@@ -60,23 +64,27 @@ const Projects = () => (
                 <p>
                     <em>At New Consensus, we aim to develop reports and plans for tackling the world's biggest problems. See some of our work below.</em>
                 </p>
-                <ProjectBlock
-                    title='Green New Deal'
-                    imageUrl='/images/gnd-14-pager-thumb.png'
-                    projectUrl='/green-new-deal'
-                >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </ProjectBlock>
-                <ProjectBlock
-                    title='Pandemic Economics'
-                    imageUrl='/images/gnd-14-pager-thumb.png'
-                    projectUrl='/pandemic-economics'
-                >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </ProjectBlock>
+                {props.data.map(({ id, title, thumbnail, summary }) => (
+                    <ProjectBlock
+                        title={title}
+                        imageUrl={thumbnail}
+                        projectUrl={`/projects/${id}`}
+                    >
+                        {summary}
+                    </ProjectBlock>
+                ))}
             </Content>
         </Section>
     </Layout>
 )
 
 export default Projects
+
+export async function getStaticProps() {
+    const data = await getSortedData('projects', 'date', true)
+    return {
+        props: {
+            data
+        }
+    }
+}

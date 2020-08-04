@@ -32,36 +32,34 @@ const Post = ({ title, author, date, href, summary}) => (
    </div>
 )
 
-const Blog = (props) => {
-    return (
+const Blog = ({ data }) => (
     <Layout
         featureImage={'/images/blog-banner.jpg'}
         featureText='Blog'
     >
         <Section>
             <Content>
-                {props.allPostsData.map(({ id, title, author, date, summary }) => {
-                    return (
+                {data.map(({ id, title, author, date, summary }) => (
                     <Post
                         title={title}
                         author={author}
                         date={date}
                         href={`/posts/${id}`}
                         summary={summary}
-                    />)}
-                )}
+                    />
+                ))}
             </Content>
         </Section>
-    </Layout>)
-}
+    </Layout>
+)
 
 export default Blog
 
 export async function getStaticProps() {
-    const allPostsData = await getSortedData('posts', 'date', true)
+    const data = await getSortedData('posts', 'date', true)
     return {
-      props: {
-        allPostsData
-      }
+        props: {
+            data
+        }
     }
-  }
+}

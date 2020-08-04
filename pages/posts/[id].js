@@ -7,8 +7,6 @@ import Layout from '../../shared/components/layout'
 import { getAllIds, getData } from '../../shared/data'
 import { colors } from '../../shared/styles'
 
-const postsModel = 'posts'
-
 const AuthorBlock = ({ author, authorTwitter, authorEmail, date }) => (
     <div css={css`
         padding-bottom: 2rem;
@@ -57,7 +55,7 @@ const AuthorBlock = ({ author, authorTwitter, authorEmail, date }) => (
     </div>
 )
 
-export default function Post({ postData }) {
+export default function Post({ data }) {
     return (
         <Layout
             featureImage={'/images/blog-banner.jpg'}
@@ -66,15 +64,15 @@ export default function Post({ postData }) {
             <Section>
                 <Content>
                     <h1>
-                        {postData.title}
+                        {data.title}
                     </h1>
                     <AuthorBlock
-                        author={postData.author}
-                        date={postData.date}
-                        authorEmail={postData.authorEmail}
-                        authorTwitter={postData.authorTwitter}
+                        author={data.author}
+                        date={data.date}
+                        authorEmail={data.authorEmail}
+                        authorTwitter={data.authorTwitter}
                     />
-                    <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+                    <div dangerouslySetInnerHTML={{ __html: data.contentHtml }} />
                 </Content>
             </Section>
         </Layout>
@@ -82,18 +80,18 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await getAllIds(postsModel)
-  return {
-    paths,
-    fallback: false
-  }
+    const paths = await getAllIds('posts')
+    return {
+        paths,
+        fallback: false
+    }
 }
 
 export async function getStaticProps({ params }) {
-  const postData = await getData(postsModel, params.id)
-  return {
-    props: {
-      postData
+    const data = await getData('posts', params.id)
+    return {
+        props: {
+            data
+        }
     }
-  }
 }

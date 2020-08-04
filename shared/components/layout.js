@@ -71,8 +71,10 @@ const menuItems = [{
     label: 'Projects',
     subMenu: [{
         label: 'Green New Deal',
+        url: '/projects/green-new-deal'
     }, {
-        label: 'Pandemic Economics'
+        label: 'Pandemic Economics',
+        url: '/projects/pandemic-economics'
     }]
 }, {
     label: 'Library'
@@ -83,7 +85,7 @@ const menuItems = [{
 }]
 
 function menuItemtoURL(menuItem) {
-    return '/' + menuItem.label.toLowerCase().replace(/\s/g, '-')
+    return menuItem.url || '/' + menuItem.label.toLowerCase().replace(/\s/g, '-')
 }
 
 /* React components for the layout */

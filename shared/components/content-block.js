@@ -10,7 +10,7 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
         `}>
             <div css={css`
                 display: grid;
-                grid-template-columns: ${right ? 'auto 200px' : '200px auto'};
+                grid-template-columns: ${right ? `auto max-content` : `max-content auto`};
                 grid-column-gap: 15px;
                 grid-template-areas:
                     'header header'
