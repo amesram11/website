@@ -32,26 +32,29 @@ const Post = ({ title, author, date, href, summary}) => (
    </div>
 )
 
-const Blog = (props) => (
+const Blog = (props) => {
+    return (
     <Layout
         featureImage={'/images/blog-banner.jpg'}
         featureText='Blog'
     >
         <Section>
             <Content>
-                {props.allPostsData.map(({ id, title, author, date, summary }) => (
+                {props.allPostsData.map(({ id, title, author, date, summary }) => {
+                    console.log(id, title, author, date)
+                    return (
                     <Post
                         title={title}
                         author={author}
                         date={date}
                         href={`/posts/${id}`}
                         summary={summary}
-                    />
-                ))}
+                    />)}
+                )}
             </Content>
         </Section>
-    </Layout>
-)
+    </Layout>)
+}
 
 export default Blog
 
