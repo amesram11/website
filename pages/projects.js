@@ -26,6 +26,7 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
             `}>
             <img
                 css={css`
+                    display: block;
                     width: 255px;
                     height: 330px;
                 `}

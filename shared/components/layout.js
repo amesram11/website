@@ -70,11 +70,11 @@ const menuItems = [{
 }, {
     label: 'Projects',
     subMenu: [{
-        label: 'Green New Deal',
-        url: '/projects/green-new-deal'
-    }, {
         label: 'Pandemic Economics',
         url: '/projects/pandemic-economics'
+    }, {
+        label: 'Green New Deal',
+        url: '/projects/green-new-deal'
     }]
 }, {
     label: 'Library'
