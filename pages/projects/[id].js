@@ -10,31 +10,42 @@ import { breakpoints, colors } from '../../shared/styles'
 const DownloadBox = (props) => (
     <Link href={props.href} passHref>
         <a css={css`
-            display: inline-block;
             color: ${colors['white']};
             border: none;
         `}>
-            <img
-                css={css`
-                    height: 120px;
-                    display: inline-block;
-                    margin-right: 20px;
-                    vertical-align: middle;
-                `}
-                src={props.image}
-            />
-            <div css={css`display: inline-block;`}>
-                <h3 css={css`
-                    color: ${colors['red']};
-                    margin: 0;
-                `}>{props.title}</h3>
-                <label css={css`
-                    margin-bottom: .25rem;
-                    font-weight: 400;
-                    color: ${colors['white']}
+            <div css={css`
+                display: grid;
+                grid-template-columns: max-content auto;
+                grid-template-areas:
+                    'image title';
+                grid-column-gap: 20px;
+            `}>
+                <div css={css`
+                    grid-area: image;
                 `}>
-                    {props.subtitle}
-                </label>
+                    <img
+                        css={css`
+                            height: 120px;
+                            vertical-align: middle;
+                        `}
+                        src={props.image}
+                    />
+                </div>
+                <div css={css`
+                    grid-area: title;
+                `}>
+                    <h3 css={css`
+                        color: ${colors['red']};
+                        margin: 0;
+                    `}>{props.title}</h3>
+                    <label css={css`
+                        margin-bottom: .25rem;
+                        font-weight: 400;
+                        color: ${colors['white']}
+                    `}>
+                        {props.subtitle}
+                    </label>
+                </div>
             </div>
         </a>
     </Link>

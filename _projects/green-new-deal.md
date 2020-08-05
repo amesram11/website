@@ -2,7 +2,7 @@
 featureImage: '/images/gnd-banner.png'
 reports:
     -   link: '/files/gnd-overview.pdf'
-        thumbnail: '/images/gnd-overview-pager-thumb.png'
+        thumbnail: '/images/gnd-overview-thumb.png'
         title: 'Overview'
         subtitle: '(14 pages)'
     -   link: '/files/gnd-brief.pdf'

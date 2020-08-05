@@ -1,5 +1,5 @@
 ---
-featureImage: '/images/pandemic-banner.png'
+featureImage: '/images/pandemic-banner.jpg'
 reports:
     -   link: '/files/pandemic-production.pdf'
         thumbnail: '/images/pandemic-production-thumb.png'
