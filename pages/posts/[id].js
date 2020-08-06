@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core'
 import Gravatar from 'react-gravatar'
 import { Content, Section } from '../../shared/components/content-layout'
-import Date from '../../shared/components/Date'
+import Date from '../../shared/components/date'
 import Layout from '../../shared/components/layout'
 import { getAllIds, getData } from '../../shared/data'
 import { colors } from '../../shared/styles'
