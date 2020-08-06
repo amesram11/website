@@ -8,11 +8,7 @@ import removeMarkdown from 'remove-markdown'
 const fsPromises = fs.promises;
 
 export async function getSortedData(model, key, descending) {
-    const ids = await getAllIds(model);
-    const allData = await Promise.all(ids.map(async (idObj) => {
-        const data = await getData(model, idObj.params.id)
-        return data
-    }))
+    const allData = await getAllData(model)
 
     return allData.sort((a, b) => {
         if (descending) {
@@ -21,6 +17,15 @@ export async function getSortedData(model, key, descending) {
             return (a[key] > b[key] ? 1 : -1)
         }
     })
+}
+
+export async function getAllData(model) {
+    const ids = await getAllIds(model);
+    const allData = await Promise.all(ids.map(async (idObj) => {
+        const data = await getData(model, idObj.params.id)
+        return data
+    }))
+    return allData
 }
 
 export async function getAllIds(model) {

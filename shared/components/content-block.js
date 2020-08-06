@@ -34,7 +34,8 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
                 <div css={css`
                     grid-area: image;
                     @media(max-width: ${breakpoints['tablet']}) {
-                        text-align: center;
+                        margin-left: auto;
+                        margin-right: auto;
                         margin-bottom: 30px;
                     }
                 `}>

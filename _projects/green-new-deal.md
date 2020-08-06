@@ -9,7 +9,7 @@ reports:
         thumbnail: '/images/gnd-brief-thumb.png'
         title: 'Brief'
         subtitle: '(2 pages)'
-thumbnail: '/images/gnd-thum.png'
+thumbnail: '/images/gnd-thumb.png'
 title: 'The Green New Deal'
 date: '2019-02-09'
 summary: 'The Green New Deal will be the most ambitious and transformative national project since Franklin Roosevelt’s original New Deal and World War II economic mobilizations. Through a combination of investments not only in communities and public infrastructure, but also in private industry, we can accomplish a sweeping transformation of our entire economy to build a clean, thriving society.'

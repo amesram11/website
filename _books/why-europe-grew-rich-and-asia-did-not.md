@@ -1,0 +1,8 @@
+---
+title: "Why Europe Grew Rich and Asia Did Not"
+thumbnail: '/images/why-europe-grew-rich-and-asia-did-not.png'
+purchaseUrl: 'https://www.indiebound.org/book/9780521168243'
+order: 190
+---
+
+**Get the really big picture with *Why Europe Grew Rich and Asia Did Not*.** The short answer: It’s because barbarians on horses (or ships) are fully capable of taking over giant, advanced empires. It happened all the time through history… The Mongols, and then Manchus, taking over China; the Moguls taking over India. And so on. Britain taking over India and China was part of that same tradition. It’s a sucker punch, but it works. The internal ruling class tends not even to mind, because they’re so sick of their own rulers—that helps the invaders. The barbarians move into the palace and soon become locals. But the Industrial Revolution changed this longstanding pattern and made this kind of conquest incredibly destructive for the conquered. Because of the Industrial Revolution and the nationalist project that had begun in Britain, the conquerors now merely wanted to extract resources to feed coal-powered factories back home that sucked more wealth back to the whole British People. And why did the Industrial Revolution get started in the first place? To compete with the overwhelming dominance of Chinese and Indian industry (much like Japan’s and now China’s leap ahead of the US in industrial innovation).
