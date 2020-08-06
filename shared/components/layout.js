@@ -216,7 +216,7 @@ const MobileSubmenuItem = ({label, url}) => {
         <Link href={url} passHref>
             <a
                 css={css`
-                    text-decoration: none;
+                    border: none;
                     display: block;
                     color: ${colors['white']};
                     font-size: 16px;
