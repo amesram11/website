@@ -57,14 +57,6 @@ const burgerStyles = {
     }
 }
 
-const menuStyles = css`
-    background-color: ${colors['red']};
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-`
-
 const menuItems = [{
     label: 'Blog'
 }, {
@@ -90,17 +82,30 @@ function menuItemtoURL(menuItem) {
 
 /* React components for the layout */
 
+const menuStyles = css`
+    background-color: ${colors['red']};
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`
 const DesktopMenu = styled('div')`
     ${menuStyles}
+    justify-content: space-around;
     height: ${navBarHeight.desktop};
     @media (max-width: ${breakpoints['desktop']}) {
         display: none;
     }
 `
 
+const DesktopMenuSection = styled('div')`
+    ${menuStyles}
+    height: 100%;
+    flex: 1;
+`
+
 const MobileMenu = styled('div')`
     ${menuStyles}
-    background-color: ${colors['red']};
+    justify-content: center;
     height: ${navBarHeight.mobile};
     @media (min-width: ${breakpoints['desktop']}) {
         display: none;
@@ -275,9 +280,7 @@ class DesktopMenuItem extends React.Component {
                 flex: 0 1 auto;
                 padding: 0 12px;
                 position: relative;
-                height: 100%;
                 text-align: center;
-                margin-top: 75px;
             `} onMouseLeave={this.handleMouseLeave}>
                 <MenuItem
                     label={this.props.label}
@@ -490,7 +493,9 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
         label={item.label}
         subMenu={item.subMenu}/>
     )
-    desktopNav.splice(3, 0, <Logo key="logo" />)
+
+    let desktopNavLeft = desktopNav.slice(0, 3)
+    let desktopNavRight = desktopNav.slice(3)
 
     const mobileNav = menuItems.map((item) => <MobileMenuItem
         key={'mobile-' + item.label}
@@ -515,12 +520,22 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
                 <MobileMenu>
                     <Logo />
                 </MobileMenu>
-                <DesktopMenu
-                    css={css`
-                        font-weight: 400;
-                    `}
-                >
-                    {desktopNav}
+                <DesktopMenu>
+                    <DesktopMenuSection css={css`
+                        justify-content: flex-end
+                    `}>
+                        {desktopNavLeft}
+                    </DesktopMenuSection>
+                    <DesktopMenuSection css={css`
+                        justify-content: center
+                    `}>
+                        <Logo />
+                    </DesktopMenuSection>
+                    <DesktopMenuSection css={css`
+                        justify-content: flex-start
+                    `}>
+                        {desktopNavRight}
+                    </DesktopMenuSection>
                 </DesktopMenu>
                 {featureImage && (
                     <Header featureImage={featureImage} initSize={tall ? 95 : 60}>
