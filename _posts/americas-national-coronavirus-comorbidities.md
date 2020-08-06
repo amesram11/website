@@ -1,6 +1,6 @@
 ---
 author: 'Zack Exley'
-authorEmail: 'zack.exley@gmail.com'
+authorEmail: 'zack@newconsensus.com'
 title: "America's National Coronavirus Comorbidities"
 date: '2020-03-19'
 ---

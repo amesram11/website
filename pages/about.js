@@ -2,23 +2,25 @@
 import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import Gravatar from 'react-gravatar'
 import { SocialMediaButton } from '../shared/components/buttons'
 import { Content, Section } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
+import { getSortedData } from '../shared/data'
 
 const SocialMediaRow = styled('div')`
     display: flex;
     justify-content: space-between
 `
 
-const TeamMember = ({ name, imageUrl, email, twitterHandle, description }) => (
+const TeamMember = ({ email, twitterHandle, children }) => (
     <p>
         <div css={css`
             display: grid;
             grid-template-columns: 150px auto;
             grid-template-rows: 150px auto;
             grid-column-gap: 15px;
-            grid-row-gap: 5px;
+            grid-row-gap: 15px;
             grid-template-areas:
                 'image description'
                 'social description'
@@ -26,12 +28,9 @@ const TeamMember = ({ name, imageUrl, email, twitterHandle, description }) => (
             <div css={css`
                 grid-area: image;
             `}>
-                <img
-                    css={css`
-                        weidth: 150px;
-                        height: 150px;
-                    `}
-                    src={imageUrl}
+                <Gravatar
+                    email={email}
+                    size={150}
                 />
             </div>
             <div css={css`
@@ -51,14 +50,14 @@ const TeamMember = ({ name, imageUrl, email, twitterHandle, description }) => (
             <div css={css`
                 grid-area: description;
             `}>
-                <strong>{name}</strong> {description}
+                {children}
             </div>
         </div>
         <hr />
     </p>
 )
 
-const About = () => (
+const About = ({ data }) => (
     <Layout
         featureImage={'/images/about-banner.jpg'}
         featureText='About'
@@ -94,33 +93,15 @@ const About = () => (
                     <li>Produce educational material to popularize and build broad public and political support for this new consensus.</li>
                 </ul>
                 <h3>Team</h3>
-                <TeamMember
-                    name='Demond Drummer'
-                    imageUrl={'/images/demond.jpg'}
-                    email={'demond@newconsensus.com'}
-                    twitterHandle='citizendrummer'
-                    description={`
-                        is co-founder and executive director of New Consensus. He is an organizer and civic innovator whose grassroots work in Chicago has been recognized by the Obama White House, Code for America and the Aspen Institute.
-                    `}
-                />
-                <TeamMember
-                    name='Zack Exley'
-                    imageUrl={'/images/zack.jpg'}
-                    email={'zack@newconsensus.com'}
-                    twitterHandle='zackexley'
-                    description={`
-                        is a co-founder and senior advisor of New Consensus, where he focuses on strategy, recruiting, and fundraising. Zack has been a pioneer in the worlds of political campaigning, organizing, and fundraising for more than 20 years.
-                    `}
-                />
-                <TeamMember
-                    name='Saikat Chakrabarti'
-                    imageUrl={'/images/saikat.jpg'}
-                    email={'saikat@newconsensus.com'}
-                    twitterHandle='saikatc'
-                    description={`
-                        is the President of New Consensus. Previously, he was a founding engineer at Stripe, co-founded Brand New Congress and Justice Democrats, and was the campaign manager and then Chief of Staff to Rep. Alexandria Ocasio-Cortez where he led the effort to draft the Green New Deal.
-                    `}
-                />
+                {data.map(({ name, email, twitterHandle, contentHtml }) => (
+                    <TeamMember
+                        name={name}
+                        email={email}
+                        twitterHandle={twitterHandle}
+                    >
+                        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+                    </TeamMember>
+                ))}
                 <h3>Contact Us</h3>
                 <p>
                     E-mail us at <a href='mailto:contact@newconensus.com'>contact@newconsensus.com</a>!
@@ -131,3 +112,13 @@ const About = () => (
 )
 
 export default About
+
+
+export async function getStaticProps() {
+    const data = await getSortedData('staff', 'name')
+    return {
+        props: {
+            data
+        }
+    }
+}
