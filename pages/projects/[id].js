@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Content, Grid, Section } from '../../shared/components/content-layout'
 import Date from '../../shared/components/date'
 import Layout from '../../shared/components/layout'
+import Meta from '../../shared/components/meta'
 import { getAllIds, getData } from '../../shared/data'
 import { breakpoints, colors } from '../../shared/styles'
 
@@ -52,11 +53,21 @@ const DownloadBox = (props) => (
 )
 
 export default function Project({ data }) {
+
     return (
         <Layout
             featureImage={data.featureImage}
             featureText={data.title}
         >
+            <Meta
+                title={data.title}
+                description={data.summary}
+                type='article'
+                image={data.featureImage}
+                extraTags={{
+                    "article:published_time": data.date
+                }}
+            />
             <Section css={css`
                 @media(min-width: ${breakpoints['tablet']}) {
                     margin-top: -110px;

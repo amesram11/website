@@ -6,6 +6,7 @@ import Gravatar from 'react-gravatar'
 import { SocialMediaButton } from '../shared/components/buttons'
 import { Content, Section } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
+import Meta from '../shared/components/meta'
 import { getSortedData } from '../shared/data'
 
 const SocialMediaRow = styled('div')`
@@ -57,11 +58,18 @@ const TeamMember = ({ email, twitterHandle, children }) => (
     </p>
 )
 
+const featureImage = '/images/about-banner.jpg'
 const About = ({ data }) => (
     <Layout
-        featureImage={'/images/about-banner.jpg'}
+        featureImage={featureImage}
         featureText='About'
     >
+        <Meta
+            title='About'
+            description='Learn more about what the new consensus is and who we are.'
+            type='website'
+            image={featureImage}
+        />
         <Section>
             <Content>
                 <h3>Why a new consensus?</h3>

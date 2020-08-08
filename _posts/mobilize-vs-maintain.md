@@ -1,6 +1,9 @@
 ---
-author: 'Saikat Chakrabarti'
-authorEmail: 'saikat@newconsensus.com'
+author:
+    name: 'Saikat Chakrabarti'
+    email: 'saikat@newconsensus.com'
+    twitter: 'saikatc'
+    facebook: 'saikat.chakrabarti'
 title: 'Mobilize vs. Maintain'
 date: '2020-04-01'
 ---

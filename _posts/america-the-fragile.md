@@ -1,6 +1,9 @@
 ---
-author: 'Zack Exley'
-authorEmail: 'zack@newconsensus.com'
+author:
+    name: 'Zack Exley'
+    email: 'zack@newconsensus.com'
+    twitter: 'zackexley'
+    facebook: 'zack.exley'
 title: 'The Coronavirus pandemic exposes America the Fragile.'
 date: '2020-03-18'
 ---

@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core'
 import { Content, Section } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
+import Meta from '../shared/components/meta'
 
 const PressBlock = ({ url, publication, date, description }) => (
     <p>
@@ -11,15 +12,24 @@ const PressBlock = ({ url, publication, date, description }) => (
     </p>
 )
 
+const description = 'Notable news and commentary featuring New Consensus.'
+const featureImage = '/images/press-banner.jpg'
+
 const Press = () => (
     <Layout
-        featureImage={'/images/press-banner.jpg'}
+        featureImage={featureImage}
         featureText='Press'
     >
+        <Meta
+            title='Press'
+            description={description}
+            type='website'
+            image={featureImage}
+        />
         <Section>
             <Content>
                 <p>
-                    <em>Notable news and commentary featuring New Consensus. For media inquiries, please contact <a href='press@newconsensus.com'>press@newconsensus.com</a>.</em>
+                    <em>{description} For media inquiries, please contact <a href='press@newconsensus.com'>press@newconsensus.com</a>.</em>
                 </p>
                 <PressBlock
                     url='https://www.fastcompany.com/90365788/the-green-new-deal-could-change-the-way-america-builds-heres-how'

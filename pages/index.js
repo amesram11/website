@@ -3,18 +3,27 @@ import { css, jsx } from '@emotion/core'
 import { LinkButton } from '../shared/components/buttons'
 import { BigSection, Grid } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
+import Meta from '../shared/components/meta'
 import { breakpoints, colors } from '../shared/styles'
 
+const description = "Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more."
+const featureImage = '/images/earth-banner.jpeg'
 const Home = () => (
     <Layout
         tall
-        featureImage={'/images/earth-banner.jpeg'}
+        featureImage={featureImage}
         featureBoxInfo={{
             title: 'What is the Green New Deal?',
             description: 'How can we stop climate breakdown and ensure economic growth for all? The Green New Deal uses policy and spending tools to confront the most important problems facing America.',
             url: '/green-new-deal'
         }}
     >
+        <Meta
+            title='New Consensus'
+            description={description}
+            type='website'
+            image={featureImage}
+        />
         <BigSection>
             <Grid
                 css={css`
@@ -37,7 +46,7 @@ const Home = () => (
                         A new consensus is emerging.
                     </h1>
                     <p>
-                        Drawing on successful examples from America's own history, as well as advanced economies around the world, new consensus thinkers are rediscovering how government can catalyze the transition to a green economy, close racial and regional wealth and income gaps, spearhead innovation and research, kickstart new high-wage industries, and more.
+                        {description}
                     </p>
                     <LinkButton href='/about' color={colors['red']} hoverColor={colors['white']}>About Us ⟶</LinkButton>
                 </div>

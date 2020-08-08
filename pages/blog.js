@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Content, Section } from '../shared/components/content-layout'
 import Date from '../shared/components/date'
 import Layout from '../shared/components/layout'
+import Meta from '../shared/components/meta'
 import { getSortedData } from '../shared/data'
 import { colors } from '../shared/styles'
 
@@ -26,17 +27,25 @@ const Post = ({ title, author, date, href, summary}) => (
             margin-bottom: 15px;
             color: ${colors['lightGray']}
         `}>
-            By {author} on <Date dateString={date} />
+            By {author['name']} on <Date dateString={date} />
         </div>
         <p>{summary}</p>
    </div>
 )
 
+const description = 'See our latest thoughts on the New Consensus blog.'
+const featureImage = '/images/blog-banner.jpg'
 const Blog = ({ data }) => (
     <Layout
-        featureImage={'/images/blog-banner.jpg'}
+        featureImage={featureImage}
         featureText='Blog'
     >
+        <Meta
+            title='Blog'
+            description={description}
+            type='website'
+            image={featureImage}
+        />
         <Section>
             <Content>
                 {data.map(({ id, title, author, date, summary }) => (

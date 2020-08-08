@@ -12,6 +12,9 @@ reports:
 thumbnail: '/images/gnd-thumb.png'
 title: 'The Green New Deal'
 date: '2019-02-09'
+authors:
+    - Rhiana Gunn-Wright
+    - Robert Hockett
 summary: 'The Green New Deal will be the most ambitious and transformative national project since Franklin Roosevelt’s original New Deal and World War II economic mobilizations. Through a combination of investments not only in communities and public infrastructure, but also in private industry, we can accomplish a sweeping transformation of our entire economy to build a clean, thriving society.'
 ---
 

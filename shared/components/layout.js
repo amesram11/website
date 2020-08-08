@@ -453,15 +453,6 @@ const Footer = () => (
             `}>
                 <div css={css`
                     display: inline-block;
-                    margin-right: 15px;
-                `}>
-                    <SocialMediaButton
-                        type='facebook'
-                        href='https://www.facebook.com/TheNewConsensus/'
-                    />
-                </div>
-                <div css={css`
-                    display: inline-block;
                     margin-left: 15px;
                 `}>
                     <SocialMediaButton

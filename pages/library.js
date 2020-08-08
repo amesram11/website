@@ -3,6 +3,7 @@ import { css, jsx } from '@emotion/core'
 import ContentBlock from '../shared/components/content-block'
 import { Content, Section } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
+import Meta from '../shared/components/meta'
 import { getSortedData } from '../shared/data'
 
 const LibraryBlock = ({ title, imageUrl, purchaseUrl, right, children}) => {
@@ -34,13 +35,22 @@ const LibraryBlock = ({ title, imageUrl, purchaseUrl, right, children}) => {
     )
 }
 
+const description = 'If you’ve found your way to this reading list you may be thinking, “I’m on board; I just need more details!” Or you may be thinking, “I’m not convinced, but I want to know more.” This reading list will set you on your way.'
+const featureImage = '/images/library-banner.jpg'
+
 const Library = ({ data }) => {
     let odd = false
     return (
         <Layout
-            featureImage={'/images/library-banner.jpg'}
+            featureImage={featureImage}
             featureText='Library'
         >
+             <Meta
+                title='Library'
+                description={description}
+                type='website'
+                image={featureImage}
+            />
             <Section>
                 <Content>
                     <p>

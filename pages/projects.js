@@ -4,6 +4,7 @@ import Link from 'next/link'
 import ContentBlock from '../shared/components/content-block'
 import { Content, Section } from '../shared/components/content-layout'
 import Layout from '../shared/components/layout'
+import Meta from '../shared/components/meta'
 import { getSortedData } from '../shared/data'
 import { colors } from '../shared/styles'
 
@@ -54,18 +55,25 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
     )
 }
 
-
-const Projects = (props) => (
+const description = "At New Consensus, we develop reports and plans for tackling the world's biggest problems. See some of our projects below."
+const featureImage='/images/projects-banner.jpg'
+const Projects = ({ data }) => (
     <Layout
-        featureImage={'/images/projects-banner.jpg'}
+        featureImage={featureImage}
         featureText='Projects'
     >
+        <Meta
+            title='Projects'
+            description={description}
+            type='website'
+            image={featureImage}
+        />
         <Section>
             <Content>
                 <p>
-                    <em>At New Consensus, we aim to develop reports and plans for tackling the world's biggest problems. See some of our work below.</em>
+                    <em>{description}</em>
                 </p>
-                {props.data.map(({ id, title, thumbnail, summary }) => (
+                {data.map(({ id, title, thumbnail, summary }) => (
                     <ProjectBlock
                         title={title}
                         imageUrl={thumbnail}
