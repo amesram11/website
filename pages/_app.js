@@ -1,9 +1,11 @@
-import { CacheProvider } from '@emotion/core'
-import { cache } from 'emotion'
-import NextApp from 'next/app'
-import { globalStyles } from '../shared/styles'
+import { CacheProvider } from '@emotion/core';
+import { cache } from 'emotion';
+import withGA from "next-ga";
+import NextApp from 'next/app';
+import Router from "next/router";
+import { globalStyles } from '../shared/styles';
 
-export default class App extends NextApp {
+class App extends NextApp {
   render() {
     const { Component, pageProps } = this.props
     return (
@@ -14,3 +16,5 @@ export default class App extends NextApp {
     )
   }
 }
+
+export default withGA("UA-175180353-1", Router)(App)
