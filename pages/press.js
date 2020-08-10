@@ -1,21 +1,23 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Content, Section } from '../shared/components/content-layout'
+import Date from '../shared/components/date'
 import Layout from '../shared/components/layout'
 import Meta from '../shared/components/meta'
+import { getSortedData } from '../shared/data'
 
-const PressBlock = ({ url, publication, date, description }) => (
+const PressBlock = ({ url, publication, date, title }) => (
     <p>
         <a href={url}>
-            <em>{publication}</em>, <strong>{date}</strong>
-        </a>: "{description}"
+            <em>{publication}</em>, <strong><Date dateString={date} /></strong>
+        </a>: "{title}"
     </p>
 )
 
 const description = 'Notable news and commentary featuring New Consensus.'
 const featureImage = '/images/press-banner.jpg'
 
-const Press = () => (
+const Press = ({ data }) => (
     <Layout
         featureImage={featureImage}
         featureText='Press'
@@ -31,15 +33,28 @@ const Press = () => (
                 <p>
                     <em>{description} For media inquiries, please contact <a href='press@newconsensus.com'>press@newconsensus.com</a>.</em>
                 </p>
-                <PressBlock
-                    url='https://www.fastcompany.com/90365788/the-green-new-deal-could-change-the-way-america-builds-heres-how'
-                    publication='Fast Company'
-                    date='June 24, 2019'
-                    description='The Green New Deal could change the way America builds—here’s how'
-                />
+                {data.map(({ url, publication, date, title }) => (
+                    <PressBlock
+                        key={title}
+                        url={url}
+                        publication={publication}
+                        date={date}
+                        title={title}
+                    />
+                ))}
+
             </Content>
         </Section>
     </Layout>
 )
 
 export default Press
+
+export async function getStaticProps() {
+    const data = await getSortedData('press', 'date', true)
+    return {
+        props: {
+            data
+        }
+    }
+}
