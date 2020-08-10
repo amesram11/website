@@ -125,7 +125,7 @@ export const globalStyles = (
             @font-face {
               font-family: D-DIN-Exp;
               font-style: italic;
-              src: url("/fonts/D-DINExp-It.otf") format("opentype");
+              src: url("/fonts/D-DINExp-Italic.otf") format("opentype");
             }
 
             a {

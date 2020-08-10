@@ -44,9 +44,7 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
                 <div css={css`
                     grid-area: description
                 `}>
-                    <p>
-                        {children}
-                    </p>
+                    {children}
                 </div>
             </div>
         </div>

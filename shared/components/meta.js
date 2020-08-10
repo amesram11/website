@@ -8,7 +8,7 @@ const Meta = ({ title, description, type, image, extraTags, router}) => {
     let otherTags = null
     if (extraTags) {
         otherTags = Object.keys(extraTags).map((name) => (
-            <meta name={name} content={extraTags[name]} />
+            <meta name={name} key={name} content={extraTags[name]} />
         ))
     }
 

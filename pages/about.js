@@ -15,7 +15,7 @@ const SocialMediaRow = styled('div')`
 `
 
 const TeamMember = ({ email, twitterHandle, children }) => (
-    <p>
+    <div>
         <div css={css`
             display: grid;
             grid-template-columns: 150px auto;
@@ -55,7 +55,7 @@ const TeamMember = ({ email, twitterHandle, children }) => (
             </div>
         </div>
         <hr />
-    </p>
+    </div>
 )
 
 const featureImage = '/images/about-banner.jpg'
@@ -103,6 +103,7 @@ const About = ({ data }) => (
                 <h3>Team</h3>
                 {data.map(({ name, email, twitterHandle, contentHtml }) => (
                     <TeamMember
+                        key={name}
                         name={name}
                         email={email}
                         twitterHandle={twitterHandle}

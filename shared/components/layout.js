@@ -168,7 +168,10 @@ const DropdownMenu = ({subMenu, show}) => {
             }
         `}>
             {subMenu.map((menuItem) => (
-                    <Link href={menuItemtoURL(menuItem)} passHref>
+                    <Link
+                        href={menuItemtoURL(menuItem)}
+                        key={menuItem.label}
+                    passHref>
                         <a
                             css={css`
                                 color: ${colors['black']};
@@ -228,7 +231,7 @@ const MobileSubmenuItem = ({label, url}) => {
     )
 }
 
-const MobileMenuItem = ({label, url, subMenu}) => {
+const MobileMenuItem = ({label, url, key, subMenu}) => {
     return (
         <div css={css`
             padding: 0 12px;
@@ -238,7 +241,7 @@ const MobileMenuItem = ({label, url, subMenu}) => {
                 label={label}
                 url={url}
             />
-            {subMenu ? subMenu.map((item) => <MobileSubmenuItem label={item.label} url={menuItemtoURL(item)} />) : null}
+            {subMenu ? subMenu.map((item) => <MobileSubmenuItem key={'mobile-' + item.label} label={item.label} url={menuItemtoURL(item)} />) : null}
         </div>
     )
 }
@@ -492,7 +495,8 @@ export default function Layout({ featureImage, featureBoxInfo, featureText, tall
         key={'mobile-' + item.label}
         label={item.label}
         url={menuItemtoURL(item)}
-        subMenu={item.subMenu}/>)
+        subMenu={item.subMenu}/>
+    )
 
     return (
         <div

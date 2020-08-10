@@ -75,6 +75,7 @@ const Projects = ({ data }) => (
                 </p>
                 {data.map(({ id, title, thumbnail, summary }) => (
                     <ProjectBlock
+                        key={title}
                         title={title}
                         imageUrl={thumbnail}
                         projectUrl={`/projects/${id}`}

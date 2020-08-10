@@ -63,6 +63,7 @@ const Library = ({ data }) => {
                         odd = !odd
                         return (
                             <LibraryBlock
+                                key={title}
                                 right={odd}
                                 title={title}
                                 imageUrl={thumbnail}

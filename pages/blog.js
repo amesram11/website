@@ -50,6 +50,7 @@ const Blog = ({ data }) => (
             <Content>
                 {data.map(({ id, title, author, date, summary }) => (
                     <Post
+                        key={title}
                         title={title}
                         author={author}
                         date={date}
