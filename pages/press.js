@@ -52,6 +52,7 @@ export default Press
 
 export async function getStaticProps() {
     const data = await getSortedData('press', 'date', true)
+
     return {
         props: {
             data
