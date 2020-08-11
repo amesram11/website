@@ -148,7 +148,7 @@ const DropdownMenu = ({subMenu, show}) => {
             background-color: ${colors['white']};
             width: 220px;
             visibility: ${show ? 'visible' : 'hidden'};
-            margin-top: ${show ? '45px' : '55px'};
+            margin-top: ${show ? '80px' : '90px'};
             transition: opacity .2s ease-out, margin .4s ease-out;
             padding: 0px 0px 15px 0px;
             opacity: ${show ? 1.0 : 0.0};
@@ -281,9 +281,11 @@ class DesktopMenuItem extends React.Component {
         return (
             <div css={css`
                 flex: 0 1 auto;
-                padding: 0 12px;
+                padding: 35px 12px 0px 12px;
                 position: relative;
+                vertical-align: middle;
                 text-align: center;
+                height: 100%;
             `} onMouseLeave={this.handleMouseLeave}>
                 <MenuItem
                     label={this.props.label}
