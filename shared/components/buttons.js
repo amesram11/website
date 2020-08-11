@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import Link from 'next/link'
 import { colors } from '../styles'
 
-const Button = styled('a')`
+export const Button = styled('a')`
     color: ${props => props.color};
     border: 1px solid ${props => props.color};
     display: inline-block;

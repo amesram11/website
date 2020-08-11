@@ -76,7 +76,6 @@ const menuItems = [{
     label: 'About',
 }, {
     label: 'Donate',
-    url: 'https://secure.actblue.com/donate/newconsensus'
 }]
 
 function menuItemtoURL(menuItem) {
@@ -476,8 +475,8 @@ const Footer = () => (
                     text-align: right;
                 }
             `}>
-                <LinkButton href='https://secure.actblue.com/donate/newconsensus' color={colors['red']} hoverColor={colors['white']}>
-                Donate ⟶
+                <LinkButton href='/donate' color={colors['red']} hoverColor={colors['white']}>
+                    Donate ⟶
                 </LinkButton>
             </div>
         </Grid>
