@@ -7,6 +7,7 @@ import Meta from '../../shared/components/meta'
 import { getData } from '../../shared/data'
 
 const videos = [{
+
     title: 'The Truth About How Countries Get Rich',
     url: 'https://www.youtube.com/embed/-QGH0IzQgrY',
     description: 'This video kicks off this new YouTube channel. If you like it, please help us get going by subscribing and liking the video. Our goal is to offer a mix or short and in-depth videos that give a new take on big ideas. This video is the second and slightly less simplified edition of an earlier version. (NO CELEBRITIES were harmed in the production of this video! Matt Damon is awesome and has a great sense of humor about this stuff.)'
@@ -67,7 +68,7 @@ export default function Project({ data }) {
                     {videos.map((video) => (
                         <ContentBlock
                             titleBlock={video.title}
-                            imageBlock={<iframe width="336" height="189" src={video.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
+                            imageBlock={<iframe width="336" height="189" src={video.url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
                             description={video.description}
                         >
                             Who's in the mood for a worldview that's radical, positive, free of 20th century baggage and grounded in common sense and research into actual facts? This video kicks off this new YouTube channel. If you like it, please help us get going by subscribing and liking the video. Our goal is to offer a mix or short and in-depth videos that give a new take on big ideas. This video is the second and slightly less simplified edition of an earlier version. (NO CELEBRITIES were harmed in the production of this video! Matt Damon is awesome and has a great sense of humor about this stuff.)
