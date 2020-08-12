@@ -3,12 +3,13 @@ import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
 import ContentBlock from '../shared/components/content-block'
 import { Content, Section } from '../shared/components/content-layout'
+import Date from '../shared/components/date'
 import Layout from '../shared/components/layout'
 import Meta from '../shared/components/meta'
 import { getSortedData } from '../shared/data'
 import { colors } from '../shared/styles'
 
-const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
+const ProjectBlock = ({ title, date, projectUrl, imageUrl, children}) => {
     let titleBlock = (
         <Link href={projectUrl} passHref>
             <a css={css`
@@ -16,6 +17,13 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
                 border: none;
             `}>
                 {title}
+                <p css={css`
+                    font-size: 1rem;
+                    color: ${colors['lightGray']};
+                    margin-bottom: 0;
+                `}>
+                    <Date dateString={date} />
+                </p>
             </a>
         </Link>
     )
@@ -75,10 +83,11 @@ const Projects = ({ data }) => (
                 <p>
                     <em>{description}</em>
                 </p>
-                {data.map(({ id, title, thumbnail, summary }) => (
+                {data.map(({ id, title, thumbnail, date, summary }) => (
                     <ProjectBlock
                         key={title}
                         title={title}
+                        date={date}
                         imageUrl={thumbnail}
                         projectUrl={`/projects/${id}`}
                     >
