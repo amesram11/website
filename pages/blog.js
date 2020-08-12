@@ -19,7 +19,9 @@ const Post = ({ title, author, date, href, summary}) => (
                     text-decoration: none;
                     border: none;
                 `}>
-                    <h3>{title}</h3>
+                    <h2 css={css`
+                        margin-top: 1rem;
+                    `}>{title}</h2>
                 </a>
             </Link>
         </div>

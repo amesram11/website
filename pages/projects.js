@@ -50,7 +50,9 @@ const ProjectBlock = ({ title, projectUrl, imageUrl, children}) => {
             titleBlock={titleBlock}
             imageBlock={imageBlock}
         >
-            {children}
+            <p>
+                {children}
+            </p>
         </ContentBlock>
     )
 }

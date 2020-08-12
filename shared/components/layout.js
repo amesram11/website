@@ -62,6 +62,10 @@ const menuItems = [{
 }, {
     label: 'Projects',
     subMenu: [{
+        label: 'Biotechnology and the Green New Deal',
+        url: '/projects/biotechnology-and-the-green-new-deal'
+    },
+    {
         label: 'Pandemic Economics',
         url: '/projects/pandemic-economics'
     }, {
@@ -321,7 +325,11 @@ const FeatureBox = ({title, description, url}) => (
             background: ${colors['white']};
             margin-bottom: 30px;
         `}/>
-        <h2>{title}</h2>
+        <h1 css={css`
+            margin-bottom: 1rem;
+        `}>
+            {title}
+        </h1>
         <p css={css`
             color: ${colors['lighterGray']};
         `}>{description}</p>
@@ -349,7 +357,11 @@ const SignupBox = () => (
                     text-align: right;
                 }
             `}>
-                <h2>We can't afford to keep the status quo.</h2>
+                <h1 css={css`
+                    margin-bottom: 1rem;
+                `}>
+                    We can't afford to keep the status quo.
+                </h1>
             </div>
             <div css={css`
                 grid-area: b;

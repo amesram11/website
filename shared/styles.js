@@ -152,7 +152,7 @@ export const globalStyles = (
 
             h1 {
                 ${headerStyle}
-                margin: 0 0 2rem;
+                margin: 0rem 0 2rem;
                 font-size: 36px;
                 line-height: 42px;
                 @media (min-width: ${breakpoints['desktop']}) {
@@ -163,13 +163,9 @@ export const globalStyles = (
 
             h2 {
                 ${headerStyle}
-                margin: 0 0 1rem;
-                font-size: 36px;
-                line-height: 42px;
-                @media (min-width: ${breakpoints['desktop']}) {
-                    font-size: 48px;
-                    line-height: 52px;
-                }
+                margin: 3rem 0 1rem;
+                font-size: 30px;
+                line-height: 36px;
             }
 
             h3 {
@@ -177,6 +173,14 @@ export const globalStyles = (
                 margin: 3rem 0 1rem 0;
                 font-size: 24px;
                 line-height: 30px;
+                font-weight: bold;
+            }
+
+            h4 {
+                ${headerStyle}
+                margin: 2rem 0 1rem 0;
+                font-size: 18px;
+                line-height: 24px;
                 font-weight: bold;
             }
 

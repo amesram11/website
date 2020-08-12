@@ -68,62 +68,64 @@ export default function Project({ data }) {
                     "article:published_time": data.date
                 }}
             />
-            <Section css={css`
-                @media(min-width: ${breakpoints['tablet']}) {
-                    margin-top: -110px;
-                    padding: 0;
-                }
-            `}>
-                <Grid css={css`
-                    margin-right: auto;
-                    margin-left: auto;
-                    background-color: ${colors['black']};
-                    grid-column-gap: 1.5rem;
-                    grid-row-gap: 1.5rem;
-                    padding: 1.5rem;
-                    grid-template-areas:
-                            'x'
-                            'y';
-                    @media(min-width: ${breakpoints['phone']}) {
-                        max-width: 540px;
-                    }
+            {data.reports && (
+                <Section css={css`
                     @media(min-width: ${breakpoints['tablet']}) {
-                        max-width: 720px;
-                        grid-template-columns: repeat(2, 1fr);
-                        grid-template-areas:
-                            'x y'
-                    }
-                    @media(min-width: ${breakpoints['desktop']}) {
-                        max-width: 720px;
-                    }
-                    @media(min-width: ${breakpoints['large-desktop']}) {
-                        max-width: 720px;
+                        margin-top: -110px;
+                        padding: 0;
                     }
                 `}>
-                    <div css={css`
-                        grid-area: x;
-                        display: inline-block;
+                    <Grid css={css`
+                        margin-right: auto;
+                        margin-left: auto;
+                        background-color: ${colors['black']};
+                        grid-column-gap: 1.5rem;
+                        grid-row-gap: 1.5rem;
+                        padding: 1.5rem;
+                        grid-template-areas:
+                                'x'
+                                'y';
+                        @media(min-width: ${breakpoints['phone']}) {
+                            max-width: 540px;
+                        }
+                        @media(min-width: ${breakpoints['tablet']}) {
+                            max-width: 720px;
+                            grid-template-columns: repeat(2, 1fr);
+                            grid-template-areas:
+                                'x y'
+                        }
+                        @media(min-width: ${breakpoints['desktop']}) {
+                            max-width: 720px;
+                        }
+                        @media(min-width: ${breakpoints['large-desktop']}) {
+                            max-width: 720px;
+                        }
                     `}>
-                        <DownloadBox
-                            href={data.reports[0].link}
-                            image={data.reports[0].thumbnail}
-                            title={data.reports[0].title}
-                            subtitle={data.reports[0].subtitle}
-                        />
-                    </div>
-                    <div css={css`
-                        grid-area: y;
-                        display: inline-block;
-                    `}>
-                        <DownloadBox
-                            href={data.reports[1].link}
-                            image={data.reports[1].thumbnail}
-                            title={data.reports[1].title}
-                            subtitle={data.reports[1].subtitle}
-                        />
-                    </div>
-                </Grid>
-            </Section>
+                        <div css={css`
+                            grid-area: x;
+                            display: inline-block;
+                        `}>
+                            <DownloadBox
+                                href={data.reports[0].link}
+                                image={data.reports[0].thumbnail}
+                                title={data.reports[0].title}
+                                subtitle={data.reports[0].subtitle}
+                            />
+                        </div>
+                        <div css={css`
+                            grid-area: y;
+                            display: inline-block;
+                        `}>
+                            <DownloadBox
+                                href={data.reports[1].link}
+                                image={data.reports[1].thumbnail}
+                                title={data.reports[1].title}
+                                subtitle={data.reports[1].subtitle}
+                            />
+                        </div>
+                    </Grid>
+                </Section>
+            )}
             <Section>
                 <Content>
                     <div dangerouslySetInnerHTML={{ __html: data.contentHtml }} />

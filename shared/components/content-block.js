@@ -10,7 +10,7 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
         `}>
             <div css={css`
                 display: grid;
-                grid-template-columns: ${right ? `auto max-content` : `max-content auto`};
+                grid-template-columns: ${right ? `auto min-content` : `min-content auto`};
                 grid-column-gap: 15px;
                 grid-template-areas:
                     'header header'
@@ -29,7 +29,11 @@ export default function ContentBlock({ titleBlock, imageBlock, right, children})
                         text-align: center;
                     }
                 `}>
-                    <h3>{titleBlock}</h3>
+                    <h2 css={css`
+                        margin-top: 1rem;
+                    `}>
+                        {titleBlock}
+                    </h2>
                 </div>
                 <div css={css`
                     grid-area: image;
