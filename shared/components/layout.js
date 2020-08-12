@@ -71,6 +71,9 @@ const menuItems = [{
     }, {
         label: 'Green New Deal',
         url: '/projects/green-new-deal'
+    }, {
+        label: 'All Projects',
+        url: '/projects'
     }]
 }, {
     label: 'Library'
