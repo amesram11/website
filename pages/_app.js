@@ -1,20 +1,26 @@
 import { CacheProvider } from '@emotion/core';
 import { cache } from 'emotion';
-import withGA from "next-ga";
-import NextApp from 'next/app';
-import Router from "next/router";
+import Router from 'next/router';
+import { useEffect } from 'react';
+import * as gtag from '../shared/gtag';
 import { globalStyles } from '../shared/styles';
 
-class App extends NextApp {
-  render() {
-    const { Component, pageProps } = this.props
+const App = ({ Component, pageProps }) => {
+    useEffect(() => {
+        const handleRouteChange = (url) => {
+            gtag.pageview(url)
+        }
+        Router.events.on('routeChangeComplete', handleRouteChange)
+        return () => {
+            Router.events.off('routeChangeComplete', handleRouteChange)
+        }
+    }, [])
     return (
-      <CacheProvider value={cache}>
-        {globalStyles}
-        <Component {...pageProps} />
-      </CacheProvider>
+        <CacheProvider value={cache}>
+            {globalStyles}
+            <Component {...pageProps} />
+        </CacheProvider>
     )
-  }
 }
 
-export default withGA("UA-175180353-1", Router)(App)
+export default App

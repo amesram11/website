@@ -62,13 +62,25 @@ async function getDataFromDataFile(model, id) {
     return returnValue
 }
 
-async function getAllIdsFromDirectory(model) {
+async function getAllIdsFromDirectory(model, excludeReactPages) {
     const directory = path.join(process.cwd(), '_' + model)
     const fileNames = await fsPromises.readdir(directory)
-    return fileNames.map(fileName => {
+    const ids = fileNames.map((fileName) => fileName.replace(/\.md$/, ''))
+    if (excludeReactPages) {
+        const directory = path.join(process.cwd(), 'pages', model)
+        const allReactPages = await fsPromises.readdir(directory)
+        allReactPages.forEach((page) => {
+            const pageId = page.replace(/\.js$/, '')
+            const index = ids.indexOf(pageId)
+            if (index > -1) {
+                ids.splice(index, 1)
+            }
+        })
+    }
+    return ids.map(id => {
         return {
             params: {
-                id: fileName.replace(/\.md$/, '')
+                id: id
             }
         }
     })
@@ -100,9 +112,13 @@ export async function getAllData(model) {
     }
 }
 
-export async function getAllIds(model) {
+// excludeReactPages is our hack to make the project build when
+// we have projects or posts that are react-based (like left-right-forward.js)
+// Otherwise, there is a conflict between the .js file and the
+// html file next tries to build from the data
+export async function getAllIds(model, excludeReactPages) {
     try {
-        return await getAllIdsFromDirectory(model)
+        return await getAllIdsFromDirectory(model, excludeReactPages)
     } catch (err) {
         return await getAllIdsFromDataFile(model)
     }

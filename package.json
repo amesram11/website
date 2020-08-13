@@ -19,7 +19,6 @@
     "emotion-server": "10.0.27",
     "gray-matter": "^4.0.2",
     "next": "^9.5.2",
-    "next-ga": "^2.3.4",
     "react": "^16.7.0",
     "react-burger-menu": "^2.7.1",
     "react-dom": "^16.7.0",

@@ -1,3 +1,4 @@
+
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import ContentBlock from '../../shared/components/content-block'
@@ -42,7 +43,6 @@ const videos = [{
 }]
 
 export default function Project({ data }) {
-
     return (
         <Layout
             featureImage={data.featureImage}
@@ -67,6 +67,7 @@ export default function Project({ data }) {
                     </p>
                     {videos.map((video) => (
                         <ContentBlock
+                            key={video.title}
                             titleBlock={video.title}
                             imageBlock={<iframe width="336" height="189" src={video.url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
                             description={video.description}

@@ -137,7 +137,7 @@ export default function Project({ data }) {
 }
 
 export async function getStaticPaths() {
-    const paths = await getAllIds('projects')
+    const paths = await getAllIds('projects', true)
     return {
         paths,
         fallback: false

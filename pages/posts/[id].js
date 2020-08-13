@@ -98,7 +98,7 @@ export default function Post({ data }) {
 }
 
 export async function getStaticPaths() {
-    const paths = await getAllIds('posts')
+    const paths = await getAllIds('posts', true)
     return {
         paths,
         fallback: false
