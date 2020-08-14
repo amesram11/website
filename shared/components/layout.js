@@ -12,7 +12,7 @@ const burgerStyles = {
     bmBurgerButton: {
         top: '20px',
         right: '20px',
-        position: 'fixed',
+        position: 'absolute',
         width: '30px',
         height: '25px',
     },
