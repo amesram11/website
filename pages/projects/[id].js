@@ -86,7 +86,7 @@ export default function Project({ data }) {
                                 'x'
                                 'y';
                         @media(min-width: ${breakpoints['phone']}) {
-                            max-width: 540px;
+                            max-width: 360px;
                         }
                         @media(min-width: ${breakpoints['tablet']}) {
                             max-width: 720px;

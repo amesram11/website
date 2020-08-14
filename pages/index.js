@@ -11,14 +11,28 @@ const description = "New Consensus develops plans to show how America can mobili
 const featureImage = '/images/earth-banner.jpeg'
 
 const VideoContainer = styled('div')`
-    padding-bottom: 25px;
-    width: 560px;
-    height: 315px;
-    @media (max-width: ${breakpoints['desktop']}) {
+    width: 336px;
+    height: 189px;
+    padding-bottom: 2rem;
+    @media (min-width: ${breakpoints['tablet']}) {
         width: 448px;
         height: 252px;
     }
+    @media (min-width: ${breakpoints['desktop']}) {
+        width: 560px;
+        height: 315px;
+        padding: 0;
+    }
 `
+
+const SectionGrid = styled(Grid)`
+    grid-template-areas:
+        'v'
+        'd';
+    justify-items: center;
+    align-items: center;
+`
+
 const Home = () => (
     <Layout
         tall
@@ -36,20 +50,17 @@ const Home = () => (
             image={featureImage}
         />
         <BigSection>
-            <Grid
+            <SectionGrid
                 css={css`
-                    grid-template-areas:
-                        'b'
-                        'a';
-
                     @media (min-width: ${breakpoints['desktop']}) {
                         grid-template-areas:
-                            'a a a a a b b b b b b b';
+                            'd d d d d v v v v v v v';
                     }
             `}>
                 <div css={css`
-                    grid-area: a;
+                    grid-area: d;
                     @media(min-width: ${breakpoints['desktop']}) {
+                        justify-self: right;
                         text-align: right;
                     }
                 `}>
@@ -61,42 +72,42 @@ const Home = () => (
                     </p>
                     <LinkButton href='/about' color={colors['red']} hoverColor={colors['white']}>About Us ⟶</LinkButton>
                 </div>
-                <VideoContainer css={css`
-                    grid-area: b;
-                    align-self: center;
-                    justify-self: center;
-
+                <div css={css`
+                    grid-area: v;
+                    @media(min-width: ${breakpoints['desktop']}) {
+                        justify-self: center;
+                    }
                 `}>
-                    <iframe
-                        width="100%"
-                        height="100%"
-                        src="https://www.youtube.com/embed/JG5U0xmYsSw"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullsSreen
-                    />
-                </VideoContainer>
-            </Grid>
+                    <VideoContainer>
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/JG5U0xmYsSw"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullsSreen
+                        />
+                    </VideoContainer>
+                </div>
+            </SectionGrid>
         </BigSection>
         <BigSection css={css`
             background-color: ${colors['red']};
             color: ${colors['white']};
         `}>
-            <Grid
+            <SectionGrid
                 css={css`
-                    grid-template-areas:
-                        'a'
-                        'b';
-
                     @media (min-width: ${breakpoints['desktop']}) {
                         grid-template-areas:
-                            'a a a a a a a b b b b b';
+                            'v v v v v v v d d d d d';
                     }
+
             `}>
                 <div css={css`
-                    grid-area: b;
+                    grid-area: d;
                     @media(min-width: ${breakpoints['desktop']}) {
-                        text-align: right;
+                        justify-self: left;
+                        text-align: left;
                     }
                 `}>
                     <h1>
@@ -105,42 +116,50 @@ const Home = () => (
                     <p css={css`
                         color: ${colors['white']}
                     `}>
-                        Over the last several decades, America has  abandoned the idea that the government should have any role in shaping our future. By drawing on successful examples from America's own history, as well as advanced economies around the world, New Consensus presents an alternative vision. We show how the government must shape new markets, invest in new high-wage industries, and create projects to mobilize our economy to solve our biggest problems like climate change, racial and regional wealth and income gaps, and COVID-19.
+                        While the <a
+                            css={css`
+                                color: ${colors['black']};
+                                border-bottom: 1px solid ${colors['white']};
+                                &:focus, &:hover {
+                                    color: ${colors['white']};
+                                    text-decoration: none;
+                                }`}
+                            href="https://en.wikipedia.org/wiki/Washington_Consensus#Original_sense:_Williamson's_Ten_Points">
+                        old consensus</a> promotes free markets alone as the solution, New Consensus proposes solving problems like climate change and COVID-19 through goal-oriented, national projects.
                     </p>
                     <LinkButton href='/projects' color={colors['white']} hoverColor={colors['red']}>See Our Projects ⟶</LinkButton>
                 </div>
-                <VideoContainer css={css`
-                    grid-area: a;
-                    align-self: center;
-                    justify-self: center;
-
-                `}>
-                    <iframe
-                        width="100%"
-                        height="100%"
-                        src="https://www.youtube.com/embed/UNsHq6z99DM"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullsSreen
-                    />
-                </VideoContainer>
-            </Grid>
+                <div css={css`
+                    grid-area: v;
+                    @media(min-width: ${breakpoints['desktop']}) {
+                        justify-self: center;
+                    }`}
+                >
+                    <VideoContainer>
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/UNsHq6z99DM"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullsSreen
+                        />
+                    </VideoContainer>
+                </div>
+            </SectionGrid>
         </BigSection>
         <BigSection>
-            <Grid
+            <SectionGrid
                 css={css`
-                    grid-template-areas:
-                        'b'
-                        'a';
-
                     @media (min-width: ${breakpoints['desktop']}) {
                         grid-template-areas:
-                            'a a a a a b b b b b b b';
+                            'd d d d d v v v v v v v';
                     }
             `}>
                 <div css={css`
-                    grid-area: a;
+                    grid-area: d;
                     @media(min-width: ${breakpoints['desktop']}) {
+                        justify-self: right;
                         text-align: right;
                     }
                 `}>
@@ -148,26 +167,28 @@ const Home = () => (
                         Why Do We Need a New Consensus?
                     </h1>
                     <p>
-                        A truly beautiful world is possible - one without poverty or pollution, and with prosperity and dignity for everyone. Humanity has everything it needs to build that world in a single generation: billions of creative, hard working people, technology that already can allow us to make a comfortable living safely and sustainably, and unlimited energy from the sun, wind, and other sources that we can now harness to power that technology. But to achieve this, we must use a new approach, and our politicians much reach a new consensus.
+                        A truly beautiful world is possible - one without poverty or pollution, and with prosperity and dignity for everyone. But the current ideas being proposed by our political leaders won't get us there.
                     </p>
                     <LinkButton href='/library' color={colors['red']} hoverColor={colors['white']}>Read More in Our Library ⟶</LinkButton>
                 </div>
-                <VideoContainer css={css`
-                    grid-area: b;
-                    align-self: center;
-                    justify-self: center;
-
+                <div css={css`
+                    grid-area: v;
+                    @media(min-width: ${breakpoints['desktop']}) {
+                        justify-self: center;
+                    }
                 `}>
-                    <iframe
-                        width="100%"
-                        height="100%"
-                        src="https://www.youtube.com/embed/rZc6ZWTUwCE"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullsSreen
-                    />
-                </VideoContainer>
-            </Grid>
+                    <VideoContainer>
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/rZc6ZWTUwCE"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullsSreen
+                        />
+                    </VideoContainer>
+                </div>
+            </SectionGrid>
         </BigSection>
     </Layout>
 )

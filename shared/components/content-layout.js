@@ -25,9 +25,9 @@ export const Grid = styled('div')`
     margin-right: auto;
     margin-left: auto;
     width: 100%;
-    max-width: 540px;
+    max-width: 360px;
     @media(min-width: ${breakpoints['phone']}) {
-        max-width: 540px;
+        max-width: 360px;
     }
     @media(min-width: ${breakpoints['tablet']}) {
         max-width: 720px;
@@ -44,9 +44,9 @@ export const Grid = styled('div')`
 export const Content = styled('div')`
     margin-right: auto;
     margin-left: auto;
-    max-width: 540px;
+    max-width: 360px;
     @media(min-width: ${breakpoints['phone']}) {
-        max-width: 540px;
+        max-width: 360px;
     }
     @media(min-width: ${breakpoints['tablet']}) {
         max-width: 720px;

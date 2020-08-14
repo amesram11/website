@@ -1,7 +1,7 @@
 import { css, Global } from '@emotion/core'
 
 export const breakpoints = {
-    'phone': '576px',
+    'phone': '375px',
     'tablet': '768px',
     'desktop': '992px',
     'large-desktop': '1200px'
