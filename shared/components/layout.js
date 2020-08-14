@@ -345,7 +345,7 @@ const SignupBox = () => (
     <BigSection css={css`
         background-color: ${colors['red']};
         color: ${colors['white']};
-`}>
+    `}>
         <Grid css={css`
             grid-template-areas:
                 'a'

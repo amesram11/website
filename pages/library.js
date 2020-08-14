@@ -74,7 +74,7 @@ const Library = ({ data }) => {
                         )}
                     )}
                     <hr />
-                    <h3>And more...</h3>
+                    <h2>And more...</h2>
                     <p>Get a deeper overview of the emerging consensus from a whole range of economists – including:</p>
                     <ul>
                         <li>The Failure of Austerity: Rethinking Fiscal Policy (Stephanie Kelton)</li>

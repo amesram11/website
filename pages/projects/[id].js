@@ -35,10 +35,10 @@ const DownloadBox = (props) => (
                 <div css={css`
                     grid-area: title;
                 `}>
-                    <h3 css={css`
+                    <h2 css={css`
                         color: ${colors['red']};
                         margin: 0;
-                    `}>{props.title}</h3>
+                    `}>{props.title}</h2>
                     <label css={css`
                         margin-bottom: .25rem;
                         font-weight: 400;

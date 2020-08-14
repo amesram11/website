@@ -19,10 +19,10 @@ summary: 'To tackle the novel coronavirus, we propose mobilizing our economy and
 
 We are urgently issuing proposals to help inform the thinking of political, business and military leaders.
 
-### How to Mobilize the Military to Produce the Supplies America Needs to Fight Coronavirus
+## How to Mobilize the Military to Produce the Supplies America Needs to Fight Coronavirus
 
 It was reported on March 20th that President Trump has finally been convinced to engage the military to ramp up production of medical supplies and other essentials that America needs to save lives in the Coronavirus crisis. Reportedly, the president yelled to someone, ‘do it now!’* Unfortunately, it’s been a long time since the federal government and the military have been asked to do anything like this. Without proper guidance, this new effort will go the way of recent efforts, such as Coronavirus testing, and drag on for months without success. Our intention here is to lay out a specific plan for how this new effort can succeed, using time-tested principles from past military-economic mobilizations like World War II. [See the plan](/files/pandemic-production.pdf).
 
-### A Proposal for Immediate Coronavirus-Related Economic Mitigation Measures
+## A Proposal for Immediate Coronavirus-Related Economic Mitigation Measures
 
 The Coronavirus crisis calls for an emergency supply-side and demand-side economic mobilization, financed using debt-free mechanisms as were used during the Great Depression and WWII, to prevent catastrophic economic collapse during the Coronavirus crisis. [See the plan](/files/pandemic-economic-mitigation.pdf).
