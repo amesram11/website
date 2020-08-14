@@ -100,7 +100,7 @@ const Home = () => (
         <VideoSection
             title="What's New About the New Consensus?"
             description={<div>
-                While the <a css={css`color: ${colors['black']}; border-bottom: 1px solid ${colors['white']}; &:focus, &:hover { color: ${colors['white']}; text-decoration: none;}`} href="https://en.wikipedia.org/wiki/Washington_Consensus#Original_sense:_Williamson's_Ten_Points"> old consensus</a> promotes free markets alone as the solution, New Consensus proposes solving problems like climate change and COVID-19 through goal-oriented, national projects.
+                While the old consensus promotes free markets alone as the solution, New Consensus proposes solving problems like climate change and COVID-19 through goal-oriented, national projects.
             </div>}
             videoUrl='https://www.youtube.com/embed/UNsHq6z99DM'
             buttonText='See Our Projects'
