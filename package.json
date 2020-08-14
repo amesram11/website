@@ -1,8 +1,12 @@
 {
   "name": "website",
   "version": "1.0.0",
-  "description": "",
+  "description": "The website for New Consensus",
   "main": "index.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/New-Consensus/website.git"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -10,7 +14,7 @@
   },
   "keywords": [],
   "author": "Saikat Chakrabarti",
-  "license": "",
+  "license": "UNLICENSED",
   "dependencies": {
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",
