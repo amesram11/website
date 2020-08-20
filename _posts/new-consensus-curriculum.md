@@ -67,7 +67,7 @@ date: '2020-08-18'
 * New England was founded as a utopian, egalitarian project. Care was taken to prevent anyone family accumulating too much land, and to make sure that all (English) families in the area had access to enough land to live on. The community's leaders were highly motivated to "save" Native Americans–in fact this was a big part of the rationale for them to come to America. Utopia soon unraveled, as the highly educated Puritans came to rely on English "indentured servants" and African Slaves, and as a group of wealthy merchants accumulated great wealth and power over the colony. Massachusetts was the first state to enshrine permanent slavery into law.
 * Virginia was also powered by English indentured servants and African slaves, without any pretense of equality, even, among free English people.
 * Early America was a society of classes and castes: Slaves, servants, masters, gentlemen, clergy, the middling sort, the lower sort, husbands, wives, children, workers, tradesmen, and merchants.
-The invention and refinement of the idea of race; the invention of black and white.
+* The invention and refinement of the idea of race; the invention of black and white.
 * For a long time, America was primarily an ownership society. What that meant, how it happened, how it was maintained.
 * The American Revolution – 100 years in the making. A real social revolution, making class distinction a taboo, if not actually eliminating it. Thirteen separate nations, with 13 revolutionary legislatures, "filled with butchers and bakers." Almost the first time this happened in the world, and the first time it stuck.
 * The formation of the United States of America through the Constitution and ratification process.
