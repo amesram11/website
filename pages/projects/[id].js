@@ -89,16 +89,16 @@ export default function Project({ data }) {
                             max-width: 360px;
                         }
                         @media(min-width: ${breakpoints['tablet']}) {
-                            max-width: 720px;
+                            max-width: ${data.reports.length * 360}px;
                             grid-template-columns: repeat(2, 1fr);
                             grid-template-areas:
                                 'x y'
                         }
                         @media(min-width: ${breakpoints['desktop']}) {
-                            max-width: 720px;
+                            max-width: ${data.reports.length * 360}px;
                         }
                         @media(min-width: ${breakpoints['large-desktop']}) {
-                            max-width: 720px;
+                            max-width: ${data.reports.length * 360}px;
                         }
                     `}>
                         <div css={css`
@@ -112,17 +112,18 @@ export default function Project({ data }) {
                                 subtitle={data.reports[0].subtitle}
                             />
                         </div>
-                        <div css={css`
-                            grid-area: y;
-                            display: inline-block;
-                        `}>
-                            <DownloadBox
-                                href={data.reports[1].link}
-                                image={data.reports[1].thumbnail}
-                                title={data.reports[1].title}
-                                subtitle={data.reports[1].subtitle}
-                            />
-                        </div>
+                        {data.reports[1] && (
+                            <div css={css`
+                                grid-area: y;
+                                display: inline-block;
+                            `}>
+                                <DownloadBox
+                                    href={data.reports[1].link}
+                                    image={data.reports[1].thumbnail}
+                                    title={data.reports[1].title}
+                                    subtitle={data.reports[1].subtitle}
+                                />
+                            </div>)}
                     </Grid>
                 </Section>
             )}
