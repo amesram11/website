@@ -260,7 +260,7 @@ const Header = ({featureImage, children, initSize}) => (
     <header css={css`
         min-height: 250px;
         width: 100%;
-        background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${featureImage});
+        background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url(${featureImage});
         background-repeat: no-repeat;
         background-size: cover;
         @media (min-width: ${breakpoints['desktop']}) {
