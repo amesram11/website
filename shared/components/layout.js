@@ -63,8 +63,8 @@ const menuItems = [{
 }, {
     label: 'Projects',
     subMenu: [{
-        label: 'Biotechnology and the Green New Deal',
-        url: '/projects/biotechnology-and-the-green-new-deal'
+        label: 'Building Back Better Without the Senate',
+        url: '/projects/building-back-better-without-the-senate'
     },
     {
         label: 'Pandemic Economics',
