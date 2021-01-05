@@ -5,6 +5,10 @@ reports:
         thumbnail: '/images/bbb-memo-thumb.jpg'
         title: 'Memo'
         subtitle: '(7 pages)'
+    -   link: '/files/building-back-better-without-the-senate-further-details.pdf'
+        thumbnail: '/images/bbb-further-details-thumb.jpg'
+        title: 'Further Details'
+        subtitle: '(10 pages)'
 thumbnail: '/images/bbb-thumb.jpg'
 title: 'Building Back Better Without The Senate'
 date: '2020-11-18'
@@ -24,3 +28,5 @@ Simply by following well established precedent, President Biden could, for examp
 President-elect Biden has talked about being the FDR of our generation. Like FDR, Biden has been tasked with leading a nation in crisis. Like FDR, Biden is inheriting a nation that appears weakened and divided. And also like FDR, President-elect Biden has the tools at his disposal to prove that America is capable of accomplishing greatness and leading the world in a positive direction.
 
 [Read the full memo.](/files/building-back-better-without-the-senate.pdf)
+
+[Read how this works with Senate cooperation.](/files/building-back-better-without-the-senate-further-details.pdf)
