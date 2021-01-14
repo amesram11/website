@@ -1,5 +1,5 @@
 import { extractCritical } from 'emotion-server'
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 import { GA_TRACKING_ID } from '../shared/gtag'
 
 export default class MyDocument extends Document {
@@ -22,7 +22,7 @@ export default class MyDocument extends Document {
 
     render() {
         return (
-            <html>
+            <Html>
                 <Head>
                     {/* Global Site Tag (gtag.js) - Google Analytics */}
                     <script
@@ -46,7 +46,7 @@ export default class MyDocument extends Document {
                     <Main />
                     <NextScript />
                 </body>
-            </html>
+            </Html>
         )
     }
 }

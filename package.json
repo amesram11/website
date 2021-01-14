@@ -4,8 +4,8 @@
   "description": "The website for New Consensus",
   "main": "index.js",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/New-Consensus/website.git"
+    "type": "git",
+    "url": "https://github.com/New-Consensus/website.git"
   },
   "scripts": {
     "dev": "next",
@@ -18,14 +18,14 @@
   "dependencies": {
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",
-    "date-fns": "^2.15.0",
+    "date-fns": "^2.16.1",
     "emotion": "10.0.27",
     "emotion-server": "10.0.27",
     "gray-matter": "^4.0.2",
-    "next": "^9.5.2",
-    "react": "^16.7.0",
-    "react-burger-menu": "^2.7.1",
-    "react-dom": "^16.7.0",
+    "next": "^9.5.5",
+    "react": "^16.14.0",
+    "react-burger-menu": "^2.9.2",
+    "react-dom": "^16.14.0",
     "react-gravatar": "^2.6.3",
     "react-mailchimp-subscribe": "^2.1.0",
     "remark": "^12.0.1",
