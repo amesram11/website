@@ -63,10 +63,12 @@ const menuItems = [{
 }, {
     label: 'Projects',
     subMenu: [{
+        label: 'Investing in America with the Treasury',
+        url: '/projects/investing-in-america-with-the-treasury'
+    }, {
         label: 'Building Back Better Without the Senate',
         url: '/projects/building-back-better-without-the-senate'
-    },
-    {
+    }, {
         label: 'Pandemic Economics',
         url: '/projects/pandemic-economics'
     }, {
