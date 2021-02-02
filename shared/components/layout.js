@@ -3,9 +3,8 @@ import { css, jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 import { push as BurgerMenu } from 'react-burger-menu'
-import MailchimpSubscribe from "react-mailchimp-subscribe"
 import { breakpoints, colors, navBarHeight } from '../styles'
-import { LinkButton, SocialMediaButton, SubmitButton } from './buttons'
+import { LinkButton, SocialMediaButton } from './buttons'
 import { BigSection, Grid, Section } from './content-layout'
 
 const burgerStyles = {
@@ -59,7 +58,8 @@ const burgerStyles = {
 }
 
 const menuItems = [{
-    label: 'Blog'
+    label: 'Blog',
+    url: 'https://newconsensus.substack.com'
 }, {
     label: 'Projects',
     subMenu: [{
@@ -380,79 +380,14 @@ const SignupBox = () => (
                     line-height: 26px;
                     font-weight: 400;
                 `}
-            >Get updates from the New Consensus</p>
-            <SubscribeForm color={colors['white']} backgroundColor={colors['red']} />
+            >Subscribe to the New Consensus newsletter!</p>
+            <LinkButton href='https://newconsensus.substack.com/subscribe' color={colors['white']} hoverColor={colors['red']}>
+                    Subscribe ⟶
+            </LinkButton>
             </div>
         </Grid>
     </BigSection>
 )
-
-const FormMessage = styled('div')`
-    color: ${colors['white']};
-    margin-top: 10px;
-`
-
-class SubscribeForm extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    state = {
-        value: ''
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
-    }
-
-    render() {
-        return (
-            <MailchimpSubscribe
-                url="https://newconsensus.us17.list-manage.com/subscribe/post?u=370e982501c3f4434ff09334f&amp;id=109884dfc3"
-                render={({ subscribe, status, message }) => (
-                    <form onSubmit={(event) => {
-                        subscribe({EMAIL: this.state.value})
-                        event.preventDefault()
-                    }}>
-                        <label css={css`
-                            color: ${this.props.color};
-                            margin: 0 0.5rem 0 0;
-                        `}>
-                            Email <br />
-                            <input
-                                css={css`
-                                    border: none;
-                                    border-bottom: 1px solid ${colors['white']};
-                                    background: transparent;
-                                    outline: none;
-                                    font-size: 15px;
-                                    line-height: 44px;
-                                    color: ${this.props.color}
-                                `}
-                                type="email"
-                                value={this.state.value}
-                                onChange={this.handleChange}
-                                required
-                            />
-                        </label>
-                        {status === "sending" && <FormMessage>Sending...</FormMessage>}
-                        {status === "error" && <FormMessage dangerouslySetInnerHTML={{__html: message}}/>}
-                        {status === "success" && <FormMessage>Thanks for subscribing!</FormMessage>}
-                        {status === null && <SubmitButton value="Subscribe" color={this.props.color} hoverColor={this.props.backgroundColor} />}
-                    </form>
-                )}
-            />
-        );
-    }
-}
 
 const Footer = () => (
     <Section css={css`
