@@ -59,7 +59,7 @@ const burgerStyles = {
 
 const menuItems = [{
     label: 'Blog',
-    url: 'https://newconsensus.substack.com'
+    url: 'https://blog.newconsensus.com'
 }, {
     label: 'Projects',
     subMenu: [{
@@ -381,7 +381,7 @@ const SignupBox = () => (
                     font-weight: 400;
                 `}
             >Subscribe to the New Consensus newsletter!</p>
-            <LinkButton href='https://newconsensus.substack.com/subscribe' color={colors['white']} hoverColor={colors['red']}>
+            <LinkButton href='https://blog.newconsensus.com/subscribe' color={colors['white']} hoverColor={colors['red']}>
                     Subscribe ⟶
             </LinkButton>
             </div>
