@@ -1,5 +1,0 @@
--   publication: 'MSNBC'
-    title: 'Town hall with Alexandria Ocasio-Cortez, featuring New Consensus’s Rhiana Gunn-Wright and Demond Drummer.'
-    date: '2019-04-02'
-    url: 'https://www.msnbc.com/all-in/watch/full-alexandria-ocasio-cortez-town-hall-unedited-1470189123632'
-
